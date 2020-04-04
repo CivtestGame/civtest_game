@@ -1,3 +1,8 @@
+-- default/trees.lua
+
+-- support for MT game translation.
+local S = default.get_translator
+
 local random = math.random
 
 -- 'is snow nearby' function

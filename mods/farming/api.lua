@@ -1,3 +1,7 @@
+-- farming/api.lua
+
+-- support for MT game translation.
+local S = farming.get_translator
 
 -- Wear out hoes, place soil
 -- TODO Ignore group:flower
@@ -55,7 +59,7 @@ farming.hoe_on_place = function(itemstack, user, pointed_thing, uses)
 	minetest.sound_play("default_dig_crumbly", {
 		pos = pt.under,
 		gain = 0.5,
-	})
+	}, true)
 
 	if not (creative and creative.is_enabled_for
 			and creative.is_enabled_for(user:get_player_name())) then
@@ -64,7 +68,8 @@ farming.hoe_on_place = function(itemstack, user, pointed_thing, uses)
 		itemstack:add_wear(65535/(uses-1))
 		-- tool break sound
 		if itemstack:get_count() == 0 and wdef.sound and wdef.sound.breaks then
-			minetest.sound_play(wdef.sound.breaks, {pos = pt.above, gain = 0.5})
+			minetest.sound_play(wdef.sound.breaks, {pos = pt.above,
+				gain = 0.5}, true)
 		end
 	end
 	return itemstack
@@ -262,7 +267,7 @@ farming.register_hoe = function(name, def)
 	end
 	-- Check def table
 	if def.description == nil then
-		def.description = "Hoe"
+		def.description = S("Hoe")
 	end
 	if def.inventory_image == nil then
 		def.inventory_image = "unknown_item.png"
@@ -353,6 +358,8 @@ farming.place_seed = function(itemstack, placer, pointed_thing, plantname)
 	end
 
 	-- add the node and remove 1 item from the itemstack
+	minetest.log("action", player_name .. " places node " .. plantname .. " at " ..
+		minetest.pos_to_string(pt.above))
 	minetest.add_node(pt.above, {name = plantname, param2 = 1})
 
         local meta = minetest.get_meta(pt.above)
@@ -447,7 +454,10 @@ farming.register_plant = function(name, def)
 
 	-- Check def table
 	if not def.description then
-		def.description = "Seed"
+		def.description = S("Seed")
+	end
+	if not def.harvest_description then
+		def.harvest_description = pname:gsub("^%l", string.upper)
 	end
 	if not def.inventory_image then
 		def.inventory_image = "unknown_item.png"
@@ -524,7 +534,7 @@ farming.register_plant = function(name, def)
 
 	-- Register harvest
 	minetest.register_craftitem(":" .. mname .. ":" .. pname, {
-		description = pname:gsub("^%l", string.upper),
+		description = def.harvest_description,
 		inventory_image = mname .. "_" .. pname .. ".png",
 		groups = def.groups or {flammable = 2},
 	})

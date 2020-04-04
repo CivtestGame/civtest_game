@@ -48,8 +48,9 @@ end
 
 function sfinv.make_formspec(player, context, content, show_inv, size)
 	local tmp = {
-		size or "size[8,8.6]",
+		size or "size[8,9.1]",
 		sfinv.get_nav_fs(player, context, context.nav_titles, context.nav_idx),
+		show_inv and theme_inv or "",
 		content
 	}
 	if show_inv then

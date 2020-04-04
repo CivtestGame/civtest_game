@@ -1,6 +1,12 @@
+-- fire/init.lua
+
 -- Global namespace for functions
 
 fire = {}
+
+-- Load support for MT game translation.
+local S = minetest.get_translator("fire")
+
 
 -- 'Enable fire' setting
 
@@ -28,7 +34,7 @@ local function flood_flame(pos, oldnode, newnode)
 	if not (nodedef and nodedef.groups and
 			nodedef.groups.igniter and nodedef.groups.igniter > 0) then
 		minetest.sound_play("fire_extinguish_flame",
-			{pos = pos, max_hear_distance = 16, gain = 0.15})
+			{pos = pos, max_hear_distance = 16, gain = 0.15}, true)
 	end
 	-- Remove the flame
 	return false
@@ -82,7 +88,7 @@ minetest.register_node("fire:basic_flame", {
 })
 
 minetest.register_node("fire:permanent_flame", {
-	description = "Permanent Flame",
+	description = S("Permanent Flame"),
 	drawtype = "firelike",
 	tiles = {
 		{
@@ -113,7 +119,7 @@ minetest.register_node("fire:permanent_flame", {
 -- Flint and steel
 
 minetest.register_tool("fire:flint_and_steel", {
-	description = "Flint and Steel",
+	description = S("Flint and Steel"),
 	inventory_image = "fire_flint_steel.png",
 	sound = {breaks = "default_tool_breaks"},
 
@@ -121,7 +127,8 @@ minetest.register_tool("fire:flint_and_steel", {
 		local sound_pos = pointed_thing.above or user:get_pos()
 		minetest.sound_play(
 			"fire_flint_and_steel",
-			{pos = sound_pos, gain = 0.5, max_hear_distance = 8}
+			{pos = sound_pos, gain = 0.5, max_hear_distance = 8},
+			true
 		)
 		local player_name = user:get_player_name()
 		if pointed_thing.type == "node" then
@@ -148,7 +155,8 @@ minetest.register_tool("fire:flint_and_steel", {
 			itemstack:add_wear(1000)
 			-- Tool break sound
 			if itemstack:get_count() == 0 and wdef.sound and wdef.sound.breaks then
-				minetest.sound_play(wdef.sound.breaks, {pos = sound_pos, gain = 0.5})
+				minetest.sound_play(wdef.sound.breaks, {pos = sound_pos,
+					gain = 0.5}, true)
 			end
 			return itemstack
 		end
@@ -320,7 +328,7 @@ if fire_enabled then
 		interval = 45,
 		chance = 12,
 		catch_up = false,
-		action = function(pos, node, active_object_count, active_object_count_wider)
+		action = function(pos)
 			local p = minetest.find_node_near(pos, 1, {"air"})
 			if p then
 				minetest.set_node(p, {name = "fire:basic_flame"})
@@ -337,7 +345,7 @@ if fire_enabled then
 		interval = 5,
 		chance = 18,
 		catch_up = false,
-		action = function(pos, node, active_object_count, active_object_count_wider)
+		action = function(pos)
 			local p = minetest.find_node_near(pos, 1, {"group:flammable"})
 			if p then
 				local flammable_node = minetest.get_node(p)

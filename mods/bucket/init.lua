@@ -1,12 +1,16 @@
 -- Minetest 0.4 mod: bucket
 -- See README.txt for licensing and other information.
 
+-- Load support for MT game translation.
+local S = minetest.get_translator("bucket")
+
+
 minetest.register_alias("bucket", "bucket:bucket_empty")
 minetest.register_alias("bucket_water", "bucket:bucket_water")
 minetest.register_alias("bucket_lava", "bucket:bucket_lava")
 
 minetest.register_craft({
-	output = 'bucket:bucket_empty 1',
+	output = "bucket:bucket_empty 1",
 	recipe = {
 		{'default:iron_ingot', '', 'default:iron_ingot'},
 		{'', 'default:iron_ingot', ''},
@@ -111,9 +115,9 @@ function bucket.register_liquid(source, flowing, itemname, inventory_image, name
 end
 
 minetest.register_craftitem("bucket:bucket_empty", {
-	description = "Empty Bucket",
+	description = S("Empty Bucket"),
 	inventory_image = "bucket.png",
-	stack_max = 99,
+	groups = {tool = 1},
 	liquids_pointable = true,
 	on_use = function(itemstack, user, pointed_thing)
 		if pointed_thing.type == "object" then
@@ -187,8 +191,8 @@ bucket.register_liquid(
 	"default:water_flowing",
 	"bucket:bucket_water",
 	"bucket_water.png",
-	"Water Bucket",
-	{water_bucket = 1}
+	S("Water Bucket"),
+	{tool = 1, water_bucket = 1}
 )
 
 -- River water source is 'liquid_renewable = false' to avoid horizontal spread
@@ -202,8 +206,8 @@ bucket.register_liquid(
 	"default:river_water_flowing",
 	"bucket:bucket_river_water",
 	"bucket_river_water.png",
-	"River Water Bucket",
-	{water_bucket = 1},
+	S("River Water Bucket"),
+	{tool = 1, water_bucket = 1},
 	true
 )
 
@@ -212,7 +216,8 @@ bucket.register_liquid(
 	"default:lava_flowing",
 	"bucket:bucket_lava",
 	"bucket_lava.png",
-	"Lava Bucket"
+	S("Lava Bucket"),
+	{tool = 1}
 )
 
 minetest.register_craft({

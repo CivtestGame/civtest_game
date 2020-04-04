@@ -1,5 +1,8 @@
 -- mods/default/tools.lua
 
+-- support for MT game translation.
+local S = default.get_translator
+
 -- The hand
 minetest.register_item(":", {
 	type = "none",
@@ -24,7 +27,7 @@ minetest.register_item(":", {
 --
 
 minetest.register_tool("default:pick_wood", {
-	description = "Wooden Pickaxe",
+	description = S("Wooden Pickaxe"),
 	inventory_image = "default_tool_woodpick.png",
 	groups = { pick = 1 },
 	tool_capabilities = {
@@ -36,10 +39,11 @@ minetest.register_tool("default:pick_wood", {
 		damage_groups = {fleshy=1 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {pickaxe = 1, flammable = 2}
 })
 
 minetest.register_tool("default:pick_stone", {
-	description = "Stone Pickaxe",
+	description = S("Stone Pickaxe"),
 	inventory_image = "default_tool_stonepick.png",
 	groups = { pick = 1 },
 	tool_capabilities = {
@@ -51,6 +55,7 @@ minetest.register_tool("default:pick_stone", {
 		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {pickaxe = 1}
 })
 
 minetest.register_tool("default:pick_copper", {
@@ -66,6 +71,7 @@ minetest.register_tool("default:pick_copper", {
 		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {pickaxe = 1}
 })
 
 minetest.register_tool("default:pick_bronze", {
@@ -81,6 +87,7 @@ minetest.register_tool("default:pick_bronze", {
 		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {pickaxe = 1}
 })
 
 minetest.register_tool("default:pick_iron", {
@@ -96,6 +103,7 @@ minetest.register_tool("default:pick_iron", {
 		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {pickaxe = 1}
 })
 
 minetest.register_tool("default:pick_steel", {
@@ -111,6 +119,7 @@ minetest.register_tool("default:pick_steel", {
 		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {pickaxe = 1}
 })
 
 --
@@ -118,7 +127,7 @@ minetest.register_tool("default:pick_steel", {
 --
 
 minetest.register_tool("default:shovel_wood", {
-	description = "Wooden Shovel",
+	description = S("Wooden Shovel"),
 	inventory_image = "default_tool_woodshovel.png",
 	wield_image = "default_tool_woodshovel.png",
 	groups = { shovel = 1 },
@@ -130,12 +139,12 @@ minetest.register_tool("default:shovel_wood", {
 		},
 		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
 	},
-	groups = {flammable = 2},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {shovel = 1, flammable = 2}
 })
 
 minetest.register_tool("default:shovel_stone", {
-	description = "Stone Shovel",
+	description = S("Stone Shovel"),
 	inventory_image = "default_tool_stoneshovel.png",
 	wield_image = "default_tool_stoneshovel.png",
 	groups = { shovel = 1 },
@@ -148,6 +157,7 @@ minetest.register_tool("default:shovel_stone", {
 		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {shovel = 1}
 })
 
 minetest.register_tool("default:shovel_copper", {
@@ -164,6 +174,7 @@ minetest.register_tool("default:shovel_copper", {
 		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {shovel = 1}
 })
 
 minetest.register_tool("default:shovel_bronze", {
@@ -180,6 +191,7 @@ minetest.register_tool("default:shovel_bronze", {
 		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {shovel = 1}
 })
 
 minetest.register_tool("default:shovel_iron", {
@@ -196,6 +208,7 @@ minetest.register_tool("default:shovel_iron", {
 		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {shovel = 1}
 })
 
 minetest.register_tool("default:shovel_steel", {
@@ -212,6 +225,7 @@ minetest.register_tool("default:shovel_steel", {
 		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {shovel = 1}
 })
 
 --
@@ -219,7 +233,7 @@ minetest.register_tool("default:shovel_steel", {
 --
 
 minetest.register_tool("default:axe_wood", {
-	description = "Wooden Axe",
+	description = S("Wooden Axe"),
 	inventory_image = "default_tool_woodaxe.png",
 	groups = { axe = 1 },
 	tool_capabilities = {
@@ -230,12 +244,12 @@ minetest.register_tool("default:axe_wood", {
 		},
 		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
 	},
-	groups = {flammable = 2},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {axe = 1, flammable = 2}
 })
 
 minetest.register_tool("default:axe_stone", {
-	description = "Stone Axe",
+	description = S("Stone Axe"),
 	inventory_image = "default_tool_stoneaxe.png",
 	groups = { axe = 1 },
 	tool_capabilities = {
@@ -247,6 +261,7 @@ minetest.register_tool("default:axe_stone", {
 		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {axe = 1}
 })
 
 minetest.register_tool("default:axe_copper", {
@@ -262,6 +277,7 @@ minetest.register_tool("default:axe_copper", {
 		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {axe = 1}
 })
 
 minetest.register_tool("default:axe_bronze", {
@@ -277,6 +293,7 @@ minetest.register_tool("default:axe_bronze", {
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {axe = 1}
 })
 
 minetest.register_tool("default:axe_iron", {
@@ -292,6 +309,7 @@ minetest.register_tool("default:axe_iron", {
 		damage_groups = {fleshy=6 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {axe = 1}
 })
 
 minetest.register_tool("default:axe_steel", {
@@ -307,6 +325,7 @@ minetest.register_tool("default:axe_steel", {
 		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {axe = 1}
 })
 
 --
@@ -314,7 +333,7 @@ minetest.register_tool("default:axe_steel", {
 --
 
 minetest.register_tool("default:sword_wood", {
-	description = "Wooden Sword",
+	description = S("Wooden Sword"),
 	inventory_image = "default_tool_woodsword.png",
 	groups = { sword = 1 },
 	tool_capabilities = {
@@ -325,12 +344,12 @@ minetest.register_tool("default:sword_wood", {
 		},
 		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
 	},
-	groups = {flammable = 2},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {sword = 1, flammable = 2}
 })
 
 minetest.register_tool("default:sword_stone", {
-	description = "Stone Sword",
+	description = S("Stone Sword"),
 	inventory_image = "default_tool_stonesword.png",
 	groups = { sword = 1 },
 	tool_capabilities = {
@@ -358,10 +377,11 @@ minetest.register_tool("default:sword_copper", {
 		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {sword = 1}
 })
 
 minetest.register_tool("default:sword_bronze", {
-	description = "Bronze Sword",
+	description = S("Bronze Sword"),
 	inventory_image = "default_tool_bronzesword.png",
 	groups = { sword = 1 },
 	tool_capabilities = {
@@ -388,10 +408,11 @@ minetest.register_tool("default:sword_iron", {
 		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {sword = 1}
 })
 
 minetest.register_tool("default:sword_steel", {
-	description = "Steel Sword",
+	description = S("Steel Sword"),
 	inventory_image = "default_tool_steelsword.png",
 	groups = { sword = 1 },
 	tool_capabilities = {
@@ -497,6 +518,7 @@ minetest.register_tool("default:pick_fine_steel", {
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {sword = 1}
 })
 
 minetest.register_tool("default:pick_fine_steel_good", {
@@ -512,6 +534,7 @@ minetest.register_tool("default:pick_fine_steel_good", {
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {sword = 1}
 })
 
 minetest.register_tool("default:pick_fine_steel_superior", {
@@ -527,7 +550,59 @@ minetest.register_tool("default:pick_fine_steel_superior", {
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
+	groups = {sword = 1}
 })
+
+--
+-- Register Craft Recipies
+--
+
+local craft_ingreds = {
+	wood = "group:wood",
+	stone = "group:stone",
+	steel = "default:steel_ingot",
+	bronze = "default:bronze_ingot",
+	mese = "default:mese_crystal",
+	diamond = "default:diamond"
+}
+
+for name, mat in pairs(craft_ingreds) do
+	minetest.register_craft({
+		output = "default:pick_".. name,
+		recipe = {
+			{mat, mat, mat},
+			{"", "group:stick", ""},
+			{"", "group:stick", ""}
+		}
+	})
+
+	minetest.register_craft({
+		output = "default:shovel_".. name,
+		recipe = {
+			{mat},
+			{"group:stick"},
+			{"group:stick"}
+		}
+	})
+
+	minetest.register_craft({
+		output = "default:axe_".. name,
+		recipe = {
+			{mat, mat},
+			{mat, "group:stick"},
+			{"", "group:stick"}
+		}
+	})
+
+	minetest.register_craft({
+		output = "default:sword_".. name,
+		recipe = {
+			{mat},
+			{mat},
+			{"group:stick"}
+		}
+	})
+end
 
 
 --
@@ -537,7 +612,7 @@ minetest.register_tool("default:pick_fine_steel_superior", {
 --
 
 minetest.register_tool("default:key", {
-	description = "Key",
+	description = S("Key"),
 	inventory_image = "default_key.png",
 	groups = {key = 1, not_in_creative_inventory = 1},
 	stack_max = 1,
@@ -574,4 +649,28 @@ minetest.register_tool("default:key", {
 
 		return nil
 	end
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:pick_wood",
+	burntime = 6,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:shovel_wood",
+	burntime = 4,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:axe_wood",
+	burntime = 6,
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "default:sword_wood",
+	burntime = 5,
 })
