@@ -9,15 +9,7 @@ minetest.register_craftitem("farming:kitchen_knife", {
 minetest.register_craft({
 	output = 'farming:kitchen_knife',
 	recipe = {
-		{'', 'default:copper_ingot', 'default:copper_ingot'},
-		{'group:stick', '', ''},
-	}
-})
-
-minetest.register_craft({
-	output = 'farming:kitchen_knife',
-	recipe = {
-		{'', 'default:iron_ingot', 'default:iron_ingot'},
+		{'', 'group:metal_ingot', 'group:metal_ingot'},
 		{'group:stick', '', ''},
 	}
 })
@@ -31,8 +23,8 @@ minetest.register_craftitem("farming:cooking_pot", {
 minetest.register_craft({
 	output = 'farming:cooking_pot',
 	recipe = {
-		{'default:copper_ingot', '', 'default:copper_ingot'},
-		{'default:copper_ingot', 'bucket:bucket_empty', 'default:copper_ingot'},
+		{'group:metal_ingot', '', 'group:metal_ingot'},
+		{'group:metal_ingot', 'bucket:bucket_empty', 'group:metal_ingot'},
 	}
 })
 
@@ -46,8 +38,8 @@ minetest.register_craft({
 	output = 'farming:skillet',
 	recipe = {
 		{'default:stick', '', ''},
-		{'default:copper_ingot', 'group:food_oil', 'default:copper_ingot'},
-		{'', 'default:copper_ingot', ''}
+		{'group:metal_ingot', 'group:food_oil', 'group:metal_ingot'},
+		{'', 'group:metal_ingot', ''}
 	}
 })
 
@@ -75,9 +67,9 @@ minetest.register_craftitem("farming:hand_press", {
 minetest.register_craft({
 	output = 'farming:hand_press',
 	recipe = {
-		{'default:copper_ingot', 'farming:string', 'default:copper_ingot'},
+		{'group:metal_ingot', 'farming:string', 'group:metal_ingot'},
 		{'', '', ''},
-		{'default:copper_ingot', 'farming:string', 'default:copper_ingot'}
+		{'group:metal_ingot', 'farming:string', 'group:metal_ingot'}
 	}
 })
 
@@ -93,8 +85,8 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "shapeless",
 	output = "farming:salt",
-	recipe = {"bucket:bucket_water", "group:food_pot"},
-    replacements = {{"bucket:bucket_water", "bucket:bucket_empty"}},
+	recipe = {"bucket:bucket_water", "farming:cooking_pot"},
+    replacements = {{"bucket:bucket_water", "bucket:bucket_empty"},{"farming:cooking_pot", "farming:cooking_pot"}},
 })
 
 minetest.register_craftitem("farming:tofu", {
