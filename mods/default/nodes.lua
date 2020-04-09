@@ -2674,7 +2674,7 @@ minetest.register_node("default:copper_lantern_square", {
 	walkable = false,
 	is_ground_content = false,
 	groups = {cracky=2, choppy = 2, oddly_breakable_by_hand = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	node_dig_prediction = "solid_air",
 })
 
@@ -2697,7 +2697,7 @@ minetest.register_node("default:bronze_lantern_square", {
 	walkable = false,
 	is_ground_content = false,
 	groups = {cracky=2, choppy = 2, oddly_breakable_by_hand = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	node_dig_prediction = "solid_air",
 })
 
@@ -2720,7 +2720,7 @@ minetest.register_node("default:iron_lantern_square", {
 	walkable = false,
 	is_ground_content = false,
 	groups = {cracky=2, choppy = 2, oddly_breakable_by_hand = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	node_dig_prediction = "solid_air",
 })
 
@@ -2743,7 +2743,7 @@ minetest.register_node("default:steel_lantern_square", {
 	walkable = false,
 	is_ground_content = false,
 	groups = {cracky=2, choppy = 2, oddly_breakable_by_hand = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_metal_defaults(),
 	node_dig_prediction = "solid_air",
 })
 
@@ -2760,4 +2760,70 @@ minetest.register_node("default:hanging_paper_lantern", {
 	groups = {cracky=2, choppy = 2, oddly_breakable_by_hand = 2},
 	sounds = default.node_sound_wood_defaults(),
 	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:discreet_lamp_wood", {
+	description = "Wooden Discreet Lamp",
+	drawtype = "nodebox",
+	tiles = {
+		{name = "default_discreet_lamp_wood_top.png"},
+		{name = "default_discreet_lamp_wood_top.png"},
+		{name = "default_discreet_lamp_wood_side.png"}
+	},
+	inventory_image = "default_discreet_lamp_wood_top.png",
+	wield_image = "default_discreet_lamp_wood_top.png",
+	wield_scale = {x = 1, y = 1, z = 1},
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	walkable = false,
+	light_source = default.LIGHT_MAX - 3,
+	node_box = {
+		type = "wallmounted",
+		wall_top    = {-0.25, 0.3125, -0.25, 0.25, 0.5, 0.25},
+		wall_bottom = {-0.25, -0.5, -0.25, 0.25, -0.3125, 0.25},
+		wall_side   = {-0.5, -0.25, -0.25, -0.3125, 0.25, 0.25},
+	},
+	selection_box = {
+		type = "wallmounted",
+		wall_top    = {-0.25, 0.3125, -0.25, 0.25, 0.5, 0.25},
+		wall_bottom = {-0.25, -0.5, -0.25, 0.25, -0.3125, 0.25},
+		wall_side   = {-0.5, -0.25, -0.25, -0.3125, 0.25, 0.25},
+	},
+	groups = {choppy = 2, dig_immediate = 3, flammable = 1, attached_node = 1},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_node("default:discreet_lamp_metal", {
+	description = "Metal Discreet Lamp",
+	drawtype = "nodebox",
+	tiles = {
+		{name = "default_discreet_lamp_metal_top.png"},
+		{name = "default_discreet_lamp_metal_top.png"},
+		{name = "default_discreet_lamp_metal_side.png"}
+	},
+	inventory_image = "default_discreet_lamp_metal_top.png",
+	wield_image = "default_discreet_lamp_metal_top.png",
+	wield_scale = {x = 1, y = 1, z = 1},
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	sunlight_propagates = true,
+	is_ground_content = false,
+	walkable = false,
+	light_source = default.LIGHT_MAX - 2,
+	node_box = {
+		type = "wallmounted",
+		wall_top    = {-0.25, 0.3125, -0.25, 0.25, 0.5, 0.25},
+		wall_bottom = {-0.25, -0.5, -0.25, 0.25, -0.3125, 0.25},
+		wall_side   = {-0.5, -0.25, -0.25, -0.3125, 0.25, 0.25},
+	},
+	selection_box = {
+		type = "wallmounted",
+		wall_top    = {-0.25, 0.3125, -0.25, 0.25, 0.5, 0.25},
+		wall_bottom = {-0.25, -0.5, -0.25, 0.25, -0.3125, 0.25},
+		wall_side   = {-0.5, -0.25, -0.25, -0.3125, 0.25, 0.25},
+	},
+	groups = {cracky = 2, dig_immediate = 3, flammable = 1, attached_node = 1},
+	sounds = default.node_sound_metal_defaults(),
 })

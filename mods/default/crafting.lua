@@ -887,6 +887,21 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:discreet_lamp_wood 4',
+	recipe = {
+		{'', 'group:wood', ''},
+		{'group:wood', 'group:coal', 'group:wood'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:discreet_lamp_metal 8',
+	recipe = {
+		{'', 'group:metal_ingot', ''},
+		{'group:metal_ingot', 'group:coal', 'group:metal_ingot'},
+	}
+})
 
 
 --
