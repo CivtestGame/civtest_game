@@ -241,36 +241,43 @@ minetest.register_craftitem("default:clay_lump", {
 
 minetest.register_craftitem("default:mithril_ingot", {
 	description = "Mithril Ingot",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_mithril_ingot.png",
 })
 
 minetest.register_craftitem("default:iron_ingot", {
 	description = "Iron Ingot",
+        groups = {metal_ingot = 1,ferrous_ingot = 1},
 	inventory_image = "default_iron_ingot.png",
 })
 
 minetest.register_craftitem("default:steel_ingot", {
 	description = "Brittle Steel Ingot",
+        groups = {metal_ingot = 1,ferrous_ingot = 1},
 	inventory_image = "default_steel_ingot.png",
 })
 
 minetest.register_craftitem("default:copper_ingot", {
 	description = "Copper Ingot",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_copper_ingot.png",
 })
 
 minetest.register_craftitem("default:tin_ingot", {
 	description = "Tin Ingot",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_tin_ingot.png",
 })
 
 minetest.register_craftitem("default:bronze_ingot", {
 	description = "Bronze Ingot",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_bronze_ingot.png",
 })
 
 minetest.register_craftitem("default:gold_ingot", {
 	description = "Gold Ingot",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_gold_ingot.png"
 })
 
@@ -389,6 +396,7 @@ minetest.register_craftitem("default:wrought_iron_lump", {
 
 minetest.register_craftitem("default:wrought_iron_ingot", {
 	description = "Wrought Iron Ingot",
+        groups = {metal_ingot = 1,ferrous_ingot = 1}, 
 	inventory_image = "default_wrought_iron_ingot.png"
 })
 
@@ -404,11 +412,13 @@ minetest.register_craftitem("default:fine_steel_lump", {
 
 minetest.register_craftitem("default:fine_steel_ingot", {
 	description = "Fine Steel Ingot",
+        groups = {metal_ingot = 1,ferrous_ingot = 1},
 	inventory_image = "default_fine_steel_ingot.png"
 })
 
 minetest.register_craftitem("default:aluminium_ingot", {
 	description = "Aluminium Ingot",
+        groups = {metal_ingot = 1,ferrous_ingot = 1},
 	inventory_image = "default_aluminium.png"
 })
 
@@ -419,6 +429,7 @@ minetest.register_craftitem("default:elem_chromium", {
 
 minetest.register_craftitem("default:lead", {
 	description = "Lead",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_elem_lead.png"
 })
 
@@ -449,11 +460,13 @@ minetest.register_craftitem("default:elem_zinc", {
 
 minetest.register_craftitem("default:brass_ingot", {
 	description = "Brass Ingot",
+        groups = {metal_ingot = 1},
 	inventory_image = "default_brass_ingot.png"
 })
 
 minetest.register_craftitem("default:alubronze_ingot", {
 	description = "Aluminium Bronze Ingot",
+        groups = {metal_ingot = 1,ferrous_ingot = 1},
 	inventory_image = "default_alubronze_ingot.png"
 })
 
