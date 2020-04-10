@@ -833,32 +833,32 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:pick_wrought_iron_good',
 	recipe = {
-		{'', 'default:comp_wrought_iron_pickhead', ''},
-		{'', 'default:comp_toolrod', ''},
+		{'default:comp_wrought_iron_pickhead'},
+		{'default:comp_toolrod'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:pick_wrought_iron_superior',
 	recipe = {
-		{'', 'default:comp_wrought_iron_pickhead_sharp', ''},
-		{'', 'default:comp_toolrod_strong', ''},
+		{'default:comp_wrought_iron_pickhead_sharp'},
+		{'default:comp_toolrod_strong'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:pick_steel_good',
 	recipe = {
-		{'', 'default:comp_steel_pickhead', ''},
-		{'', 'default:comp_toolrod', ''},
+		{'default:comp_steel_pickhead'},
+		{'default:comp_toolrod'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:pick_steel_superior',
 	recipe = {
-		{'', 'default:comp_steel_pickhead_sharp', ''},
-		{'', 'default:comp_toolrod_strong', ''},
+		{'default:comp_steel_pickhead_sharp'},
+		{'default:comp_toolrod_strong'},
 	}
 })
 
@@ -874,16 +874,175 @@ minetest.register_craft({
 minetest.register_craft({
 	output = 'default:pick_fine_steel_good',
 	recipe = {
-		{'', 'default:comp_fine_steel_pickhead', ''},
-		{'', 'default:comp_toolrod', ''},
+		{'default:comp_fine_steel_pickhead'},
+		{'default:comp_toolrod'},
 	}
 })
 
 minetest.register_craft({
 	output = 'default:pick_fine_steel_superior',
 	recipe = {
-		{'', 'default:comp_fine_steel_pickhead_sharp', ''},
+		{'default:comp_fine_steel_pickhead_sharp'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:axe_steel_good',
+	recipe = {
+		{'default:comp_steel_axehead'},
+		{'default:comp_toolrod'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:axe_steel_superior',
+	recipe = {
+		{'default:comp_steel_axehead_sharp'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:axe_fine_steel',
+	recipe = {
+		{'default:fine_steel_ingot', 'default:fine_steel_ingot'},
+		{'default:fine_steel_ingot', 'group:stick'},
+		{'', 'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:axe_fine_steel_good',
+	recipe = {
+		{'default:comp_fine_steel_axehead'},
+		{'default:comp_toolrod'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:axe_fine_steel_superior',
+	recipe = {
+		{'default:comp_fine_steel_axehead_sharp'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:shovel_steel_good',
+	recipe = {
+		{'default:comp_steel_shovelhead'},
+		{'default:comp_toolrod'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:shovel_steel_superior',
+	recipe = {
+		{'default:comp_steel_shovelhead_sharp'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:shovel_fine_steel',
+	recipe = {
+		{'default:fine_steel_ingot'},
+		{'group:stick'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:shovel_fine_steel_good',
+	recipe = {
+		{'default:comp_fine_steel_shovelhead'},
+		{'default:comp_toolrod'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:shovel_fine_steel_superior',
+	recipe = {
+		{'default:comp_fine_steel_shovelhead_sharp'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_steel_good',
+	recipe = {
+		{'default:comp_steel_swordhead'},
+		{'default:comp_toolrod'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_steel_superior',
+	recipe = {
+		{'default:comp_steel_swordhead_sharp',},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_fine_steel',
+	recipe = {
+		{'default:fine_steel_ingot'},
+		{'default:fine_steel_ingot'},
+		{'group:stick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_fine_steel_good',
+	recipe = {
+		{'default:comp_fine_steel_swordhead'},
+		{'default:comp_toolrod'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_fine_steel_superior',
+	recipe = {
+		{'default:comp_fine_steel_swordhead_sharp'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:katana',
+	recipe = {
+	    {'', '', 'default:comp_fine_steel_swordhead_sharp'},
+		{'', 'default:comp_fine_steel_swordhead_sharp', ''},
+		{'default:comp_toolrod_strong', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:rapier',
+	recipe = {
+		{'default:comp_fine_steel_swordhead_sharp'},
+		{'default:comp_fine_steel_shovelhead'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:glaive',
+	recipe = {
+		{'default:comp_fine_steel_swordhead_sharp'},
+		{'default:comp_toolrod_strong'},
+		{'default:comp_toolrod_strong'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:halberd',
+	recipe = {
+		{'', 'default:comp_fine_steel_axehead_sharp', 'default:comp_fine_steel_swordhead_sharp'},
 		{'', 'default:comp_toolrod_strong', ''},
+		{'default:comp_toolrod_strong', '', ''},
 	}
 })
 

@@ -389,6 +389,66 @@ minetest.register_craftitem("default:comp_fine_steel_pickhead_sharp", {
 	inventory_image = "default_comp_fine_steel_pickhead_sharp.png",
 })
 
+minetest.register_craftitem("default:comp_steel_axehead", {
+	description = "Brittle Steel Axe Head",
+	inventory_image = "default_comp_steel_axehead.png",
+})
+
+minetest.register_craftitem("default:comp_steel_axehead_sharp", {
+	description = "Sharp Brittle Steel Axe Head",
+	inventory_image = "default_comp_steel_axehead_sharp.png",
+})
+
+minetest.register_craftitem("default:comp_fine_steel_axehead", {
+	description = "Fine Steel Axe Head",
+	inventory_image = "default_comp_fine_steel_axehead.png",
+})
+
+minetest.register_craftitem("default:comp_fine_steel_axehead_sharp", {
+	description = "Sharp Fine Steel Axe Head",
+	inventory_image = "default_comp_fine_steel_axehead_sharp.png",
+})
+
+minetest.register_craftitem("default:comp_steel_shovelhead", {
+	description = "Brittle Steel Shovel Head",
+	inventory_image = "default_comp_steel_shovelhead.png",
+})
+
+minetest.register_craftitem("default:comp_steel_shovelhead_sharp", {
+	description = "Sharp Brittle Steel Shovel Head",
+	inventory_image = "default_comp_steel_shovelhead_sharp.png",
+})
+
+minetest.register_craftitem("default:comp_fine_steel_shovelhead", {
+	description = "Fine Steel Shovel Head",
+	inventory_image = "default_comp_fine_steel_shovelhead.png",
+})
+
+minetest.register_craftitem("default:comp_fine_steel_shovelhead_sharp", {
+	description = "Sharp Fine Steel Shovel Head",
+	inventory_image = "default_comp_fine_steel_shovelhead_sharp.png",
+})
+
+minetest.register_craftitem("default:comp_steel_swordhead", {
+	description = "Brittle Steel Sword Blade",
+	inventory_image = "default_comp_steel_swordhead.png",
+})
+
+minetest.register_craftitem("default:comp_steel_swordhead_sharp", {
+	description = "Sharp Brittle Steel Sword Blade",
+	inventory_image = "default_comp_steel_swordhead_sharp.png",
+})
+
+minetest.register_craftitem("default:comp_fine_steel_swordhead", {
+	description = "Fine Steel Sword Blade",
+	inventory_image = "default_comp_fine_steel_swordhead.png",
+})
+
+minetest.register_craftitem("default:comp_fine_steel_swordhead_sharp", {
+	description = "Sharp Fine Steel Sword Blade",
+	inventory_image = "default_comp_fine_steel_swordhead_sharp.png",
+})
+
 minetest.register_craftitem("default:wrought_iron_lump", {
 	description = "Wrought Iron Lump",
 	inventory_image = "default_wrought_iron_lump.png"

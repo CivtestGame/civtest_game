@@ -529,6 +529,298 @@ minetest.register_tool("default:pick_fine_steel_superior", {
 	sound = {breaks = "default_tool_breaks"},
 })
 
+minetest.register_tool("default:axe_steel_good", {
+	description = "Good Brittle Steel Axe",
+	inventory_image = "default_tool_steelaxe_good.png",
+	groups = { axe = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=1,
+		groupcaps={
+			choppy={times={[1]=1.45, [2]=1.35, [3]=0.79}, uses=2650, maxlevel=4},
+		},
+		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:axe_steel_superior", {
+	description = "Superior Brittle Steel Axe",
+	inventory_image = "default_tool_steelaxe_superior.png",
+	groups = { axe = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=1,
+		groupcaps={
+			choppy={times={[1]=1.42, [2]=1.32, [3]=0.77}, uses=2800, maxlevel=4},
+		},
+		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:axe_fine_steel", {
+	description = "Fine Steel Axe",
+	inventory_image = "default_tool_fine_steelaxe.png",
+	groups = { axe = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=1,
+		groupcaps={
+			choppy={times={[1]=1.40, [2]=1.30, [3]=0.76}, uses=3200, maxlevel=4},
+		},
+		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:axe_fine_steel_good", {
+	description = "Good Fine Steel Axe",
+	inventory_image = "default_tool_fine_steelaxe_good.png",
+	groups = { axe = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=1,
+		groupcaps={
+			choppy={times={[1]=1.38, [2]=1.28, [3]=0.75}, uses=3400, maxlevel=4},
+		},
+		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:axe_fine_steel_superior", {
+	description = "Superior Fine Steel Axe",
+	inventory_image = "default_tool_fine_steelaxe_superior.png",
+	groups = { axe = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=1,
+		groupcaps={
+			choppy={times={[1]=1.35, [2]=1.25, [3]=0.75}, uses=4000, maxlevel=4},
+		},
+		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:shovel_steel_good", {
+	description = "Good Brittle Steel Shovel",
+	inventory_image = "default_tool_steelshovel_good.png",
+	groups = { shovel = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			crumbly = {times={[1]=1.48, [2]=0.68, [3]=0.29}, uses=2650, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:shovel_steel_superior", {
+	description = "Superior Brittle Steel Shovel",
+	inventory_image = "default_tool_steelshovel_superior.png",
+	groups = { shovel = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			crumbly = {times={[1]=1.47, [2]=0.67, [3]=0.28}, uses=2800, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:shovel_fine_steel", {
+	description = "Fine Steel Shovel",
+	inventory_image = "default_tool_fine_steelshovel.png",
+	groups = { shovel = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			crumbly = {times={[1]=1.45, [2]=0.65, [3]=0.27}, uses=3200, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:shovel_fine_steel_good", {
+	description = "Good Fine Steel Shovel",
+	inventory_image = "default_tool_fine_steelshovel_good.png",
+	groups = { shovel = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			crumbly = {times={[1]=1.43, [2]=0.64, [3]=0.26}, uses=3600, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:shovel_fine_steel_superior", {
+	description = "Superior Fine Steel Shovel",
+	inventory_image = "default_tool_fine_steelshovel_superior.png",
+	groups = { shovel = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			crumbly = {times={[1]=1.40, [2]=0.63, [3]=0.25}, uses=4000, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+--- Weapons
+
+minetest.register_tool("default:sword_steel_good", {
+	description = "Good Brittle Steel Sword",
+	inventory_image = "default_tool_steelsword_good.png",
+	groups = { sword = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.4, [2]=1.16, [3]=0.34}, uses=2650, maxlevel=4},
+		},
+		damage_groups = {fleshy=10.3 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:sword_steel_superior", {
+	description = "Superior Brittle Steel Sword",
+	inventory_image = "default_tool_steelsword_superior.png",
+	groups = { sword = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.3, [2]=1.13, [3]=0.33}, uses=2800, maxlevel=4},
+		},
+		damage_groups = {fleshy=10.7 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:sword_fine_steel", {
+	description = "Fine Steel Sword",
+	inventory_image = "default_tool_fine_steelsword.png",
+	groups = { sword = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.25, [2]=1.10, [3]=0.32}, uses=3200, maxlevel=4},
+		},
+		damage_groups = {fleshy=11 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:sword_fine_steel_good", {
+	description = "Good Fine Steel Sword",
+	inventory_image = "default_tool_fine_steelsword_good.png",
+	groups = { sword = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.22, [2]=1.09, [3]=0.31}, uses=3600, maxlevel=4},
+		},
+		damage_groups = {fleshy=11.3 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:sword_fine_steel_superior", {
+	description = "Superior Fine Steel Sword",
+	inventory_image = "default_tool_fine_steelsword_superior.png",
+	groups = { sword = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.20, [2]=1.08, [3]=0.30}, uses=4000, maxlevel=4},
+		},
+		damage_groups = {fleshy=11.7 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+
+
+minetest.register_tool("default:katana", {
+	description = "Katana",
+	inventory_image = "default_tool_katana.png",
+	groups = { sword = 1 },
+	tool_capabilities = {
+		full_punch_interval = 1.6,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=4000, maxlevel=4},
+		},
+		damage_groups = {fleshy=16 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:rapier", {
+	description = "Rapier",
+	inventory_image = "default_tool_rapier.png",
+	groups = { sword = 1 },
+	range = 3.8,
+	tool_capabilities = {
+		full_punch_interval = 0.5,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
+		},
+		damage_groups = {fleshy=12 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:glaive", {
+	description = "Glaive",
+	inventory_image = "default_tool_glaive.png",
+	groups = { spear = 1 },
+	range = 5.3,
+	tool_capabilities = {
+		full_punch_interval = 2.4,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
+		},
+		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:halberd", {
+	description = "Halberd",
+	inventory_image = "default_tool_halberd.png",
+	groups = { spear = 1 },
+	range = 4.8,
+	tool_capabilities = {
+		full_punch_interval = 2.4,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
+		},
+		damage_groups = {fleshy=10 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
 
 --
 
