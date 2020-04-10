@@ -903,6 +903,15 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:scaffolding',
+	recipe = {
+		{'group:stick', '', 'group:stick'},
+		{'', 'group:wood', ''},
+		{'group:stick', '', 'group:stick'},
+	}
+})
+
 
 --
 -- Fuels

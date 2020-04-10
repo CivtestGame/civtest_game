@@ -2827,3 +2827,39 @@ minetest.register_node("default:discreet_lamp_metal", {
 	groups = {cracky = 2, dig_immediate = 3, flammable = 1, attached_node = 1},
 	sounds = default.node_sound_metal_defaults(),
 })
+
+minetest.register_node("default:scaffolding", {
+	description = "Scaffolding",
+	tiles = {"default_wood.png"},
+	drawtype = "nodebox",
+    	paramtype = "light",
+    	paramtype2 = "facedir",
+	node_box = {
+        	type = "fixed",
+        	fixed = {
+            	{ -0.5, -0.5, -0.5, -0.4,  -0.4, 0.5 },
+            	{  -0.5, 0.5, -0.5,  -0.4,  0.4, 0.5 },
+            	{  0.5,  0.5, -0.5,  0.4,  0.4,  0.5 },
+            	{  0.5, -0.5, -0.5,  0.4, -0.4,  0.5 },
+				{ -0.5, -0.5, -0.5,  0.5, -0.4, -0.4 },
+				{ -0.5,  0.4, -0.5,  0.5,  0.5, -0.4 },
+				{ -0.5, -0.5, -0.5, -0.4,  0.5, -0.4 },
+				{  0.4, -0.5, -0.5,  0.5,  0.5, -0.4 },
+				{ -0.5, -0.5,  0.4,  0.5, -0.4,  0.5 },
+				{ -0.5,  0.4,  0.4,  0.5,  0.5,  0.5 },
+				{ -0.5, -0.5,  0.4, -0.4,  0.5,  0.5 },
+				{  0.4, -0.5,  0.4,  0.5,  0.5,  0.5 },      	
+            },
+	},
+	selection_box = {
+			type = "fixed",
+        	fixed = {
+            	{ -0.5, -0.5, -0.5, 0.5, 0.5, 0.5 },   	
+            },
+	},
+	climbable = true,
+	walkable = false,
+	is_ground_content = true,
+	groups = {scaffolding=1,dig_immediate=3,flammable=3, falling_node = 1},
+	sounds = default.node_sound_wood_defaults()
+})
