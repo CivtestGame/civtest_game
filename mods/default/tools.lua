@@ -492,7 +492,7 @@ minetest.register_tool("default:pick_fine_steel", {
 		full_punch_interval = default.PUNCH_INTERVAL,
 		max_drop_level=4,
 		groupcaps={
-			cracky = {times={[1]=3.50, [2]=1.40, [3]=0.72}, uses=3200, maxlevel=4},
+			cracky = {times={[1]=3.50, [2]=1.40, [3]=0.72}, uses=3200, maxlevel=5},
 		},
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
@@ -507,7 +507,7 @@ minetest.register_tool("default:pick_fine_steel_good", {
 		full_punch_interval = default.PUNCH_INTERVAL,
 		max_drop_level=4,
 		groupcaps={
-			cracky = {times={[1]=3.45, [2]=1.37, [3]=0.70}, uses=3600, maxlevel=4},
+			cracky = {times={[1]=3.45, [2]=1.37, [3]=0.70}, uses=3600, maxlevel=5},
 		},
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
@@ -522,7 +522,7 @@ minetest.register_tool("default:pick_fine_steel_superior", {
 		full_punch_interval = default.PUNCH_INTERVAL,
 		max_drop_level=4,
 		groupcaps={
-			cracky = {times={[1]=3.40, [2]=1.35, [3]=0.68}, uses=4000, maxlevel=4},
+			cracky = {times={[1]=3.40, [2]=1.35, [3]=0.68}, uses=4000, maxlevel=5},
 		},
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},
