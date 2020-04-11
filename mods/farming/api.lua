@@ -453,10 +453,6 @@ farming.register_plant = function(name, def)
 	if not def.fertility then
 		def.fertility = {}
 	end
-	if not def.visual_scale then
-		visual_scale = 1.00
-	end
-
 	def.name = name
         def.requires_soil = true
 	farming.registered_plants[pname] = def
@@ -479,7 +475,6 @@ farming.register_plant = function(name, def)
 		place_param2 = def.place_param2 or nil, -- this isn't actually used for placement
 		walkable = false,
 		sunlight_propagates = true,
-		visual_scale = def.visual_scale,
 		selection_box = {
 			type = "fixed",
 			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},

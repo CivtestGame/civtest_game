@@ -459,6 +459,26 @@ minetest.register_craftitem("farming:beet", {
 	groups = {food_salad = 1, sugar_source = 1}
 })
 
+-- Grapes
+
+farming.register_plant("farming:grape", {
+	description = "Grape Seed",
+	paramtype2 = "meshoptions",
+	inventory_image = "farming_grape_seed.png",
+	steps = 4,
+	fertility = {"grassland","desert"},
+	groups = {food_grape = 1, flammable = 4},
+	place_param2 = 3,
+	custom_growth = {optimum_heat = 61, heat_scaling = "exponential", heat_a = 2.1, heat_b = 2.4, heat_base_speed = 7500, optimum_humidity = 52, humidity_scaling = "exponential", humidity_a = 2.1, humidity_b = 2.4, humidity_base_speed = 7500, variance = 2500},
+})
+
+minetest.register_craftitem("farming:grape", {
+	description = "Grape",
+	inventory_image = "farming_grape.png",
+	on_use = minetest.item_eat(2),
+	groups = {food_salad = 1},
+})
+
 
 -- Other new ingredients
 
