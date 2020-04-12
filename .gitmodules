@@ -124,3 +124,6 @@
 [submodule "mods/CivSkins"]
 	path = mods/CivSkins
 	url = https://github.com/CivtestGame/CivSkins.git
+[submodule "mods/Pillars"]
+	path = mods/Pillars
+	url = https://github.com/CivtestGame/Pillars.git
