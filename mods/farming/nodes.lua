@@ -184,6 +184,7 @@ for i = 1, 5 do
 			{items = {'farming:seed_lettuce'},rarity = 20},
 			{items = {'farming:seed_spice_leaf'},rarity = 20},
 			{items = {'farming:seed_grape'},rarity = 20},
+			{items = {'farming:seed_soybean'},rarity = 20},
 			{items = {'farming:seed_corn'},rarity = 60},
 			{items = {'farming:seed_rye'},rarity = 60},
 			{items = {'default:grass_1'}},
@@ -226,6 +227,7 @@ for i = 1, 3 do
 			{items = {'farming:seed_rye'}, rarity = 10},
 			{items = {'farming:seed_lettuce'},rarity = 20},
 			{items = {'farming:seed_beet'},rarity = 20},
+			{items = {'farming:seed_soybean'},rarity = 60},
 			{items = {'default:fern_1'}},
 		}
 	}})
