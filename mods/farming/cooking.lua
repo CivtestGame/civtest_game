@@ -335,6 +335,19 @@ minetest.register_craft({
 	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
+minetest.register_craftitem("farming:buddha_bowl", {
+	description = "Buddha Bowl",
+	inventory_image = "farming_cooked_rice.png",
+	on_use = minetest.item_eat(6),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:buddha_bowl",
+	recipe = {"farming:kitchen_knife", "group:food_salad", "group:food_salad", "farming:cooked_rice"},
+	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
+})
+
 minetest.register_craftitem("farming:ploughmans", {
 	description = "Ploughman's Lunch",
 	inventory_image = "farming_ploughmans.png",
