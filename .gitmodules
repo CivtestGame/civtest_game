@@ -127,3 +127,6 @@
 [submodule "mods/Pillars"]
 	path = mods/Pillars
 	url = https://github.com/CivtestGame/Pillars.git
+[submodule "mods/SecureNode"]
+	path = mods/SecureNode
+	url = https://github.com/CivtestGame/SecureNode.git
