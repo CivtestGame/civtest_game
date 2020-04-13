@@ -13,7 +13,7 @@ minetest.register_craft({
 	}
 })
 
-bucket = {}l
+bucket = {}
 bucket.liquids = {}
 
 local function check_protection(pos, name, text)
