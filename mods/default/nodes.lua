@@ -2863,3 +2863,55 @@ minetest.register_node("default:scaffolding", {
 	groups = {scaffolding=1,dig_immediate=3,flammable=3, falling_node = 1},
 	sounds = default.node_sound_wood_defaults()
 })
+
+minetest.register_node("default:stronghold_glass", {
+	description = "Stronghold Glass",
+	drawtype = "glasslike_framed",
+	tiles = {"default_stronghold_glass.png", "default_stronghold_glass_detail.png"},
+	paramtype = "light",
+	is_ground_content = false,
+	sunlight_propagates = true,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 2, level = 3},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:stronghold_bricks", {
+	description = "Stronghold Bricks",
+	tiles = {"default_stronghold_bricks.png"},
+	groups = {cracky = 1, level = 4},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+minetest.register_node("default:stronghold_tile", {
+	description = "Stronghold Tile",
+	tiles = {"default_stronghold_tile.png"},
+	groups = {cracky = 1, level = 4},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+minetest.register_node("default:fortress_glass", {
+	description = "Fortress Glass",
+	drawtype = "glasslike_framed",
+	tiles = {"default_fortress_glass.png", "default_fortress_glass_detail.png"},
+	paramtype = "light",
+	is_ground_content = false,
+	sunlight_propagates = true,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 2, level = 4},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:fortress_bricks", {
+	description = "Fortress Bricks",
+	tiles = {"default_fortress_bricks.png"},
+	groups = {cracky = 1, level = 5},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+minetest.register_node("default:fortress_tile", {
+	description = "Fortress Tile",
+	tiles = {"default_fortress_tile.png"},
+	groups = {cracky = 1, level = 5},
+	sounds = default.node_sound_metal_defaults(),
+})
