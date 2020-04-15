@@ -1089,7 +1089,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = 'default:obsidian_block 9',
+	output = 'default:basalt_block 9',
 	recipe = {
 		{'default:basalt', 'default:basalt', 'default:basalt'},
 		{'default:basalt', 'default:basalt', 'default:basalt'},
@@ -1123,6 +1123,57 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:stronghold_glass',
+	recipe = {
+		{'default:obsidianbrick', 'default:steel_ingot', 'default:obsidianbrick'},
+		{'default:steel_ingot', 'default:glass', 'default:steel_ingot'},
+		{'default:obsidianbrick', 'default:steel_ingot', 'default:obsidianbrick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:stronghold_bricks',
+	recipe = {
+		{'default:obsidianbrick', 'default:steel_ingot', 'default:obsidianbrick'},
+		{'default:steel_ingot', 'default:tinblock', 'default:steel_ingot'},
+		{'default:obsidianbrick', 'default:steel_ingot', 'default:obsidianbrick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:stronghold_tile 4',
+	recipe = {
+		{'default:stronghold_bricks', 'default:stronghold_bricks'},
+		{'default:stronghold_bricks', 'default:stronghold_bricks'}
+	}
+})
+
+minetest.register_craft({
+	output = 'default:fortress_glass',
+	recipe = {
+		{'default:obsidianbrick', 'default:fine_steel_ingot', 'default:obsidianbrick'},
+		{'default:fine_steel_ingot', 'default:glass', 'default:fine_steel_ingot'},
+		{'default:obsidianbrick', 'default:fine_steel_ingot', 'default:obsidianbrick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:fortress_bricks',
+	recipe = {
+		{'default:obsidianbrick', 'default:fine_steel_ingot', 'default:obsidianbrick'},
+		{'default:fine_steel_ingot', 'default:tinblock', 'default:fine_steel_ingot'},
+		{'default:obsidianbrick', 'default:fine_steel_ingot', 'default:obsidianbrick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:fortress_tile 4',
+	recipe = {
+		{'default:fortress_bricks', 'default:fortress_bricks'},
+		{'default:fortress_bricks', 'default:fortress_bricks'}
+	}
+})
 
 --
 -- Fuels
