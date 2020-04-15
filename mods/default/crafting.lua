@@ -1071,6 +1071,58 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:basalt',
+	recipe = {
+		{'default:obsidian_shard', 'default:obsidian_shard', 'default:obsidian_shard'},
+		{'default:obsidian_shard', 'default:stone', 'default:obsidian_shard'},
+		{'default:obsidian_shard', 'default:obsidian_shard', 'default:obsidian_shard'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:basalt_brick 4',
+	recipe = {
+		{'default:basalt', 'default:basalt'},
+		{'default:basalt', 'default:basalt'}
+	}
+})
+
+minetest.register_craft({
+	output = 'default:obsidian_block 9',
+	recipe = {
+		{'default:basalt', 'default:basalt', 'default:basalt'},
+		{'default:basalt', 'default:basalt', 'default:basalt'},
+		{'default:basalt', 'default:basalt', 'default:basalt'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:granite',
+	recipe = {
+		{'default:obsidian_shard', 'default:obsidian_shard', 'default:obsidian_shard'},
+		{'default:obsidian_shard', 'default:gravel', 'default:obsidian_shard'},
+		{'default:obsidian_shard', 'default:obsidian_shard', 'default:obsidian_shard'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:granite_brick 4',
+	recipe = {
+		{'default:granite', 'default:granite'},
+		{'default:granite', 'default:granite'}
+	}
+})
+
+minetest.register_craft({
+	output = 'default:granite_block 9',
+	recipe = {
+		{'default:granite', 'default:granite', 'default:granite'},
+		{'default:granite', 'default:granite', 'default:granite'},
+		{'default:granite', 'default:granite', 'default:granite'},
+	}
+})
+
 
 --
 -- Fuels

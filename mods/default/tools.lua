@@ -490,7 +490,7 @@ minetest.register_tool("default:pick_fine_steel", {
 	groups = { pick = 1 },
 	tool_capabilities = {
 		full_punch_interval = default.PUNCH_INTERVAL,
-		max_drop_level=4,
+		max_drop_level=5,
 		groupcaps={
 			cracky = {times={[1]=3.50, [2]=1.40, [3]=0.72}, uses=3200, maxlevel=5},
 		},
@@ -505,7 +505,7 @@ minetest.register_tool("default:pick_fine_steel_good", {
 	groups = { pick = 1 },
 	tool_capabilities = {
 		full_punch_interval = default.PUNCH_INTERVAL,
-		max_drop_level=4,
+		max_drop_level=5,
 		groupcaps={
 			cracky = {times={[1]=3.45, [2]=1.37, [3]=0.70}, uses=3600, maxlevel=5},
 		},
@@ -520,9 +520,39 @@ minetest.register_tool("default:pick_fine_steel_superior", {
 	groups = { pick = 1 },
 	tool_capabilities = {
 		full_punch_interval = default.PUNCH_INTERVAL,
-		max_drop_level=4,
+		max_drop_level=5,
 		groupcaps={
 			cracky = {times={[1]=3.40, [2]=1.35, [3]=0.68}, uses=4000, maxlevel=5},
+		},
+		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:pick_stainless_steel_superior", {
+	description = "Superior Stainless Steel Pickaxe",
+	inventory_image = "default_tool_fine_steelpick_superior.png",
+	groups = { pick = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=6,
+		groupcaps={
+			cracky = {times={[1]=3.40, [2]=1.30, [3]=0.60}, uses=8000, maxlevel=6},
+		},
+		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:pick_alubronze_superior", {
+	description = "Superior Aluminium Bronze Pickaxe",
+	inventory_image = "default_tool_alubronzepick_superior.png",
+	groups = { pick = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=8,
+		groupcaps={
+			cracky = {times={[1]=2.60, [2]=0.90, [3]=0.40}, uses=1600, maxlevel=8},
 		},
 		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
 	},

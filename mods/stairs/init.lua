@@ -875,6 +875,72 @@ stairs.register_stair_and_slab(
 	true
 )
 
+stairs.register_stair_and_slab(
+	"basalt",
+	"default:basalt",
+	{cracky = 1, level = 2},
+	{"default_basalt.png"},
+	"Basalt Stair",
+	"Basalt Slab",
+	default.node_sound_stone_defaults(),
+	true
+)
+
+stairs.register_stair_and_slab(
+	"basalt_brick",
+	"default:basalt_brick",
+	{cracky = 1, level = 2},
+	{"default_basalt_brick.png"},
+	"Basalt Brick Stair",
+	"Basalt Brick Slab",
+	default.node_sound_stone_defaults(),
+	false
+)
+
+stairs.register_stair_and_slab(
+	"basalt_block",
+	"default:basalt_block",
+	{cracky = 1, level = 2},
+	{"default_basalt_block.png"},
+	"Basalt Block Stair",
+	"Basalt Block Slab",
+	default.node_sound_stone_defaults(),
+	true
+)
+
+stairs.register_stair_and_slab(
+	"granite",
+	"default:granite",
+	{cracky = 1, level = 2},
+	{"default_granite.png"},
+	"Granite Stair",
+	"Granite Slab",
+	default.node_sound_stone_defaults(),
+	true
+)
+
+stairs.register_stair_and_slab(
+	"granite_brick",
+	"default:granite_brick",
+	{cracky = 1, level = 2},
+	{"default_granite_brick.png"},
+	"Granite Brick Stair",
+	"Granite Brick Slab",
+	default.node_sound_stone_defaults(),
+	false
+)
+
+stairs.register_stair_and_slab(
+	"granite_block",
+	"default:granite_block",
+	{cracky = 1, level = 2},
+	{"default_granite_block.png"},
+	"Granite Block Stair",
+	"Granite Block Slab",
+	default.node_sound_stone_defaults(),
+	true
+)
+
 -- Glass stair nodes need to be registered individually to utilize specialized textures.
 
 stairs.register_stair(

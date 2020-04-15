@@ -2864,6 +2864,64 @@ minetest.register_node("default:scaffolding", {
 	sounds = default.node_sound_wood_defaults()
 })
 
+minetest.register_node("default:basalt", {
+	description = "Basalt",
+	tiles = {"default_basalt.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:basalt_brick", {
+	description = "Basalt Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_basalt_brick.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:basalt_block", {
+	description = "Basalt Block",
+	tiles = {"default_basalt_block.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:granite", {
+	description = "Granite",
+	tiles = {"default_granite.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:granite_brick", {
+	description = "Granite Brick",
+	paramtype2 = "facedir",
+	place_param2 = 0,
+	tiles = {"default_granite_brick.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+	node_dig_prediction = "solid_air",
+})
+
+minetest.register_node("default:granite_block", {
+	description = "Granite Block",
+	tiles = {"default_granite_block.png"},
+	is_ground_content = false,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky = 1, level = 2},
+	node_dig_prediction = "solid_air",
+})
+
 minetest.register_node("default:stronghold_glass", {
 	description = "Stronghold Glass",
 	drawtype = "glasslike_framed",
@@ -2913,5 +2971,17 @@ minetest.register_node("default:fortress_tile", {
 	description = "Fortress Tile",
 	tiles = {"default_fortress_tile.png"},
 	groups = {cracky = 1, level = 5},
+	sounds = default.node_sound_metal_defaults(),
+})
+
+minetest.register_node("default:spikes_steel", {
+	description = "Steel Spikes",
+	drawtype = "firelike",
+	paramtype = "light",
+	tiles = {"default_spikes_steel.png"},
+	damage_per_second = 0.1 * default.HEALTH_MULTIPLIER,
+	walkable = false,
+	sunlight_propagates = true,
+	groups = {cracky = 2, attached_node = 1},
 	sounds = default.node_sound_metal_defaults(),
 })
