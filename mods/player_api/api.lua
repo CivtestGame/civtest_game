@@ -138,11 +138,12 @@ minetest.register_globalstep(function(dtime)
 	end
 end)
 
-local function find_empty_index(list, stack)
+local function retroactively_find_empty_index(list, stack)
+   -- Retroactively find where the stack was put in the list.
    for i, item in ipairs(list) do
       if item:is_empty()
          or (item:to_string() == stack:to_string()
-                and item:get_count() ~= item:get_stack_max())
+                and (item:get_count() - 1) ~= item:get_stack_max())
       then
          return i
       end
@@ -150,7 +151,7 @@ local function find_empty_index(list, stack)
 end
 
 local function call_inv_action(player, inv, listname, stack, left)
-   local index = find_empty_index(inv:get_list(listname), stack)
+   local index = retroactively_find_empty_index(inv:get_list(listname), stack)
    if index then
       local diff = ItemStack(stack)
       diff:set_count(stack:get_count() - left:get_count())
@@ -160,20 +161,33 @@ local function call_inv_action(player, inv, listname, stack, left)
               listname = listname, index = index, stack = diff
          })
       end
+   else
+      minetest.log(
+         "warning", "Couldn't retroactively find suitable index for inv "
+            .. listname .. " of " .. player:get_player_name() .. "."
+      )
    end
 end
 
 function player_api.give_item(player, itemstack, should_call_action)
    local inv = player:get_inventory()
    local left = inv:add_item("main", itemstack)
+
    if should_call_action then
-      call_inv_action(player, inv, "main", itemstack, left)
+      -- Only call the handler if the leftover isn't the same as itemstack
+      if left and left:to_string() ~= itemstack:to_string() then
+         call_inv_action(player, inv, "main", itemstack, left)
+      end
    end
 
    if left and not left:is_empty() then
       local left2 = inv:add_item("main2", left)
       if should_call_action then
-         call_inv_action(player, inv, "main2", left, left2)
+         -- Again, only call the handler if the leftover isn't the same as the
+         -- input itemstack.
+         if left2 and left2:to_string() ~= itemstack:to_string() then
+            call_inv_action(player, inv, "main2", left, left2)
+         end
       end
 
       if left2 and not left2:is_empty() then
