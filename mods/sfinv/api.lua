@@ -40,7 +40,7 @@ function sfinv.get_inventory_area_formspec(offset, offset_x)
    local soffset_x = tostring(offset_x or 0)
    local theme_inv = "list[current_player;main2;"..soffset_x
          ..","..tostring(offset)..";8,3;]"
-      .."list[current_player;router;0,0;0,0;]"
+      -- .."list[current_player;router;0,0;0,0;]"
       .."list[current_player;main;"..soffset_x
          ..","..tostring(offset+3.15)..";8,1;]"
    return theme_inv
