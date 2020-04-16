@@ -107,7 +107,7 @@ function cart_entity:on_punch(puncher, time_from_last_punch, tool_capabilities, 
 				or not inv:contains_item("main", "carts:cart") then
 			local leftover = player_api.give_item(puncher, "carts:cart")
 			-- If no room in inventory add a replacement cart to the world
-			if not leftover:is_empty() then
+			if leftover and not leftover:is_empty() then
 				minetest.add_item(self.object:get_pos(), leftover)
 			end
 		end
