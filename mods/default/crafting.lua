@@ -437,7 +437,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:sand 4",
+	output = "default:sand 2",
 	recipe = {
 		{"default:sandstone"},
 	}
@@ -469,7 +469,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:desert_sand 4",
+	output = "default:desert_sand 2",
 	recipe = {
 		{"default:desert_sandstone"},
 	}
@@ -501,7 +501,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:silver_sand 4",
+	output = "default:silver_sand 2",
 	recipe = {
 		{"default:silver_sandstone"},
 	}
