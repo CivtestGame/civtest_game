@@ -401,7 +401,7 @@ minetest.register_node("default:obsidian", {
 	description = "Obsidian",
 	tiles = {"default_obsidian.png"},
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -412,7 +412,7 @@ minetest.register_node("default:obsidianbrick", {
 	tiles = {"default_obsidian_brick.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -421,7 +421,7 @@ minetest.register_node("default:obsidian_block", {
 	tiles = {"default_obsidian_block.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2477,7 +2477,7 @@ minetest.register_node("default:obsidian_glass", {
 	is_ground_content = false,
 	sunlight_propagates = true,
 	sounds = default.node_sound_glass_defaults(),
-	groups = {cracky = 3},
+	groups = {cracky = 3, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2869,7 +2869,7 @@ minetest.register_node("default:basalt", {
 	tiles = {"default_basalt.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2880,7 +2880,7 @@ minetest.register_node("default:basalt_brick", {
 	tiles = {"default_basalt_brick.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2889,7 +2889,7 @@ minetest.register_node("default:basalt_block", {
 	tiles = {"default_basalt_block.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2898,7 +2898,7 @@ minetest.register_node("default:granite", {
 	tiles = {"default_granite.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2909,7 +2909,7 @@ minetest.register_node("default:granite_brick", {
 	tiles = {"default_granite_brick.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
@@ -2918,7 +2918,7 @@ minetest.register_node("default:granite_block", {
 	tiles = {"default_granite_block.png"},
 	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2, not_cuttable = 1},
 	node_dig_prediction = "solid_air",
 })
 
