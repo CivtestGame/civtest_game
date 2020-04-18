@@ -54,6 +54,7 @@ function player_api.set_model(player, model_name)
 		player:set_properties({
 			textures = {"player.png", "player_back.png"},
 			visual = "upright_sprite",
+			visual_size = {x = 1, y = 2},
 			collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.75, 0.3},
 			stepheight = 0.6,
 			eye_height = 1.625,
@@ -94,6 +95,15 @@ end)
 -- Localize for better performance.
 local player_set_animation = player_api.set_animation
 local player_attached = player_api.player_attached
+
+-- Prevent knockback for attached players
+local old_calculate_knockback = minetest.calculate_knockback
+function minetest.calculate_knockback(player, ...)
+	if player_attached[player:get_player_name()] then
+		return 0
+	end
+	return old_calculate_knockback(player, ...)
+end
 
 -- Check each player and apply animations
 minetest.register_globalstep(function(dtime)

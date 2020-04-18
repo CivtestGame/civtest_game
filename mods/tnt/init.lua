@@ -1,4 +1,10 @@
+-- tnt/init.lua
+
 tnt = {}
+
+-- Load support for MT game translation.
+local S = minetest.get_translator("tnt")
+
 
 -- Default to enabled when in singleplayer
 local enable_tnt = minetest.settings:get_bool("enable_tnt")
@@ -164,31 +170,35 @@ local function entity_physics(pos, radius, drops)
 
 			obj:set_hp(obj:get_hp() - damage)
 		else
-			local do_damage = true
-			local do_knockback = true
-			local entity_drops = {}
 			local luaobj = obj:get_luaentity()
-			local objdef = minetest.registered_entities[luaobj.name]
 
-			if objdef and objdef.on_blast then
-				do_damage, do_knockback, entity_drops = objdef.on_blast(luaobj, damage)
-			end
+			-- object might have disappeared somehow
+			if luaobj then
+				local do_damage = true
+				local do_knockback = true
+				local entity_drops = {}
+				local objdef = minetest.registered_entities[luaobj.name]
 
-			if do_knockback then
-				local obj_vel = obj:get_velocity()
-				obj:set_velocity(calc_velocity(pos, obj_pos,
-						obj_vel, radius * 10))
-			end
-			if do_damage then
-				if not obj:get_armor_groups().immortal then
-					obj:punch(obj, 1.0, {
-						full_punch_interval = 1.0,
-						damage_groups = {fleshy = damage},
-					}, nil)
+				if objdef and objdef.on_blast then
+					do_damage, do_knockback, entity_drops = objdef.on_blast(luaobj, damage)
 				end
-			end
-			for _, item in pairs(entity_drops) do
-				add_drop(drops, item)
+
+				if do_knockback then
+					local obj_vel = obj:get_velocity()
+					obj:set_velocity(calc_velocity(pos, obj_pos,
+							obj_vel, radius * 10))
+				end
+				if do_damage then
+					if not obj:get_armor_groups().immortal then
+						obj:punch(obj, 1.0, {
+							full_punch_interval = 1.0,
+							damage_groups = {fleshy = damage},
+						}, nil)
+					end
+				end
+				for _, item in pairs(entity_drops) do
+					add_drop(drops, item)
+				end
 			end
 		end
 	end
@@ -264,7 +274,7 @@ function tnt.burn(pos, nodename)
 		def.on_ignite(pos)
 	elseif minetest.get_item_group(name, "tnt") > 0 then
 		minetest.swap_node(pos, {name = name .. "_burning"})
-		minetest.sound_play("tnt_ignite", {pos = pos})
+		minetest.sound_play("tnt_ignite", {pos = pos}, true)
 		minetest.get_node_timer(pos):start(1)
 	end
 end
@@ -392,8 +402,8 @@ function tnt.boom(pos, def)
 		minetest.set_node(pos, {name = "tnt:boom"})
 	end
 	local sound = def.sound or "tnt_explode"
-	minetest.sound_play(sound, {pos = pos, gain = 1.5,
-			max_hear_distance = math.min(def.radius * 20, 128)})
+	minetest.sound_play(sound, {pos = pos, gain = 2.5,
+			max_hear_distance = math.min(def.radius * 20, 128)}, true)
 	local drops, radius = tnt_explode(pos, def.radius, def.ignore_protection,
 			def.ignore_on_blast, owner, def.explode_center)
 	-- append entity drops
@@ -418,7 +428,7 @@ minetest.register_node("tnt:boom", {
 })
 
 minetest.register_node("tnt:gunpowder", {
-	description = "Gun Powder",
+	description = S("Gun Powder"),
 	drawtype = "raillike",
 	paramtype = "light",
 	is_ground_content = false,
@@ -533,7 +543,8 @@ minetest.register_node("tnt:gunpowder_burning", {
 	-- unaffected by explosions
 	on_blast = function() end,
 	on_construct = function(pos)
-		minetest.sound_play("tnt_gunpowder_burning", {pos = pos, gain = 2})
+		minetest.sound_play("tnt_gunpowder_burning", {pos = pos,
+			gain = 2}, true)
 		minetest.get_node_timer(pos):start(1)
 	end,
 })
@@ -545,7 +556,7 @@ minetest.register_craft({
 })
 
 minetest.register_craftitem("tnt:tnt_stick", {
-	description = "TNT Stick",
+	description = S("TNT Stick"),
 	inventory_image = "tnt_tnt_stick.png",
 	groups = {flammable = 5},
 })
@@ -666,7 +677,7 @@ function tnt.register_tnt(def)
 		-- unaffected by explosions
 		on_blast = function() end,
 		on_construct = function(pos)
-			minetest.sound_play("tnt_ignite", {pos = pos})
+			minetest.sound_play("tnt_ignite", {pos = pos}, true)
 			minetest.get_node_timer(pos):start(4)
 			minetest.check_for_falling(pos)
 		end,
@@ -675,6 +686,6 @@ end
 
 tnt.register_tnt({
 	name = "tnt:tnt",
-	description = "TNT",
+	description = S("TNT"),
 	radius = tnt_radius,
 })
