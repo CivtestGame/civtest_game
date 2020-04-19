@@ -1175,6 +1175,22 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = 'default:spikes_wooden 10',
+	recipe = {
+		{'', 'default:sword_wood', ''},
+		{'default:sword_wood', 'group:stick', 'default:sword_wood'}
+	}
+})
+
+minetest.register_craft({
+	output = 'default:spikes_steel 20',
+	recipe = {
+		{'', 'default:comp_steel_swordhead_sharp', ''},
+		{'default:comp_steel_swordhead_sharp', 'default:comp_toolrod_strong', 'default:comp_steel_swordhead_sharp'}
+	}
+})
+
 --
 -- Fuels
 --

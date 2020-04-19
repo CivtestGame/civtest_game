@@ -2993,14 +2993,26 @@ minetest.register_node("default:fortress_tile", {
 	sounds = default.node_sound_metal_defaults(),
 })
 
+minetest.register_node("default:spikes_wooden", {
+	description = "Wooden Spikes",
+	drawtype = "firelike",
+	paramtype = "light",
+	tiles = {"default_spikes_wooden.png"},
+	damage_per_second = 0.1 * default.HEALTH_MULTIPLIER,
+	walkable = false,
+	sunlight_propagates = true,
+	groups = {choppy = 2, attached_node = 1},
+	sounds = default.node_sound_wood_defaults(),
+})
+
 minetest.register_node("default:spikes_steel", {
 	description = "Steel Spikes",
 	drawtype = "firelike",
 	paramtype = "light",
 	tiles = {"default_spikes_steel.png"},
-	damage_per_second = 0.1 * default.HEALTH_MULTIPLIER,
+	damage_per_second = 0.4 * default.HEALTH_MULTIPLIER,
 	walkable = false,
 	sunlight_propagates = true,
-	groups = {cracky = 2, attached_node = 1},
+	groups = {cracky = 2, attached_node = 1, level = 2},
 	sounds = default.node_sound_metal_defaults(),
 })
