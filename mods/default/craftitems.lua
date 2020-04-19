@@ -73,7 +73,7 @@ local function book_on_use(itemstack, user)
 	return itemstack
 end
 
-local max_text_size = 10000
+local max_text_size = 100000
 local max_title_size = 80
 local short_title_size = 35
 minetest.register_on_player_receive_fields(function(player, formname, fields)
