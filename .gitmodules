@@ -107,7 +107,7 @@
 
 [submodule "mods/minetest_hudbars"]
 	path = mods/minetest_hudbars
-	url = git://repo.or.cz/minetest_hudbars.git
+	url = https://repo.or.cz/minetest_hudbars.git
 
 [submodule "mods/bakedclay"]
 	path = mods/bakedclay
