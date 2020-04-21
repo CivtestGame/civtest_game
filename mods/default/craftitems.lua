@@ -559,3 +559,57 @@ minetest.register_craftitem("default:pie_mushroom", {
 	inventory_image = "default_pie_mushroom.png",
 	on_use = minetest.item_eat(4)
 })
+
+minetest.register_craftitem("default:comp_iron_chain", {
+	description = "Iron Chain",
+        groups = {chain=1},
+	inventory_image = "default_iron_chain.png"
+})
+minetest.register_craftitem("default:comp_iron_scale", {
+	description = "Iron Scale",
+        groups = {scale=1},
+	inventory_image = "default_iron_scale.png"
+})
+minetest.register_craftitem("default:comp_iron_plate", {
+	description = "Iron Plate",
+        groups = {plate=1},
+	inventory_image = "default_iron_plate.png"
+})
+
+minetest.register_craftitem("default:comp_steel_chain", {
+	description = "Brittle Steel Chain",
+        groups = {chain=1},
+	inventory_image = "default_steel_chain.png"
+})
+minetest.register_craftitem("default:comp_steel_scale", {
+	description = "Brittle Steel Scale",
+        groups = {scale=1},
+	inventory_image = "default_steel_scale.png"
+})
+minetest.register_craftitem("default:comp_steel_plate", {
+	description = "Brittle Steel Plate",
+        groups = {plate=1},
+	inventory_image = "default_steel_plate.png"
+})
+
+minetest.register_craftitem("default:comp_fine_steel_chain", {
+	description = "Fine Steel Chain",
+        groups = {chain=1},
+	inventory_image = "default_fine_steel_chain.png"
+})
+minetest.register_craftitem("default:comp_fine_steel_scale", {
+	description = "Fine Steel Scale",
+        groups = {scale=1},
+	inventory_image = "default_fine_steel_scale.png"
+})
+minetest.register_craftitem("default:comp_fine_steel_plate", {
+	description = "Fine Steel Plate",
+        groups = {plate=1},
+	inventory_image = "default_fine_steel_plate.png"
+})
+
+minetest.register_craftitem("default:comp_fabric", {
+	description = "Fabric",
+        groups = {cloth=1},
+	inventory_image = "default_fabric.png"
+})

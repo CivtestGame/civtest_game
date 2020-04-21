@@ -1191,6 +1191,63 @@ minetest.register_craft({
 	}
 })
 
+armor_materials_advanced = {
+	iron = "default:comp_iron_",
+	steel = "default:comp_steel_",
+	fine_steel = "default:comp_fine_steel_"
+}
+
+for k, v in pairs(armor_materials_advanced) do
+	minetest.register_craft({
+		output = "3d_armor:chestplate_"..k.."_mail",
+		recipe = {
+			{v.."chain", "", v.."chain"},
+			{v.."chain", v.."chain", v.."chain"},
+			{v.."chain", v.."chain", v.."chain"},
+		},
+	})
+	minetest.register_craft({
+		output = "3d_armor:leggings_"..k.."_mail",
+		recipe = {
+			{v.."chain", v.."chain", v.."chain"},
+			{v.."chain", "", v.."chain"},
+			{v.."chain", "", v.."chain"},
+		},
+	})
+	minetest.register_craft({
+		output = "3d_armor:chestplate_"..k.."_scale",
+		recipe = {
+			{v.."scale", "", v.."scale"},
+			{v.."scale", v.."scale", v.."scale"},
+			{v.."scale", v.."scale", v.."scale"},
+		},
+	})
+	minetest.register_craft({
+		output = "3d_armor:leggings_"..k.."_scale",
+		recipe = {
+			{v.."scale", v.."scale", v.."scale"},
+			{v.."scale", "", v.."scale"},
+			{v.."scale", "", v.."scale"},
+		},
+	})
+	minetest.register_craft({
+		output = "3d_armor:chestplate_"..k.."_plate",
+		recipe = {
+			{v.."plate", "", v.."plate"},
+			{v.."plate", v.."plate", v.."plate"},
+			{v.."plate", v.."plate", v.."plate"},
+		},
+	})
+	minetest.register_craft({
+		output = "3d_armor:leggings_"..k.."_plate",
+		recipe = {
+			{v.."plate", v.."plate", v.."plate"},
+			{v.."plate", "", v.."plate"},
+			{v.."plate", "", v.."plate"},
+		},
+	})
+end
+
 --
 -- Fuels
 --
