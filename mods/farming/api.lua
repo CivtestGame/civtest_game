@@ -242,7 +242,8 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
             user:get_player_name(),
             "This " .. plant.description
             .. " has been growing for "..pretty_total_growth.." "..total_unit
-               .. ", and is on growth stage " .. growth_step .. ".\n"
+               .. ", and is on growth stage " .. growth_step
+               .. " of ".. plant.steps .. ".\n"
                .. "It will take from " .. pretty_full_lower_bound
                .. " " .. flb_unit .. " to " .. pretty_full_higher_bound .. " "
                .. fhb_unit .. " to fully grow here. "
