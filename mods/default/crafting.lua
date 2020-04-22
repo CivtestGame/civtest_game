@@ -1011,11 +1011,36 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = 'default:mace',
+	recipe = {
+	    {'group:ferrous_ingot'},
+		{'default:comp_toolrod'}
+	}
+})
+
+minetest.register_craft({
+	output = 'default:morningstar',
+	recipe = {
+		{'', 'default:comp_fine_steel_shovelhead_sharp'},
+		{'default:comp_toolrod_strong', ''}
+	}
+})
+
+minetest.register_craft({
 	output = 'default:katana',
 	recipe = {
 	    {'', '', 'default:comp_fine_steel_swordhead_sharp'},
 		{'', 'default:comp_fine_steel_swordhead_sharp', ''},
 		{'default:comp_toolrod_strong', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sabre',
+	recipe = {
+	    {'', '', 'default:comp_fine_steel_swordhead_sharp'},
+		{'', 'default:comp_toolrod_strong', ''},
+		{'default:brass_ingot', '', ''},
 	}
 })
 
@@ -1041,6 +1066,15 @@ minetest.register_craft({
 	output = 'default:halberd',
 	recipe = {
 		{'', 'default:comp_fine_steel_axehead_sharp', 'default:comp_fine_steel_swordhead_sharp'},
+		{'', 'default:comp_toolrod_strong', ''},
+		{'default:comp_toolrod_strong', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:war_hammer',
+	recipe = {
+		{'', '', 'default:comp_fine_steel_axehead_sharp'},
 		{'', 'default:comp_toolrod_strong', ''},
 		{'default:comp_toolrod_strong', '', ''},
 	}

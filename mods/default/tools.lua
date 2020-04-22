@@ -385,7 +385,7 @@ minetest.register_tool("default:sword_iron", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=750, maxlevel=4},
 		},
-		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER, pierce=2 * default.HEALTH_MULTIPLIER, slash=3 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -400,7 +400,7 @@ minetest.register_tool("default:sword_steel", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=2500, maxlevel=4},
 		},
-		damage_groups = {fleshy=10 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.5 * default.HEALTH_MULTIPLIER, pierce=2.5 * default.HEALTH_MULTIPLIER, slash=4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -599,7 +599,7 @@ minetest.register_tool("default:axe_fine_steel", {
 		groupcaps={
 			choppy={times={[1]=1.40, [2]=1.30, [3]=0.76}, uses=3200, maxlevel=4},
 		},
-		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, slash=2 * default.HEALTH_MULTIPLIER, bludgeon=2 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -614,7 +614,7 @@ minetest.register_tool("default:axe_fine_steel_good", {
 		groupcaps={
 			choppy={times={[1]=1.38, [2]=1.28, [3]=0.75}, uses=3400, maxlevel=4},
 		},
-		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, slash=2 * default.HEALTH_MULTIPLIER, bludgeon=2 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -629,7 +629,7 @@ minetest.register_tool("default:axe_fine_steel_superior", {
 		groupcaps={
 			choppy={times={[1]=1.35, [2]=1.25, [3]=0.75}, uses=4000, maxlevel=4},
 		},
-		damage_groups = {fleshy=8 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, slash=2 * default.HEALTH_MULTIPLIER, bludgeon=2 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -721,7 +721,7 @@ minetest.register_tool("default:sword_steel_good", {
 		groupcaps={
 			snappy={times={[1]=2.4, [2]=1.16, [3]=0.34}, uses=2650, maxlevel=4},
 		},
-		damage_groups = {fleshy=10.3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.6 * default.HEALTH_MULTIPLIER, pierce=2.6 * default.HEALTH_MULTIPLIER, slash=4.2 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -736,7 +736,7 @@ minetest.register_tool("default:sword_steel_superior", {
 		groupcaps={
 			snappy={times={[1]=2.3, [2]=1.13, [3]=0.33}, uses=2800, maxlevel=4},
 		},
-		damage_groups = {fleshy=10.7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.7 * default.HEALTH_MULTIPLIER, pierce=2.7 * default.HEALTH_MULTIPLIER, slash=4.4 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -751,7 +751,7 @@ minetest.register_tool("default:sword_fine_steel", {
 		groupcaps={
 			snappy={times={[1]=2.25, [2]=1.10, [3]=0.32}, uses=3200, maxlevel=4},
 		},
-		damage_groups = {fleshy=11 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.8 * default.HEALTH_MULTIPLIER, pierce=2.8 * default.HEALTH_MULTIPLIER, slash=4.6 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -766,7 +766,7 @@ minetest.register_tool("default:sword_fine_steel_good", {
 		groupcaps={
 			snappy={times={[1]=2.22, [2]=1.09, [3]=0.31}, uses=3600, maxlevel=4},
 		},
-		damage_groups = {fleshy=11.3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.9 * default.HEALTH_MULTIPLIER, pierce=2.9 * default.HEALTH_MULTIPLIER, slash=4.8 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -781,24 +781,68 @@ minetest.register_tool("default:sword_fine_steel_superior", {
 		groupcaps={
 			snappy={times={[1]=2.20, [2]=1.08, [3]=0.30}, uses=4000, maxlevel=4},
 		},
-		damage_groups = {fleshy=11.7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, pierce=3 * default.HEALTH_MULTIPLIER, slash=5 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
 
+minetest.register_tool("default:mace", {
+	description = "Mace",
+	inventory_image = "default_tool_mace.png",
+	groups = { club = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=600, maxlevel=4},
+		},
+		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER, bludgeon=5 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
 
+minetest.register_tool("default:morningstar", {
+	description = "Morningstar",
+	inventory_image = "default_tool_morningstar.png",
+	groups = { club = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, bludgeon=7 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
 
 minetest.register_tool("default:katana", {
 	description = "Katana",
 	inventory_image = "default_tool_katana.png",
 	groups = { sword = 1 },
 	tool_capabilities = {
-		full_punch_interval = 1.6,
+		full_punch_interval = default.PUNCH_INTERVAL * 1.25,
 		max_drop_level=4,
 		groupcaps={
-			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=4000, maxlevel=4},
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=200, maxlevel=4},
 		},
-		damage_groups = {fleshy=16 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER, pierce=6 * default.HEALTH_MULTIPLIER, slash=6 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:sabre", {
+	description = "Sabre",
+	inventory_image = "default_tool_sabre.png",
+	groups = { sword = 1 },
+	range = 4.1,
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
+		},
+		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER, pierce=4 * default.HEALTH_MULTIPLIER, slash=6 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -809,12 +853,12 @@ minetest.register_tool("default:rapier", {
 	groups = { sword = 1 },
 	range = 3.8,
 	tool_capabilities = {
-		full_punch_interval = 0.5,
+		full_punch_interval = default.PUNCH_INTERVAL * 0.8,
 		max_drop_level=4,
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=12 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER, pierce=7 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -823,14 +867,14 @@ minetest.register_tool("default:glaive", {
 	description = "Glaive",
 	inventory_image = "default_tool_glaive.png",
 	groups = { spear = 1 },
-	range = 5.3,
+	range = 4.7,
 	tool_capabilities = {
-		full_punch_interval = 2.4,
+		full_punch_interval = default.PUNCH_INTERVAL * 1.25,
 		max_drop_level=4,
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER, slash=10 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -839,18 +883,33 @@ minetest.register_tool("default:halberd", {
 	description = "Halberd",
 	inventory_image = "default_tool_halberd.png",
 	groups = { spear = 1 },
-	range = 4.8,
+	range = 4.4,
 	tool_capabilities = {
-		full_punch_interval = 2.4,
+		full_punch_interval = default.PUNCH_INTERVAL * 1.5,
 		max_drop_level=4,
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=10 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER, pierce=5 * default.HEALTH_MULTIPLIER, slash=5 * default.HEALTH_MULTIPLIER, bludgeon=5 * default.HEALTH_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
 
+minetest.register_tool("default:war_hammer", {
+	description = "War Hammer",
+	inventory_image = "default_tool_war_hammer.png",
+	groups = { spear = 1, club = 1 },
+	range = 4.4,
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL * 1.25,
+		max_drop_level=4,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
+		},
+		damage_groups = {fleshy=1 * default.HEALTH_MULTIPLIER, pierce=3 * default.HEALTH_MULTIPLIER, bludgeon=9 * default.HEALTH_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
 
 --
 
