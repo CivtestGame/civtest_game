@@ -3,71 +3,58 @@
 -- TODO Ignore group:flower
 farming.registered_plants = {}
 
-farming.hoe_on_place = function(itemstack, user, pointed_thing, uses)
-	local pt = pointed_thing
-	-- check if pointing at a node
-	if not pt then
-		return
-	end
-	if pt.type ~= "node" then
-		return
+function farming.dirt_on_dig(pos, node, digger)
+	-- check protection 
+	if minetest.is_protected(pos, digger) then
+		minetest.record_protection_violation(pt.under, digger:get_player_name())
 	end
 
-	local under = minetest.get_node(pt.under)
-	local p = {x=pt.under.x, y=pt.under.y+1, z=pt.under.z}
-	local above = minetest.get_node(p)
+	local regN = minetest.registered_nodes
+	local regT = minetest.registered_tools
 
-	-- return if any of the nodes is not registered
-	if not minetest.registered_nodes[under.name] then
-		return
-	end
-	if not minetest.registered_nodes[above.name] then
-		return
+	-- check if digger is non-nil
+	if digger == nil then
+		return minetest.node_dig(pos, node, digger)
 	end
 
-	-- check if the node above the pointed thing is air
-	if above.name ~= "air" then
-		return
-	end
+	-- check if using a hoe
+	local wielded_item = digger:get_wielded_item()
 
-	-- check if pointing at soil
-	if minetest.get_item_group(under.name, "soil") ~= 1 then
-		return
+	if wielded_item == nil or wielded_item:get_name() == ""  -- Yeah, I know
+	   or regT[wielded_item:get_name()] == nil               -- This is ugly
+	   or regT[wielded_item:get_name()].groups["hoe"] == nil -- But life is ugly, man
+	   then
+		return minetest.node_dig(pos, node, digger)
 	end
 
 	-- check if (wet) soil defined
 	local regN = minetest.registered_nodes
-	if regN[under.name].soil == nil or regN[under.name].soil.wet == nil or regN[under.name].soil.dry == nil then
+	if regN[node.name].soil == nil or regN[node.name].soil.wet == nil or regN[node.name].soil.dry == nil then
 		return
 	end
 
-	if minetest.is_protected(pt.under, user:get_player_name()) then
-		minetest.record_protection_violation(pt.under, user:get_player_name())
-		return
-	end
-	if minetest.is_protected(pt.above, user:get_player_name()) then
-		minetest.record_protection_violation(pt.above, user:get_player_name())
-		return
-	end
-
-	-- turn the node into soil and play sound
-	minetest.set_node(pt.under, {name = regN[under.name].soil.dry})
-	minetest.sound_play("default_dig_crumbly", {
-		pos = pt.under,
-		gain = 0.5,
-	})
+	-- replace 
+	minetest.set_node(pos, {name = regN[node.name].soil.dry})
 
 	if not (creative and creative.is_enabled_for
-			and creative.is_enabled_for(user:get_player_name())) then
+			and creative.is_enabled_for(digger:get_player_name())) then
 		-- wear tool
-		local wdef = itemstack:get_definition()
-		itemstack:add_wear(65535/(uses-1))
+		local wdef = wielded_item:get_definition()
+		wielded_item:add_wear(65535/(wdef.max_uses-1))
+		digger:set_wielded_item(wielded_item)
+
 		-- tool break sound
-		if itemstack:get_count() == 0 and wdef.sound and wdef.sound.breaks then
-			minetest.sound_play(wdef.sound.breaks, {pos = pt.above, gain = 0.5})
+		if wielded_item:get_count() == 0 and wdef.sound and wdef.sound.breaks then
+			minetest.sound_play(wdef.sound.breaks, {pos = pos, gain = 0.5})
+			digger:set_wielded_item(nil)
 		end
 	end
-	return itemstack
+
+	-- play sound 
+	minetest.sound_play("default_dig_crumbly", {
+		pos = pos,
+		gain = 0.5,
+	})
 end
 
 function farming.compute_growth_interval(pos, growth, again)
@@ -164,7 +151,19 @@ function farming.start_growth_cycle(pos, node_name)
    meta:set_string("last_grow", time)
 end
 
-farming.hoe_on_use = function(itemstack, user, pointed_thing)
+farming.describe_biome = function(player_name, pos)
+      local biome_data = minetest.get_biome_data(pos)
+
+      local biome_name = minetest.get_biome_name(biome_data.biome)
+      minetest.chat_send_player(
+         player_name,
+         "This biome is a " .. biome_name .. ". "
+            .. "The heat here is " .. minetest.get_heat(pos)
+            .. " and the humidity is " .. minetest.get_humidity(pos)
+      )
+end
+
+farming.hoe_on_place = function(itemstack, user, pointed_thing)
 
    if pointed_thing
       and pointed_thing.type == "nothing"
@@ -174,15 +173,7 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
          return
       end
       local pos = user:get_pos()
-      local biome_data = minetest.get_biome_data(pos)
-
-      local biome_name = minetest.get_biome_name(biome_data.biome)
-      minetest.chat_send_player(
-         name,
-         "This biome is a " .. biome_name .. ". "
-            .. "The heat here is " .. minetest.get_heat(pos)
-            .. " and the humidity is " .. minetest.get_humidity(pos)
-      )
+	  farming.describe_biome(name, pos)
    end
 
    if pointed_thing
@@ -194,6 +185,7 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
       local plant = farming.plant_from_node_name(node.name)
 
       if (not plant) or (not plant.custom_growth) then
+	  	 farming.describe_biome(user:get_player_name(), pos)
          return
       end
 
@@ -254,15 +246,17 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
 end
 
 farming.hoe_on_secondary_use = function(itemstack,user,pointed_thing)
-
+	farming.describe_biome(user:get_player_name(), user:get_pos())
 end
 
 -- Register new hoes
 farming.register_hoe = function(name, def)
+
 	-- Check for : prefix (register new hoes in your mod's namespace)
 	if name:sub(1,1) ~= ":" then
 		name = ":" .. name
 	end
+
 	-- Check def table
 	if def.description == nil then
 		def.description = "Hoe"
@@ -275,17 +269,23 @@ farming.register_hoe = function(name, def)
 	end
 	-- Register the tool
 	minetest.register_tool(name, {
+		max_uses = def.max_uses,
 		description = def.description,
 		inventory_image = def.inventory_image,
-		on_use = function(itemstack, user, pointed_thing)
-			return farming.hoe_on_use(itemstack, user, pointed_thing, def.max_uses)
-		end,
-                on_place = function(itemstack, user, pointed_thing)
-                      return farming.hoe_on_place(itemstack, user, pointed_thing, def.max_uses)
-                end,
+
+        on_place = function(itemstack, user, pointed_thing)
+			return farming.hoe_on_place(itemstack, user, pointed_thing, def.max_uses)
+        end,
+				
 		on_secondary_use = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_secondary_use(itemstack,user,pointed_thing)
 		end,
+
+		tool_capabilities = {
+			full_punch_interval = default.PUNCH_INTERVAL,
+			max_drop_level = 0,
+			groupcaps = def.groupcaps
+		},
 		groups = def.groups,
 		sound = {breaks = "default_tool_breaks"},
 	})
