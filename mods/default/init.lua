@@ -14,8 +14,9 @@ default.get_translator = S
 
 -- TODO: move these to configuration
 default.HEALTH_MULTIPLIER = 10
+default.DAMAGE_MULTIPLIER = 2
 default.PLAYER_MAX_HEALTH = 20 * default.HEALTH_MULTIPLIER
-default.PUNCH_INTERVAL = 0.2
+default.PUNCH_INTERVAL = 1.0
 
 -- GUI related stuff
 minetest.register_on_joinplayer(function(player)

@@ -15,7 +15,7 @@ minetest.register_item(":", {
                         choppy = {times={[1]=20.0, [2]=10.00, [3]=2.00}, uses=0, maxlevel=4},
 			oddly_breakable_by_hand = {times={[1]=3.50,[2]=2.00,[3]=0.70}, uses=0}
 		},
-		damage_groups = {fleshy=1 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=1 * default.DAMAGE_MULTIPLIER},
 	}
 })
 
@@ -33,7 +33,7 @@ minetest.register_tool("default:pick_wood", {
 		groupcaps={
 			cracky = {times={[2]=7.0, [3]=1.5}, uses=10, maxlevel=4},
 		},
-		damage_groups = {fleshy=1 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=1 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -48,7 +48,7 @@ minetest.register_tool("default:pick_stone", {
 		groupcaps={
 			cracky = {times={[2]=4.0, [3]=1.5}, uses=40, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -63,7 +63,7 @@ minetest.register_tool("default:pick_copper", {
 		groupcaps={
 			cracky = {times={[2]=3.0, [3]=1.0}, uses=400, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -78,7 +78,7 @@ minetest.register_tool("default:pick_bronze", {
 		groupcaps={
 			cracky = {times={[2]=2.5, [3]=0.90}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -93,7 +93,7 @@ minetest.register_tool("default:pick_iron", {
 		groupcaps={
 			cracky = {times={[1]=8.00, [2]=2.5, [3]=0.90}, uses=750, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -108,7 +108,7 @@ minetest.register_tool("default:pick_steel", {
 		groupcaps={
 			cracky = {times={[1]=4.00, [2]=1.60, [3]=0.80}, uses=2500, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -128,7 +128,7 @@ minetest.register_tool("default:shovel_wood", {
 		groupcaps={
 			crumbly = {times={[1]=5.00, [2]=2.50, [3]=0.60}, uses=10, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER},
 	},
 	groups = {flammable = 2},
 	sound = {breaks = "default_tool_breaks"},
@@ -145,7 +145,7 @@ minetest.register_tool("default:shovel_stone", {
 		groupcaps={
 			crumbly = {times={[1]=4.50, [2]=2.30, [3]=0.50}, uses=40, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -161,7 +161,7 @@ minetest.register_tool("default:shovel_copper", {
 		groupcaps={
 			crumbly = {times={[1]=3.00, [2]=1.70, [3]=0.45}, uses=400, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -177,7 +177,7 @@ minetest.register_tool("default:shovel_bronze", {
 		groupcaps={
 			crumbly = {times={[1]=2.75, [2]=1.50, [3]=0.40}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -193,7 +193,7 @@ minetest.register_tool("default:shovel_iron", {
 		groupcaps={
 			crumbly = {times={[1]=2.00, [2]=1.10, [3]=0.35}, uses=750, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -209,7 +209,7 @@ minetest.register_tool("default:shovel_steel", {
 		groupcaps={
 			crumbly = {times={[1]=1.50, [2]=0.70, [3]=0.30}, uses=2500, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -228,7 +228,7 @@ minetest.register_tool("default:axe_wood", {
 		groupcaps={
 			choppy = {times={[1]=5.00, [2]=3.00, [3]=1.60}, uses=10, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER},
 	},
 	groups = {flammable = 2},
 	sound = {breaks = "default_tool_breaks"},
@@ -244,7 +244,7 @@ minetest.register_tool("default:axe_stone", {
 		groupcaps={
 			choppy={times={[1]=4.00, [2]=2.00, [3]=1.30}, uses=40, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -259,7 +259,7 @@ minetest.register_tool("default:axe_copper", {
 		groupcaps={
 			choppy={times={[1]=3.00, [2]=1.70, [3]=1.15}, uses=400, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -274,7 +274,7 @@ minetest.register_tool("default:axe_bronze", {
 		groupcaps={
 			choppy={times={[1]=2.50, [2]=1.60, [3]=1.00}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -289,7 +289,7 @@ minetest.register_tool("default:axe_iron", {
 		groupcaps={
 			choppy={times={[1]=2.00, [2]=1.50, [3]=0.90}, uses=750, maxlevel=4},
 		},
-		damage_groups = {fleshy=6 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=6 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -304,7 +304,7 @@ minetest.register_tool("default:axe_steel", {
 		groupcaps={
 			choppy={times={[1]=1.50, [2]=1.40, [3]=0.80}, uses=2500, maxlevel=4},
 		},
-		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -323,7 +323,7 @@ minetest.register_tool("default:sword_wood", {
 		groupcaps={
 			snappy={times={[2]=1.6, [3]=0.40}, uses=10, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER},
 	},
 	groups = {flammable = 2},
 	sound = {breaks = "default_tool_breaks"},
@@ -339,7 +339,7 @@ minetest.register_tool("default:sword_stone", {
 		groupcaps={
 			snappy={times={[2]=1.4, [3]=0.40}, uses=40, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -355,7 +355,7 @@ minetest.register_tool("default:sword_copper", {
 		groupcaps={
 			snappy={times={[1]=2.75, [2]=1.30, [3]=0.375}, uses=400, maxlevel=4},
 		},
-		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -370,7 +370,7 @@ minetest.register_tool("default:sword_bronze", {
 		groupcaps={
 			snappy={times={[1]=2.75, [2]=1.30, [3]=0.375}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -385,7 +385,7 @@ minetest.register_tool("default:sword_iron", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=750, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER, pierce=2 * default.HEALTH_MULTIPLIER, slash=3 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER, pierce=2 * default.DAMAGE_MULTIPLIER, slash=3 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -400,7 +400,7 @@ minetest.register_tool("default:sword_steel", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=2500, maxlevel=4},
 		},
-		damage_groups = {fleshy=3.5 * default.HEALTH_MULTIPLIER, pierce=2.5 * default.HEALTH_MULTIPLIER, slash=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.5 * default.DAMAGE_MULTIPLIER, pierce=2.5 * default.DAMAGE_MULTIPLIER, slash=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -419,7 +419,7 @@ minetest.register_tool("default:pick_wrought_iron", {
 		groupcaps={
 			cracky = {times={[1]=7.00, [2]=2.2, [3]=0.90}, uses=1250, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -434,7 +434,7 @@ minetest.register_tool("default:pick_wrought_iron_good", {
 		groupcaps={
 			cracky = {times={[1]=6.75, [2]=2.1, [3]=0.88}, uses=1500, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -449,7 +449,7 @@ minetest.register_tool("default:pick_wrought_iron_superior", {
 		groupcaps={
 			cracky = {times={[1]=6.50, [2]=2.0, [3]=0.85}, uses=1750, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -464,7 +464,7 @@ minetest.register_tool("default:pick_steel_good", {
 		groupcaps={
 			cracky = {times={[1]=3.90, [2]=1.55, [3]=0.78}, uses=2650, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -479,7 +479,7 @@ minetest.register_tool("default:pick_steel_superior", {
 		groupcaps={
 			cracky = {times={[1]=3.80, [2]=1.50, [3]=0.76}, uses=2800, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -494,7 +494,7 @@ minetest.register_tool("default:pick_fine_steel", {
 		groupcaps={
 			cracky = {times={[1]=3.50, [2]=1.40, [3]=0.72}, uses=3200, maxlevel=5},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -509,7 +509,7 @@ minetest.register_tool("default:pick_fine_steel_good", {
 		groupcaps={
 			cracky = {times={[1]=3.45, [2]=1.37, [3]=0.70}, uses=3600, maxlevel=5},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -524,7 +524,7 @@ minetest.register_tool("default:pick_fine_steel_superior", {
 		groupcaps={
 			cracky = {times={[1]=3.40, [2]=1.35, [3]=0.68}, uses=4000, maxlevel=5},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -539,7 +539,7 @@ minetest.register_tool("default:pick_stainless_steel_superior", {
 		groupcaps={
 			cracky = {times={[1]=3.40, [2]=1.30, [3]=0.60}, uses=8000, maxlevel=6},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -554,7 +554,7 @@ minetest.register_tool("default:pick_alubronze_superior", {
 		groupcaps={
 			cracky = {times={[1]=2.60, [2]=0.90, [3]=0.40}, uses=1600, maxlevel=8},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -569,7 +569,7 @@ minetest.register_tool("default:axe_steel_good", {
 		groupcaps={
 			choppy={times={[1]=1.45, [2]=1.35, [3]=0.79}, uses=2650, maxlevel=4},
 		},
-		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -584,7 +584,7 @@ minetest.register_tool("default:axe_steel_superior", {
 		groupcaps={
 			choppy={times={[1]=1.42, [2]=1.32, [3]=0.77}, uses=2800, maxlevel=4},
 		},
-		damage_groups = {fleshy=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -599,7 +599,7 @@ minetest.register_tool("default:axe_fine_steel", {
 		groupcaps={
 			choppy={times={[1]=1.40, [2]=1.30, [3]=0.76}, uses=3200, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, slash=2 * default.HEALTH_MULTIPLIER, bludgeon=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER, slash=2 * default.DAMAGE_MULTIPLIER, bludgeon=2 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -614,7 +614,7 @@ minetest.register_tool("default:axe_fine_steel_good", {
 		groupcaps={
 			choppy={times={[1]=1.38, [2]=1.28, [3]=0.75}, uses=3400, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, slash=2 * default.HEALTH_MULTIPLIER, bludgeon=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER, slash=2 * default.DAMAGE_MULTIPLIER, bludgeon=2 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -629,7 +629,7 @@ minetest.register_tool("default:axe_fine_steel_superior", {
 		groupcaps={
 			choppy={times={[1]=1.35, [2]=1.25, [3]=0.75}, uses=4000, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, slash=2 * default.HEALTH_MULTIPLIER, bludgeon=2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER, slash=2 * default.DAMAGE_MULTIPLIER, bludgeon=2 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -644,7 +644,7 @@ minetest.register_tool("default:shovel_steel_good", {
 		groupcaps={
 			crumbly = {times={[1]=1.48, [2]=0.68, [3]=0.29}, uses=2650, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -659,7 +659,7 @@ minetest.register_tool("default:shovel_steel_superior", {
 		groupcaps={
 			crumbly = {times={[1]=1.47, [2]=0.67, [3]=0.28}, uses=2800, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -674,7 +674,7 @@ minetest.register_tool("default:shovel_fine_steel", {
 		groupcaps={
 			crumbly = {times={[1]=1.45, [2]=0.65, [3]=0.27}, uses=3200, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -689,7 +689,7 @@ minetest.register_tool("default:shovel_fine_steel_good", {
 		groupcaps={
 			crumbly = {times={[1]=1.43, [2]=0.64, [3]=0.26}, uses=3600, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -704,7 +704,7 @@ minetest.register_tool("default:shovel_fine_steel_superior", {
 		groupcaps={
 			crumbly = {times={[1]=1.40, [2]=0.63, [3]=0.25}, uses=4000, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -721,7 +721,7 @@ minetest.register_tool("default:sword_steel_good", {
 		groupcaps={
 			snappy={times={[1]=2.4, [2]=1.16, [3]=0.34}, uses=2650, maxlevel=4},
 		},
-		damage_groups = {fleshy=3.6 * default.HEALTH_MULTIPLIER, pierce=2.6 * default.HEALTH_MULTIPLIER, slash=4.2 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.6 * default.DAMAGE_MULTIPLIER, pierce=2.6 * default.DAMAGE_MULTIPLIER, slash=4.2 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -736,7 +736,7 @@ minetest.register_tool("default:sword_steel_superior", {
 		groupcaps={
 			snappy={times={[1]=2.3, [2]=1.13, [3]=0.33}, uses=2800, maxlevel=4},
 		},
-		damage_groups = {fleshy=3.7 * default.HEALTH_MULTIPLIER, pierce=2.7 * default.HEALTH_MULTIPLIER, slash=4.4 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.7 * default.DAMAGE_MULTIPLIER, pierce=2.7 * default.DAMAGE_MULTIPLIER, slash=4.4 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -751,7 +751,7 @@ minetest.register_tool("default:sword_fine_steel", {
 		groupcaps={
 			snappy={times={[1]=2.25, [2]=1.10, [3]=0.32}, uses=3200, maxlevel=4},
 		},
-		damage_groups = {fleshy=3.8 * default.HEALTH_MULTIPLIER, pierce=2.8 * default.HEALTH_MULTIPLIER, slash=4.6 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.8 * default.DAMAGE_MULTIPLIER, pierce=2.8 * default.DAMAGE_MULTIPLIER, slash=4.6 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -766,7 +766,7 @@ minetest.register_tool("default:sword_fine_steel_good", {
 		groupcaps={
 			snappy={times={[1]=2.22, [2]=1.09, [3]=0.31}, uses=3600, maxlevel=4},
 		},
-		damage_groups = {fleshy=3.9 * default.HEALTH_MULTIPLIER, pierce=2.9 * default.HEALTH_MULTIPLIER, slash=4.8 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3.9 * default.DAMAGE_MULTIPLIER, pierce=2.9 * default.DAMAGE_MULTIPLIER, slash=4.8 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -781,7 +781,7 @@ minetest.register_tool("default:sword_fine_steel_superior", {
 		groupcaps={
 			snappy={times={[1]=2.20, [2]=1.08, [3]=0.30}, uses=4000, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, pierce=3 * default.HEALTH_MULTIPLIER, slash=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER, pierce=3 * default.DAMAGE_MULTIPLIER, slash=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -796,7 +796,7 @@ minetest.register_tool("default:mace", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=600, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER, bludgeon=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER, bludgeon=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -811,7 +811,7 @@ minetest.register_tool("default:morningstar", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=4 * default.HEALTH_MULTIPLIER, bludgeon=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER, bludgeon=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -826,7 +826,7 @@ minetest.register_tool("default:katana", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=200, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER, pierce=6 * default.HEALTH_MULTIPLIER, slash=6 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER, pierce=6 * default.DAMAGE_MULTIPLIER, slash=6 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -842,7 +842,7 @@ minetest.register_tool("default:sabre", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER, pierce=4 * default.HEALTH_MULTIPLIER, slash=6 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER, pierce=4 * default.DAMAGE_MULTIPLIER, slash=6 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -858,7 +858,7 @@ minetest.register_tool("default:rapier", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=2 * default.HEALTH_MULTIPLIER, pierce=7 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=2 * default.DAMAGE_MULTIPLIER, pierce=7 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -874,7 +874,7 @@ minetest.register_tool("default:glaive", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=5 * default.HEALTH_MULTIPLIER, slash=10 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=5 * default.DAMAGE_MULTIPLIER, slash=10 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -890,7 +890,7 @@ minetest.register_tool("default:halberd", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=3 * default.HEALTH_MULTIPLIER, pierce=5 * default.HEALTH_MULTIPLIER, slash=5 * default.HEALTH_MULTIPLIER, bludgeon=5 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER, pierce=5 * default.DAMAGE_MULTIPLIER, slash=5 * default.DAMAGE_MULTIPLIER, bludgeon=5 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
@@ -906,7 +906,7 @@ minetest.register_tool("default:war_hammer", {
 		groupcaps={
 			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=1000, maxlevel=4},
 		},
-		damage_groups = {fleshy=1 * default.HEALTH_MULTIPLIER, pierce=3 * default.HEALTH_MULTIPLIER, bludgeon=9 * default.HEALTH_MULTIPLIER},
+		damage_groups = {fleshy=1 * default.DAMAGE_MULTIPLIER, pierce=3 * default.DAMAGE_MULTIPLIER, bludgeon=9 * default.DAMAGE_MULTIPLIER},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
