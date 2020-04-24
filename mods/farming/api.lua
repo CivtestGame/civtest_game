@@ -307,6 +307,54 @@ farming.register_hoe = function(name, def)
 	end
 end
 
+-- Register new sickles
+farming.register_sickle = function(name, def)
+	-- Check for : prefix (register new hoes in your mod's namespace)
+	if name:sub(1,1) ~= ":" then
+		name = ":" .. name
+	end
+
+	-- Check def table
+	if def.description == nil then
+		def.description = "Sickle"
+	end
+
+	if def.inventory_image == nil then
+		def.inventory_image = "unknown_item.png"
+	end
+
+	-- Register the tool
+	minetest.register_tool(name, {
+		description = def.description,
+		inventory_image = def.inventory_image,
+
+		tool_capabilities = {
+			full_punch_interval = default.PUNCH_INTERVAL,
+			max_drop_level = 0,
+			groupcaps = def.groupcaps
+		},
+		groups = def.groups,
+		sound = {breaks = "default_tool_breaks"},
+	})
+	-- Register its recipe
+	if def.recipe then
+		minetest.register_craft({
+			output = name:sub(2),
+			recipe = def.recipe
+		})
+
+	elseif def.material then
+		minetest.register_craft({
+			output = name:sub(2),
+			recipe = {
+				{def.material, "", ""},
+				{"", "", def.material},
+				{"group:stick", "", ""}
+			}
+		})
+	end
+end
+
 -- Seed placement
 farming.place_seed = function(itemstack, placer, pointed_thing, plantname)
 	local pt = pointed_thing
