@@ -1,7 +1,7 @@
-
 -- Wear out hoes, place soil
 -- TODO Ignore group:flower
 farming.registered_plants = {}
+farming.registered_sickles = {}
 
 function farming.dirt_on_dig(pos, node, digger)
 	-- check protection 
@@ -309,10 +309,6 @@ end
 
 -- Register new sickles
 farming.register_sickle = function(name, def)
-	-- Check for : prefix (register new hoes in your mod's namespace)
-	if name:sub(1,1) ~= ":" then
-		name = ":" .. name
-	end
 
 	-- Check def table
 	if def.description == nil then
@@ -335,6 +331,7 @@ farming.register_sickle = function(name, def)
 		},
 		groups = def.groups,
 		sound = {breaks = "default_tool_breaks"},
+		sapling_chance = def.sapling_chance
 	})
 	-- Register its recipe
 	if def.recipe then
@@ -353,6 +350,43 @@ farming.register_sickle = function(name, def)
 			}
 		})
 	end
+
+	farming.registered_sickles[name] = def
+end
+
+farming.override_leaves = function(leaves_name, sapling_name)
+	local drop_table = { }
+
+	-- drop chance for saplings
+	for sickle_name, sickle_def in pairs(farming.registered_sickles) do
+		table.insert(drop_table, {
+			tools = { sickle_name },
+			rarity = sickle_def.sapling_chance,
+			items = {sapling_name}
+		})
+	end
+
+	local sickles = {}
+	for k,v in pairs(farming.registered_sickles) do
+		table.insert(sickles, k)
+	end
+
+	-- add a chance of 1 to drop a leave with a sickle
+	table.insert(drop_table, { tools = sickles, items = {leaves_name} })
+
+	local drop = {
+		max_items = 1,
+		items = drop_table
+	}
+	minetest.log("drop_table for '"..leaves_name.."': "..minetest.serialize(drop))
+
+
+	minetest.override_item(leaves_name, {
+		drop = {
+			max_items = 1,
+			items = drop_table
+		} 
+	})
 end
 
 -- Seed placement
