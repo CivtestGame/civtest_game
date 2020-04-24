@@ -21,7 +21,7 @@ farming.register_plant("farming:wheat", {
 	inventory_image = "farming_wheat_seed.png",
 	steps = 8,
 	fertility = {"grassland", "desert"},
-	groups = {food_wheat = 1, flammable = 4, spoils=7},
+	groups = {food_wheat = 1, food_grain = 1, flammable = 4, spoils=7},
 	place_param2 = 3,
 	custom_growth = {optimum_heat = 60, heat_scaling = "exponential", heat_a = 2.1, heat_b = 1.2, heat_base_speed = 5000, optimum_humidity = 46, humidity_scaling = "exponential", humidity_a = 1.5, humidity_b = 1.5, humidity_base_speed = 2500, variance = 1250},
 })
@@ -183,7 +183,7 @@ farming.register_plant("farming:rice", {
 	inventory_image = "farming_rice_seed.png",
 	steps = 4,
 	fertility = {"grassland","desert"},
-	groups = {food_rice = 1, flammable = 4},
+	groups = {food_rice = 1, food_grain = 1, flammable = 4},
 	place_param2 = 3,
 	custom_growth = {optimum_heat = 65, heat_scaling = "exponential", heat_a = 1.9, heat_b = 2.0, heat_base_speed = 3000, optimum_humidity = 73, humidity_scaling = "exponential", humidity_a = 1.5, humidity_b = 1.5, humidity_base_speed = 3000, variance = 1250},
 })
@@ -335,7 +335,7 @@ farming.register_plant("farming:sorghum", {
 	inventory_image = "farming_sorghum_seed.png",
 	steps = 6,
 	fertility = {"grassland", "desert"},
-	groups = {flammable = 4, spoils=14},
+	groups = {flammable = 4, food_grain = 1, spoils=14},
 	place_param2 = 3,
 	custom_growth = {optimum_heat = 75, heat_scaling = "exponential", heat_a = 1.6, heat_b = 1.6, heat_base_speed = 7500, optimum_humidity = 35, humidity_scaling = "exponential", humidity_a = 1.5, humidity_b = 1.5, humidity_base_speed = 7500, variance = 2500},
 })
@@ -375,7 +375,7 @@ farming.register_plant("farming:rye", {
 	inventory_image = "farming_rye_seed.png",
 	steps = 8,
 	fertility = {"grassland"},
-	groups = {food_wheat = 1, flammable = 4, spoils=7},
+	groups = {food_wheat = 1, food_grain = 1, flammable = 4, spoils=7},
 	place_param2 = 3,
 	custom_growth = {optimum_heat = 37, heat_scaling = "exponential", heat_a = 1.7, heat_b = 1.7, heat_base_speed = 7500, optimum_humidity = 54, humidity_scaling = "exponential", humidity_a = 1.6, humidity_b = 1.6, humidity_base_speed = 5000, variance = 2500},
 })
