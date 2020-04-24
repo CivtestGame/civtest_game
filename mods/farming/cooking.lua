@@ -78,9 +78,17 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "shapeless",
 	output = "farming:seed_oil",
-	recipe = {"farming:hand_press", "farming:seed_canola", "farming:seed_canola", "farming:seed_canola", "farming:seed_canola"},
+	recipe = {"farming:hand_press", "farming:seed_canola", "farming:seed_canola", "farming:seed_canola"},
     replacements = {{"farming:hand_press", "farming:hand_press"}},
 })
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:seed_oil",
+	recipe = {"farming:hand_press", "group:seed", "group:seed", "group:seed", "group:seed", "group:seed", "group:seed"},
+    replacements = {{"farming:hand_press", "farming:hand_press"}},
+})
+
 
 minetest.register_craft({
 	type = "shapeless",
@@ -185,6 +193,60 @@ minetest.register_craft({
 	replacements = {{"farming:cooking_pot", "farming:cooking_pot"}}
 })
 
+minetest.register_craftitem("farming:bread_corn", {
+	description = "Cornbread",
+	inventory_image = "farming_bread_alt.png",
+	groups = {food_bread = 1},
+	on_use = minetest.item_eat(4),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:bread_corn",
+	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:corn"},
+	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"bucket:bucket_water", "bucket:bucket_empty"}}
+})
+
+minetest.register_craftitem("farming:bread_sorghum", {
+	description = "Sorghum Bread",
+	inventory_image = "farming_bread_alt.png",
+	groups = {food_bread = 1},
+	on_use = minetest.item_eat(4),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:bread_sorghum",
+	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:sorghum"},
+	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"bucket:bucket_water", "bucket:bucket_empty"}}
+})
+
+minetest.register_craftitem("farming:soup", {
+	description = "Vegetable Soup",
+	inventory_image = "farming_soup.png",
+	on_use = minetest.item_eat(5),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:soup",
+	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:potato", "group:food_grain", "group:food_salt"},
+	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"bucket:bucket_water", "bucket:bucket_empty"}}
+})
+
+minetest.register_craftitem("farming:soup_hearty", {
+	description = "Hearty Soup",
+	inventory_image = "farming_soup.png",
+	on_use = minetest.item_eat(8),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:soup_hearty",
+	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:potato", "group:food_grain", "group:food_cooked_meat", "group:food_salt"},
+	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"bucket:bucket_water", "bucket:bucket_empty"}}
+})
+
 minetest.register_craftitem("farming:noodles", {
 	description = "Noodles",
 	inventory_image = "farming_noodles.png",
@@ -266,6 +328,19 @@ minetest.register_craft({
 	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
+minetest.register_craftitem("farming:sandwich_veg", {
+	description = "Veggie Sandwich",
+	inventory_image = "farming_burger.png",
+	on_use = minetest.item_eat(4.5),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:sandwich_veg",
+	recipe = {"farming:kitchen_knife", "farming:tomato", "farming:lettuce", "group:food_bread"},
+	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
+})
+
 minetest.register_craftitem("farming:burger", {
 	description = "Burger",
 	inventory_image = "farming_burger.png",
@@ -275,7 +350,7 @@ minetest.register_craftitem("farming:burger", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "farming:burger",
-	recipe = {"farming:kitchen_knife", "group:food_cooked_meat", "farming:tomato", "farming:lettuce", "farming:bread"},
+	recipe = {"farming:kitchen_knife", "group:food_cooked_meat", "farming:tomato", "farming:lettuce", "group:food_bread"},
 	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
@@ -289,6 +364,19 @@ minetest.register_craft({
 	type = "shapeless",
 	output = "farming:burger_fries",
 	recipe = {"farming:burger", "farming:fries", "farming:fries"}
+})
+
+minetest.register_craftitem("farming:blt", {
+	description = "BLT",
+	inventory_image = "farming_burger.png",
+	on_use = minetest.item_eat(6),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:blt",
+	recipe = {"farming:kitchen_knife", "default:bacon", "farming:tomato", "farming:lettuce", "group:food_bread"},
+	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
 minetest.register_craftitem("farming:pie_luxurious", {
@@ -322,6 +410,19 @@ minetest.register_craft({
 	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
+minetest.register_craftitem("farming:grain_salad", {
+	description = "Grain Salad",
+	inventory_image = "farming_garden_salad.png",
+	on_use = minetest.item_eat(5.5),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:grain_salad",
+	recipe = {"farming:cooking_pot", "group:food_salad", "group:food_grain", "group:food_grain"},
+	replacements = {{"farming:cooking_pot", "farming:cooking_pot"}}
+})
+
 minetest.register_craftitem("farming:ploughmans_simple", {
 	description = "Simple Ploughman's Lunch",
 	inventory_image = "farming_ploughmans.png",
@@ -331,7 +432,7 @@ minetest.register_craftitem("farming:ploughmans_simple", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "farming:ploughmans_simple",
-	recipe = {"farming:kitchen_knife", "group:food_salad", "group:food_salad", "farming:bread"},
+	recipe = {"farming:kitchen_knife", "group:food_salad", "group:food_salad", "group:food_bread"},
 	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
@@ -348,6 +449,19 @@ minetest.register_craft({
 	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
+minetest.register_craftitem("farming:risotto", {
+	description = "Mushroom Risotto",
+	inventory_image = "farming_cooked_rice.png",
+	on_use = minetest.item_eat(7),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "farming:risotto",
+	recipe = {"farming:cooking_pot", "flowers:mushroom_brown", "farming:rice", "farming:rice"},
+	replacements = {{"farming:cooking_pot", "farming:cooking_pot"}}
+})
+
 minetest.register_craftitem("farming:ploughmans", {
 	description = "Ploughman's Lunch",
 	inventory_image = "farming_ploughmans.png",
@@ -357,7 +471,7 @@ minetest.register_craftitem("farming:ploughmans", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "farming:ploughmans",
-	recipe = {"farming:kitchen_knife", "group:food_salad", "group:food_salad", "farming:bread", "group:food_smoked_meat"},
+	recipe = {"farming:kitchen_knife", "group:food_salad", "group:food_salad", "group:food_bread", "group:food_smoked_meat"},
 	replacements = {{"farming:kitchen_knife", "farming:kitchen_knife"}}
 })
 
