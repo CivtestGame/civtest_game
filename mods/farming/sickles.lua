@@ -5,7 +5,6 @@ farming.register_sickle("farming:sickle_wood", {
 	groupcaps = {
 		leaves = { times = {[1] = 20.00}, uses = 10, maxlevel = 1}
 	},
-	max_uses = 30,
 	material = "group:wood",
 	sapling_chance = 5
 })
@@ -17,8 +16,7 @@ farming.register_sickle("farming:sickle_stone", {
 	groupcaps = {
 		leaves = { times = {[1] = 8.00}, uses = 30, maxlevel = 1}
 	},
-	max_uses = 30,
-	material = "group:wood",
+	material = "group:stone",
 	sapling_chance = 4
 })
 
@@ -29,8 +27,7 @@ farming.register_sickle("farming:sickle_bronze", {
 	groupcaps = {
 		leaves = { times = {[1] = 2.00}, uses = 200, maxlevel = 1}
 	},
-	max_uses = 30,
-	material = "group:wood",
+	material = "default:bronze_ingot",
 	sapling_chance = 3
 })
 
@@ -41,8 +38,7 @@ farming.register_sickle("farming:sickle_steel", {
 	groupcaps = {
 		leaves = { times = {[1] = 1.00}, uses = 1000, maxlevel = 1}
 	},
-	max_uses = 30,
-	material = "group:wood",
+	material = "default:steel_ingot",
 	sapling_chance = 2
 })
 

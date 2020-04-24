@@ -336,17 +336,17 @@ farming.register_sickle = function(name, def)
 	-- Register its recipe
 	if def.recipe then
 		minetest.register_craft({
-			output = name:sub(2),
+			output = name,
 			recipe = def.recipe
 		})
 
 	elseif def.material then
 		minetest.register_craft({
-			output = name:sub(2),
+			output = name,
 			recipe = {
-				{def.material, "", ""},
+				{"", def.material, ""},
 				{"", "", def.material},
-				{"group:stick", "", ""}
+				{"", "group:stick", ""}
 			}
 		})
 	end
