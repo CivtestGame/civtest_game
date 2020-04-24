@@ -2482,7 +2482,7 @@ minetest.register_node("default:glass", {
 	paramtype2 = "glasslikeliquidlevel",
 	sunlight_propagates = true,
 	is_ground_content = false,
-	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3, glass = 1},
 	sounds = default.node_sound_glass_defaults(),
 	node_dig_prediction = "solid_air",
 })
@@ -2496,7 +2496,7 @@ minetest.register_node("default:obsidian_glass", {
 	is_ground_content = false,
 	sunlight_propagates = true,
 	sounds = default.node_sound_glass_defaults(),
-	groups = {cracky = 3, not_cuttable = 1},
+	groups = {cracky = 3, not_cuttable = 1, glass = 1},
 	node_dig_prediction = "solid_air",
 })
 

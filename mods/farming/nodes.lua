@@ -283,7 +283,7 @@ local function blueberry_adjust()
 
    minetest.registered_nodes["default:blueberry_bush_leaves"]
       .on_timer = function(pos, elapsed)
-         local biome = minetest.get_biome_data(pos)
+         local biome = farming.get_biome_data(pos)
          if biome.heat < 40 or biome.heat > 60 then
             return
          end
@@ -299,7 +299,7 @@ end
 local function apple_adjust()
    minetest.registered_nodes["default:apple"]
       .after_dig_node = function(pos, oldnode, oldmetadata, digger)
-         local biome = minetest.get_biome_data(pos)
+         local biome = farming.get_biome_data(pos)
          if oldnode.param2 == 0
             and biome.heat > 40
             and biome.heat < 60

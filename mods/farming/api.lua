@@ -3,6 +3,21 @@
 farming.registered_plants = {}
 farming.registered_sickles = {}
 
+farming.greenhouse_effect = 1.2
+
+function farming.get_biome_data(pos)
+	local biome = minetest.get_biome_data(pos)
+	-- test for greenhouse effect
+	for i=1,3 do
+	  local node = minetest.get_node({x = pos.x, y = pos.y + i, z = pos.z})
+	  if minetest.get_node_group(node.name, "glass") ~= 0 then
+	  	biome.heat = biome.heat * farming.greenhouse_effect
+	  	break
+	  end
+	end
+	return biome
+end
+
 function farming.dirt_on_dig(pos, node, digger)
 	-- check protection 
 	if minetest.is_protected(pos, digger) then
@@ -67,7 +82,8 @@ function farming.compute_growth_interval(pos, growth, again)
    end
 
    if growth then
-      local biome = minetest.get_biome_data(pos)
+      local biome = farming.get_biome_data(pos)
+
       local grow_time = -1
 
       if growth.heat_scaling then
@@ -152,14 +168,13 @@ function farming.start_growth_cycle(pos, node_name)
 end
 
 farming.describe_biome = function(player_name, pos)
-      local biome_data = minetest.get_biome_data(pos)
+      local biome_data = farming.get_biome_data(pos)
 
       local biome_name = minetest.get_biome_name(biome_data.biome)
+	  local msg = string.format("Biome: %s, temperature: %.2f, humidity %.2f", biome_name, biome_data.heat, biome_data.humidity)
       minetest.chat_send_player(
          player_name,
-         "This biome is a " .. biome_name .. ". "
-            .. "The heat here is " .. minetest.get_heat(pos)
-            .. " and the humidity is " .. minetest.get_humidity(pos)
+		 msg
       )
 end
 
