@@ -168,11 +168,11 @@ minetest.register_craftitem("default:book_written", {
 	on_use = book_on_use,
 })
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "default:book_written",
-	recipe = {"default:book", "default:book_written"}
-})
+--minetest.register_craft({
+--	type = "shapeless",
+--	output = "default:book_written",
+--	recipe = {"default:book", "default:book_written"}
+--})
 
 minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
 	if itemstack:get_name() ~= "default:book_written" then
