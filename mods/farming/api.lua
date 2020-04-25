@@ -1,73 +1,75 @@
-
 -- Wear out hoes, place soil
 -- TODO Ignore group:flower
 farming.registered_plants = {}
+farming.registered_sickles = {}
 
-farming.hoe_on_place = function(itemstack, user, pointed_thing, uses)
-	local pt = pointed_thing
-	-- check if pointing at a node
-	if not pt then
-		return
-	end
-	if pt.type ~= "node" then
-		return
-	end
+farming.greenhouse_effect = 1.2
 
-	local under = minetest.get_node(pt.under)
-	local p = {x=pt.under.x, y=pt.under.y+1, z=pt.under.z}
-	local above = minetest.get_node(p)
-
-	-- return if any of the nodes is not registered
-	if not minetest.registered_nodes[under.name] then
-		return
+function farming.get_biome_data(pos)
+	local biome = minetest.get_biome_data(pos)
+	-- test for greenhouse effect
+	for i=1,3 do
+	  local node = minetest.get_node({x = pos.x, y = pos.y + i, z = pos.z})
+	  if minetest.get_node_group(node.name, "glass") ~= 0 then
+	  	biome.heat = biome.heat * farming.greenhouse_effect
+	  	break
+	  end
 	end
-	if not minetest.registered_nodes[above.name] then
-		return
-	end
+	return biome
+end
 
-	-- check if the node above the pointed thing is air
-	if above.name ~= "air" then
-		return
+function farming.dirt_on_dig(pos, node, digger)
+	-- check protection 
+	if minetest.is_protected(pos, digger) then
+		minetest.record_protection_violation(pt.under, digger:get_player_name())
 	end
 
-	-- check if pointing at soil
-	if minetest.get_item_group(under.name, "soil") ~= 1 then
-		return
+	local regN = minetest.registered_nodes
+	local regT = minetest.registered_tools
+
+	-- check if digger is non-nil
+	if digger == nil then
+		return minetest.node_dig(pos, node, digger)
+	end
+
+	-- check if using a hoe
+	local wielded_item = digger:get_wielded_item()
+
+	if wielded_item == nil or wielded_item:get_name() == ""  -- Yeah, I know
+	   or regT[wielded_item:get_name()] == nil               -- This is ugly
+	   or regT[wielded_item:get_name()].groups["hoe"] == nil -- But life is ugly, man
+	   then
+		return minetest.node_dig(pos, node, digger)
 	end
 
 	-- check if (wet) soil defined
 	local regN = minetest.registered_nodes
-	if regN[under.name].soil == nil or regN[under.name].soil.wet == nil or regN[under.name].soil.dry == nil then
+	if regN[node.name].soil == nil or regN[node.name].soil.wet == nil or regN[node.name].soil.dry == nil then
 		return
 	end
 
-	if minetest.is_protected(pt.under, user:get_player_name()) then
-		minetest.record_protection_violation(pt.under, user:get_player_name())
-		return
-	end
-	if minetest.is_protected(pt.above, user:get_player_name()) then
-		minetest.record_protection_violation(pt.above, user:get_player_name())
-		return
-	end
-
-	-- turn the node into soil and play sound
-	minetest.set_node(pt.under, {name = regN[under.name].soil.dry})
-	minetest.sound_play("default_dig_crumbly", {
-		pos = pt.under,
-		gain = 0.5,
-	})
+	-- replace 
+	minetest.set_node(pos, {name = regN[node.name].soil.dry})
 
 	if not (creative and creative.is_enabled_for
-			and creative.is_enabled_for(user:get_player_name())) then
+			and creative.is_enabled_for(digger:get_player_name())) then
 		-- wear tool
-		local wdef = itemstack:get_definition()
-		itemstack:add_wear(65535/(uses-1))
+		local wdef = wielded_item:get_definition()
+		wielded_item:add_wear(65535/(wdef.max_uses-1))
+		digger:set_wielded_item(wielded_item)
+
 		-- tool break sound
-		if itemstack:get_count() == 0 and wdef.sound and wdef.sound.breaks then
-			minetest.sound_play(wdef.sound.breaks, {pos = pt.above, gain = 0.5})
+		if wielded_item:get_count() == 0 and wdef.sound and wdef.sound.breaks then
+			minetest.sound_play(wdef.sound.breaks, {pos = pos, gain = 0.5})
+			digger:set_wielded_item(nil)
 		end
 	end
-	return itemstack
+
+	-- play sound 
+	minetest.sound_play("default_dig_crumbly", {
+		pos = pos,
+		gain = 0.5,
+	})
 end
 
 function farming.compute_growth_interval(pos, growth, again)
@@ -80,7 +82,8 @@ function farming.compute_growth_interval(pos, growth, again)
    end
 
    if growth then
-      local biome = minetest.get_biome_data(pos)
+      local biome = farming.get_biome_data(pos)
+
       local grow_time = -1
 
       if growth.heat_scaling then
@@ -164,7 +167,18 @@ function farming.start_growth_cycle(pos, node_name)
    meta:set_string("last_grow", time)
 end
 
-farming.hoe_on_use = function(itemstack, user, pointed_thing)
+farming.describe_biome = function(player_name, pos)
+      local biome_data = farming.get_biome_data(pos)
+
+      local biome_name = minetest.get_biome_name(biome_data.biome)
+	  local msg = string.format("Biome: %s, temperature: %.2f, humidity %.2f", biome_name, biome_data.heat, biome_data.humidity)
+      minetest.chat_send_player(
+         player_name,
+		 msg
+      )
+end
+
+farming.hoe_on_place = function(itemstack, user, pointed_thing)
 
    if pointed_thing
       and pointed_thing.type == "nothing"
@@ -174,15 +188,7 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
          return
       end
       local pos = user:get_pos()
-      local biome_data = minetest.get_biome_data(pos)
-
-      local biome_name = minetest.get_biome_name(biome_data.biome)
-      minetest.chat_send_player(
-         name,
-         "This biome is a " .. biome_name .. ". "
-            .. "The heat here is " .. minetest.get_heat(pos)
-            .. " and the humidity is " .. minetest.get_humidity(pos)
-      )
+	  farming.describe_biome(name, pos)
    end
 
    if pointed_thing
@@ -194,6 +200,7 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
       local plant = farming.plant_from_node_name(node.name)
 
       if (not plant) or (not plant.custom_growth) then
+	  	 farming.describe_biome(user:get_player_name(), pos)
          return
       end
 
@@ -254,15 +261,17 @@ farming.hoe_on_use = function(itemstack, user, pointed_thing)
 end
 
 farming.hoe_on_secondary_use = function(itemstack,user,pointed_thing)
-
+	farming.describe_biome(user:get_player_name(), user:get_pos())
 end
 
 -- Register new hoes
 farming.register_hoe = function(name, def)
+
 	-- Check for : prefix (register new hoes in your mod's namespace)
 	if name:sub(1,1) ~= ":" then
 		name = ":" .. name
 	end
+
 	-- Check def table
 	if def.description == nil then
 		def.description = "Hoe"
@@ -275,17 +284,23 @@ farming.register_hoe = function(name, def)
 	end
 	-- Register the tool
 	minetest.register_tool(name, {
+		max_uses = def.max_uses,
 		description = def.description,
 		inventory_image = def.inventory_image,
-		on_use = function(itemstack, user, pointed_thing)
-			return farming.hoe_on_use(itemstack, user, pointed_thing, def.max_uses)
-		end,
-                on_place = function(itemstack, user, pointed_thing)
-                      return farming.hoe_on_place(itemstack, user, pointed_thing, def.max_uses)
-                end,
+
+        on_place = function(itemstack, user, pointed_thing)
+			return farming.hoe_on_place(itemstack, user, pointed_thing, def.max_uses)
+        end,
+				
 		on_secondary_use = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_secondary_use(itemstack,user,pointed_thing)
 		end,
+
+		tool_capabilities = {
+			full_punch_interval = default.PUNCH_INTERVAL,
+			max_drop_level = 0,
+			groupcaps = def.groupcaps
+		},
 		groups = def.groups,
 		sound = {breaks = "default_tool_breaks"},
 	})
@@ -305,6 +320,88 @@ farming.register_hoe = function(name, def)
 			}
 		})
 	end
+end
+
+-- Register new sickles
+farming.register_sickle = function(name, def)
+
+	-- Check def table
+	if def.description == nil then
+		def.description = "Sickle"
+	end
+
+	if def.inventory_image == nil then
+		def.inventory_image = "unknown_item.png"
+	end
+
+	-- Register the tool
+	minetest.register_tool(name, {
+		description = def.description,
+		inventory_image = def.inventory_image,
+
+		tool_capabilities = {
+			full_punch_interval = default.PUNCH_INTERVAL,
+			max_drop_level = 0,
+			groupcaps = def.groupcaps
+		},
+		groups = def.groups,
+		sound = {breaks = "default_tool_breaks"},
+		sapling_chance = def.sapling_chance
+	})
+	-- Register its recipe
+	if def.recipe then
+		minetest.register_craft({
+			output = name,
+			recipe = def.recipe
+		})
+
+	elseif def.material then
+		minetest.register_craft({
+			output = name,
+			recipe = {
+				{"", def.material, ""},
+				{"", "", def.material},
+				{"", "group:stick", ""}
+			}
+		})
+	end
+
+	farming.registered_sickles[name] = def
+end
+
+farming.override_leaves = function(leaves_name, sapling_name)
+	local drop_table = { }
+
+	-- drop chance for saplings
+	for sickle_name, sickle_def in pairs(farming.registered_sickles) do
+		table.insert(drop_table, {
+			tools = { sickle_name },
+			rarity = sickle_def.sapling_chance,
+			items = {sapling_name}
+		})
+	end
+
+	local sickles = {}
+	for k,v in pairs(farming.registered_sickles) do
+		table.insert(sickles, k)
+	end
+
+	-- add a chance of 1 to drop a leave with a sickle
+	table.insert(drop_table, { tools = sickles, items = {leaves_name} })
+
+	local drop = {
+		max_items = 1,
+		items = drop_table
+	}
+	minetest.log("drop_table for '"..leaves_name.."': "..minetest.serialize(drop))
+
+
+	minetest.override_item(leaves_name, {
+		drop = {
+			max_items = 1,
+			items = drop_table
+		} 
+	})
 end
 
 -- Seed placement
