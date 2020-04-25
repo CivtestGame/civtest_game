@@ -457,7 +457,7 @@ minetest.register_node("default:marble_block", {
 minetest.register_node("default:dirt", {
 	description = "Dirt",
 	tiles = {"default_dirt.png"},
-	groups = {crumbly = 2, soil = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 1},
 	sounds = default.node_sound_dirt_defaults(),
 })
 
@@ -466,7 +466,7 @@ minetest.register_node("default:dirt_with_grass", {
 	tiles = {"default_grass.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 1, spreading_dirt_type = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -478,7 +478,7 @@ minetest.register_node("default:dirt_with_grass_footsteps", {
 	tiles = {"default_grass.png^default_footprint.png", "default_dirt.png",
 		{name = "default_dirt.png^default_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 2, soil = 1, not_in_creative_inventory = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 1, not_in_creative_inventory = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
@@ -491,7 +491,7 @@ minetest.register_node("default:dirt_with_dry_grass", {
 		"default_dirt.png",
 		{name = "default_dirt.png^default_dry_grass_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 1, spreading_dirt_type = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -503,7 +503,7 @@ minetest.register_node("default:dirt_with_snow", {
 	tiles = {"default_snow.png", "default_dirt.png",
 		{name = "default_dirt.png^default_snow_side.png",
 			tileable_vertical = false}},
-	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1, snowy = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 1, spreading_dirt_type = 1, snowy = 1},
 	drop = 'default:dirt',
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.2},
@@ -518,7 +518,7 @@ minetest.register_node("default:dirt_with_rainforest_litter", {
 		{name = "default_dirt.png^default_rainforest_litter_side.png",
 			tileable_vertical = false}
 	},
-	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 1, spreading_dirt_type = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -533,7 +533,7 @@ minetest.register_node("default:dirt_with_coniferous_litter", {
 		{name = "default_dirt.png^default_coniferous_litter_side.png",
 			tileable_vertical = false}
 	},
-	groups = {crumbly = 2, soil = 1, spreading_dirt_type = 1},
+	groups = {crumbly = 2, soil = 1, tillable = 2, spreading_dirt_type = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.4},
@@ -596,7 +596,7 @@ minetest.register_node("default:sand", {
 minetest.register_node("default:desert_sand", {
 	description = "Desert Sand",
 	tiles = {"default_desert_sand.png"},
-	groups = {crumbly = 2, falling_node = 1, sand = 1},
+	groups = {crumbly = 2, falling_node = 1, sand = 1, tillable = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
@@ -2482,7 +2482,7 @@ minetest.register_node("default:glass", {
 	paramtype2 = "glasslikeliquidlevel",
 	sunlight_propagates = true,
 	is_ground_content = false,
-	groups = {cracky = 3, oddly_breakable_by_hand = 3},
+	groups = {cracky = 3, oddly_breakable_by_hand = 3, glass = 1},
 	sounds = default.node_sound_glass_defaults(),
 	node_dig_prediction = "solid_air",
 })
@@ -2496,7 +2496,7 @@ minetest.register_node("default:obsidian_glass", {
 	is_ground_content = false,
 	sunlight_propagates = true,
 	sounds = default.node_sound_glass_defaults(),
-	groups = {cracky = 3, not_cuttable = 1},
+	groups = {cracky = 3, not_cuttable = 1, glass = 1},
 	node_dig_prediction = "solid_air",
 })
 

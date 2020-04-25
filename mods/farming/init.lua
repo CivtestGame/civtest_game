@@ -10,6 +10,7 @@ farming.mod = "civfarm"
 dofile(farming.path .. "/api.lua")
 dofile(farming.path .. "/nodes.lua")
 dofile(farming.path .. "/hoes.lua")
+dofile(farming.path .. "/sickles.lua")
 dofile(farming.path .. "/trees.lua")
 
 
