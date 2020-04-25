@@ -92,8 +92,8 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "farming:salt",
-	recipe = {"bucket:bucket_water", "farming:cooking_pot"},
+	output = "farming:salt 5",
+	recipe = {"bucket:bucket_water", "bucket:bucket_water", "farming:cooking_pot"},
     replacements = {{"bucket:bucket_water", "bucket:bucket_empty"},{"farming:cooking_pot", "farming:cooking_pot"}},
 })
 
@@ -155,8 +155,8 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "shapeless",
 	output = "farming:soy_sauce",
-	recipe = {"bucket:bucket_water", "farming:cooking_pot", "farming:soybean", "farming:salt"},
-    replacements = {{"bucket:bucket_water", "bucket:bucket_empty"},{"farming:cooking_pot", "farming:cooking_pot"}}
+	recipe = {"farming:cooking_pot", "farming:soybean", "farming:salt"},
+    replacements = {{"farming:cooking_pot", "farming:cooking_pot"}}
 })
 
 minetest.register_craft({
@@ -168,8 +168,8 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "farming:seitan",
-	recipe = {"bucket:bucket_water", "farming:cooking_pot", "farming:wheat", "farming:wheat", "farming:wheat", "farming:wheat"},
+	output = "farming:seitan 2",
+	recipe = {"bucket:bucket_water", "farming:cooking_pot", "farming:wheat", "farming:wheat", "farming:wheat", "farming:wheat", "farming:wheat", "farming:wheat"},
     replacements = {{"bucket:bucket_water", "bucket:bucket_empty"},{"farming:cooking_pot", "farming:cooking_pot"}}
 })
 
@@ -202,8 +202,8 @@ minetest.register_craftitem("farming:bread_corn", {
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "farming:bread_corn",
-	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:corn"},
+	output = "farming:bread_corn 2",
+	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:corn", "farming:corn", "farming:corn", "farming:corn"},
 	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"bucket:bucket_water", "bucket:bucket_empty"}}
 })
 
@@ -216,8 +216,8 @@ minetest.register_craftitem("farming:bread_sorghum", {
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "farming:bread_sorghum",
-	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:sorghum"},
+	output = "farming:bread_sorghum 2",
+	recipe = {"farming:cooking_pot", "bucket:bucket_water", "farming:sorghum", "farming:sorghum", "farming:sorghum", "farming:sorghum"},
 	replacements = {{"farming:cooking_pot", "farming:cooking_pot"},{"bucket:bucket_water", "bucket:bucket_empty"}}
 })
 
