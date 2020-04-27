@@ -1233,6 +1233,21 @@ armor_materials_advanced = {
 
 for k, v in pairs(armor_materials_advanced) do
 	minetest.register_craft({
+		output = "3d_armor:helmet_"..k,
+		recipe = {
+			{v.."plate", v.."plate", v.."plate"},
+			{v.."plate", "", v.."plate"},
+			{"", "", ""},
+		},
+	})
+	minetest.register_craft({
+		output = "3d_armor:boots_"..k,
+		recipe = {
+			{v.."plate", "", v.."plate"},
+			{v.."plate", "", v.."plate"},
+		},
+	})
+	minetest.register_craft({
 		output = "3d_armor:chestplate_"..k.."_mail",
 		recipe = {
 			{v.."chain", "", v.."chain"},
