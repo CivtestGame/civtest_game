@@ -63,6 +63,10 @@ function sfinv.get_homepage_name(player)
 end
 
 function sfinv.get_formspec(player, context)
+	if not player then
+		return ""
+	end
+
 	-- Generate navigation tabs
 	local nav = {}
 	local nav_ids = {}
