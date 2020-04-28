@@ -44,10 +44,7 @@ function farming.dirt_after_dig(pos, node, oldmetadata, digger)
 	end
 
 	-- replace
-	minetest.set_node(pos, {name = regN[node.name].soil.dry})
-	-- keep metadata
-	minetest.get_meta(pos):from_table(oldmetadata)
-
+	minetest.swap_node(pos, {name = regN[node.name].soil.dry})
 end
 
 function farming.compute_growth_interval(pos, growth, again)
