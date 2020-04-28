@@ -21,7 +21,7 @@ end
 function farming.dirt_on_dig(pos, node, digger)
 	local digger_name = (digger and digger:get_player_name()) or ""
 	-- check protection
-	if minetest.is_protected(pos, digger) then
+	if minetest.is_protected(pos, digger_name) then
 		minetest.record_protection_violation(pt.under, digger_name)
 	end
 
@@ -66,7 +66,7 @@ function farming.dirt_on_dig(pos, node, digger)
 		end
 	end
 
-	-- play sound 
+	-- play sound
 	minetest.sound_play("default_dig_crumbly", {
 		pos = pos,
 		gain = 0.5,
@@ -292,7 +292,7 @@ farming.register_hoe = function(name, def)
         on_place = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_place(itemstack, user, pointed_thing, def.max_uses)
         end,
-				
+
 		on_secondary_use = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_secondary_use(itemstack,user,pointed_thing)
 		end,
@@ -401,7 +401,7 @@ farming.override_leaves = function(leaves_name, sapling_name)
 		drop = {
 			max_items = 1,
 			items = drop_table
-		} 
+		}
 	})
 end
 
