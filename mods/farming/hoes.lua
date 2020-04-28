@@ -21,7 +21,7 @@ farming.register_hoe(":farming:hoe_stone", {
 })
 
 farming.register_hoe(":farming:hoe_copper", {
-	description = "Bronze Hoe",
+	description = "Copper Hoe",
 	inventory_image = "farming_tool_copperhoe.png",
 	groups = { hoe = 1 },
 	groupcaps = {
@@ -32,7 +32,7 @@ farming.register_hoe(":farming:hoe_copper", {
 })
 
 farming.register_hoe(":farming:hoe_tin", {
-	description = "Bronze Hoe",
+	description = "Tin Hoe",
 	inventory_image = "farming_tool_tinhoe.png",
 	groups = { hoe = 1 },
 	groupcaps = {
@@ -55,7 +55,7 @@ farming.register_hoe(":farming:hoe_bronze", {
 })
 
 farming.register_hoe(":farming:hoe_iron", {
-	description = "Bronze Hoe",
+	description = "Iron Hoe",
 	inventory_image = "farming_tool_ironhoe.png",
 	groups = { hoe = 1 },
 	groupcaps = {
