@@ -19,9 +19,10 @@ function farming.get_biome_data(pos)
 end
 
 function farming.dirt_on_dig(pos, node, digger)
-	-- check protection 
+	local digger_name = (digger and digger:get_player_name()) or ""
+	-- check protection
 	if minetest.is_protected(pos, digger) then
-		minetest.record_protection_violation(pt.under, digger:get_player_name())
+		minetest.record_protection_violation(pt.under, digger_name)
 	end
 
 	local regN = minetest.registered_nodes
@@ -48,7 +49,7 @@ function farming.dirt_on_dig(pos, node, digger)
 		return
 	end
 
-	-- replace 
+	-- replace
 	minetest.set_node(pos, {name = regN[node.name].soil.dry})
 
 	if not (creative and creative.is_enabled_for
