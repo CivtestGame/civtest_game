@@ -29,7 +29,7 @@ farming.register_hoe(":farming:hoe_copper", {
 	},
 	max_uses = 160,
         material = "default:copper_ingot"
-}
+})
 
 farming.register_hoe(":farming:hoe_tin", {
 	description = "Bronze Hoe",
@@ -40,7 +40,7 @@ farming.register_hoe(":farming:hoe_tin", {
 	},
 	max_uses = 180,
         material = "default:tin_ingot"
-}
+})
 
 
 farming.register_hoe(":farming:hoe_bronze", {
