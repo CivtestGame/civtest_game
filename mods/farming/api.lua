@@ -43,10 +43,11 @@ function farming.dirt_after_dig(pos, node, oldmetadata, digger)
 		return
 	end
 
-	-- replace 
+	-- replace
 	minetest.set_node(pos, {name = regN[node.name].soil.dry})
 	-- keep metadata
 	minetest.get_meta(pos):from_table(oldmetadata)
+
 end
 
 function farming.compute_growth_interval(pos, growth, again)
@@ -268,7 +269,7 @@ farming.register_hoe = function(name, def)
         on_place = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_place(itemstack, user, pointed_thing, def.max_uses)
         end,
-				
+
 		on_secondary_use = function(itemstack, user, pointed_thing)
 			return farming.hoe_on_secondary_use(itemstack,user,pointed_thing)
 		end,
@@ -377,7 +378,7 @@ farming.override_leaves = function(leaves_name, sapling_name)
 		drop = {
 			max_items = 1,
 			items = drop_table
-		} 
+		}
 	})
 end
 

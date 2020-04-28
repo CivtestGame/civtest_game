@@ -20,6 +20,29 @@ farming.register_hoe(":farming:hoe_stone", {
 	material = "group:stone"
 })
 
+farming.register_hoe(":farming:hoe_copper", {
+	description = "Bronze Hoe",
+	inventory_image = "farming_tool_copperhoe.png",
+	groups = { hoe = 1 },
+	groupcaps = {
+		tillable = { times = {[1] = 1.50}, uses = 10, maxlevel = 1}
+	},
+	max_uses = 160,
+        material = "default:copper_ingot"
+})
+
+farming.register_hoe(":farming:hoe_tin", {
+	description = "Bronze Hoe",
+	inventory_image = "farming_tool_tinhoe.png",
+	groups = { hoe = 1 },
+	groupcaps = {
+		tillable = { times = {[1] = 1.50}, uses = 10, maxlevel = 1}
+	},
+	max_uses = 180,
+        material = "default:tin_ingot"
+})
+
+
 farming.register_hoe(":farming:hoe_bronze", {
 	description = "Bronze Hoe",
 	inventory_image = "farming_tool_bronzehoe.png",
@@ -29,6 +52,17 @@ farming.register_hoe(":farming:hoe_bronze", {
 		field = { maxlevel = 0}
 	},
 	material = "default:bronze_ingot"
+})
+
+farming.register_hoe(":farming:hoe_iron", {
+	description = "Bronze Hoe",
+	inventory_image = "farming_tool_ironhoe.png",
+	groups = { hoe = 1 },
+	groupcaps = {
+		tillable = { times = {[1] = 0.80}, uses = 10, maxlevel = 1}
+	},
+	max_uses = 300,
+        material = "default:iron_ingot"
 })
 
 farming.register_hoe(":farming:hoe_steel", {
