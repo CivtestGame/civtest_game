@@ -4,7 +4,7 @@ minetest.override_item("default:dirt", {
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 
 minetest.override_item("default:dirt_with_grass", {
@@ -13,7 +13,7 @@ minetest.override_item("default:dirt_with_grass", {
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 
 minetest.override_item("default:dirt_with_dry_grass", {
@@ -22,7 +22,7 @@ minetest.override_item("default:dirt_with_dry_grass", {
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 
 minetest.override_item("default:dirt_with_rainforest_litter", {
@@ -31,7 +31,7 @@ minetest.override_item("default:dirt_with_rainforest_litter", {
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 
 minetest.override_item("default:dirt_with_coniferous_litter", {
@@ -40,7 +40,7 @@ minetest.override_item("default:dirt_with_coniferous_litter", {
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 
 minetest.override_item("default:dirt_with_snow", {
@@ -49,7 +49,7 @@ minetest.override_item("default:dirt_with_snow", {
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 
 minetest.register_node("farming:soil", {
@@ -85,7 +85,7 @@ minetest.override_item("default:desert_sand", {
 		dry = "farming:desert_sand_soil",
 		wet = "farming:desert_sand_soil_wet"
 	},
-	on_dig = farming.dirt_on_dig
+	after_dig_node = farming.dirt_after_dig
 })
 minetest.register_node("farming:desert_sand_soil", {
 	description = "Desert Sand Soil",
