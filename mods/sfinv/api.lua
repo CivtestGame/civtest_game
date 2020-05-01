@@ -125,6 +125,10 @@ function sfinv.set_context(player, context)
 end
 
 function sfinv.set_player_inventory_formspec(player, context)
+	if not player then
+		return
+	end
+
 	local fs = sfinv.get_formspec(player,
 			context or sfinv.get_or_create_context(player))
 	player:set_inventory_formspec(fs)
