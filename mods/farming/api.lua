@@ -23,6 +23,7 @@ function farming.dirt_on_dig(pos, node, digger)
 	-- check protection
 	if minetest.is_protected(pos, digger_name) then
 		minetest.record_protection_violation(pt.under, digger_name)
+		return false
 	end
 
 	local regN = minetest.registered_nodes
