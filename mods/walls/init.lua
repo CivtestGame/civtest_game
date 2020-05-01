@@ -65,3 +65,17 @@ walls.register("walls:mossycobble", S("Mossy Cobblestone Wall"), {"default_mossy
 walls.register("walls:desertcobble", S("Desert Cobblestone Wall"), {"default_desert_cobble.png"},
 		"default:desert_cobble", default.node_sound_stone_defaults())
 
+walls.register("walls:stonebrick", S("Stone Brick Wall"), {"default_stone_brick.png"},
+		"default:stonebrick", default.node_sound_stone_defaults())
+
+walls.register("walls:sandstone", S("Sandstone Wall"), {"default_sandstone.png"},
+		"default:sandstone", default.node_sound_stone_defaults())
+		
+walls.register("walls:desert_sandstone", S("Desert Sandstone Wall"), {"default_desert_sandstone.png"},
+		"default:desert_sandstone", default.node_sound_stone_defaults())
+		
+walls.register("walls:silver_sandstone", S("Silver Sandstone Wall"), {"default_silver_sandstone.png"},
+		"default:silver_sandstone", default.node_sound_stone_defaults())
+		
+walls.register("walls:obsidianbrick", S("Obsidian Brick Wall"), {"default_obsidian_brick.png"},
+		"default:obsidianbrick", default.node_sound_stone_defaults())
