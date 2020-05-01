@@ -134,13 +134,6 @@ local transform = {
 	},
 }
 
-local has_citadella = minetest.get_modpath("citadella")
-local has_playermanager = minetest.get_modpath("playermanager")
-
-if has_citadella and has_playermanager then
-   minetest.log("Door integration with Citadella/PlayerManager enabled.")
-end
-
 local function has_locked_door_privilege(pos, player)
    local pname = player:get_player_name()
    local reinf = ct.get_reinforcement(pos)
@@ -192,15 +185,13 @@ function doors.door_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not default.can_interact_with_node(clicker, pos) then
-		return false
-	end
+        if not clicker then
+           return
+        end
 
-        if has_citadella and has_playermanager then
-           local can_open = has_locked_door_privilege(pos, clicker)
-           if not can_open then
-              return false
-           end
+        local clicker_name = clicker:get_player_name()
+        if minetest.is_protected(pos, clicker_name) then
+           return
         end
 
 	-- until Lua-5.2 we have no bitwise operators :(
@@ -256,11 +247,6 @@ local function on_place_node(place_to, newnode,
 		callback(place_to_copy, newnode_copy, placer,
 			oldnode_copy, itemstack, pointed_thing_copy)
 	end
-end
-
-local function can_dig_door(pos, digger)
-	replace_old_owner_information(pos)
-	return default.can_interact_with_node(digger, pos)
 end
 
 function doors.register(name, def)
@@ -441,42 +427,11 @@ function doors.register(name, def)
 		return false
 	end
 
-	if def.protected then
-		def.can_dig = can_dig_door
-		def.on_blast = function() end
-		def.on_key_use = function(pos, player)
-			local door = doors.get(pos)
-			door:toggle(player)
-		end
-		def.on_skeleton_key_use = function(pos, player, newsecret)
-			replace_old_owner_information(pos)
-			local meta = minetest.get_meta(pos)
-			local owner = meta:get_string("owner")
-			local pname = player:get_player_name()
-
-			-- verify placer is owner of lockable door
-			if owner ~= pname then
-				minetest.record_protection_violation(pos, pname)
-				minetest.chat_send_player(pname, S("You do not own this locked door."))
-				return nil
-			end
-
-			local secret = meta:get_string("key_lock_secret")
-			if secret == "" then
-				secret = newsecret
-				meta:set_string("key_lock_secret", secret)
-			end
-
-			return secret, S("a locked door"), owner
-		end
-		def.node_dig_prediction = ""
-	else
-		def.on_blast = function(pos, intensity)
-			minetest.remove_node(pos)
-			-- hidden node doesn't get blasted away.
-			minetest.remove_node({x = pos.x, y = pos.y + 1, z = pos.z})
-			return {name}
-		end
+        def.on_blast = function(pos, intensity)
+           minetest.remove_node(pos)
+           -- hidden node doesn't get blasted away.
+           minetest.remove_node({x = pos.x, y = pos.y + 1, z = pos.z})
+           return {name}
 	end
 
 	def.on_destruct = function(pos)
@@ -595,15 +550,13 @@ function doors.trapdoor_toggle(pos, node, clicker)
 
 	replace_old_owner_information(pos)
 
-	if clicker and not default.can_interact_with_node(clicker, pos) then
-		return false
-	end
+        if not clicker then
+           return
+        end
 
-        if has_citadella and has_playermanager then
-           local can_open = has_locked_door_privilege(pos, clicker)
-           if not can_open then
-              return false
-           end
+        local clicker_name = clicker:get_player_name()
+        if minetest.is_protected(pos, clicker_name) then
+           return
         end
 
 	local def = minetest.registered_nodes[node.name]
@@ -642,50 +595,10 @@ function doors.register_trapdoor(name, def)
 
         def.node_dig_prediction = "solid_air"
 
-	if def.protected then
-		def.can_dig = can_dig_door
-		def.after_place_node = function(pos, placer, itemstack, pointed_thing)
-			local pn = placer:get_player_name()
-			local meta = minetest.get_meta(pos)
-			meta:set_string("owner", pn)
-			meta:set_string("infotext", def.description .. "\n" .. S("Owned by @1", pn))
-
-			return (creative and creative.is_enabled_for and creative.is_enabled_for(pn))
-		end
-
-		def.on_blast = function() end
-		def.on_key_use = function(pos, player)
-			local door = doors.get(pos)
-			door:toggle(player)
-		end
-		def.on_skeleton_key_use = function(pos, player, newsecret)
-			replace_old_owner_information(pos)
-			local meta = minetest.get_meta(pos)
-			local owner = meta:get_string("owner")
-			local pname = player:get_player_name()
-
-			-- verify placer is owner of lockable door
-			if owner ~= pname then
-				minetest.record_protection_violation(pos, pname)
-				minetest.chat_send_player(pname, S("You do not own this trapdoor."))
-				return nil
-			end
-
-			local secret = meta:get_string("key_lock_secret")
-			if secret == "" then
-				secret = newsecret
-				meta:set_string("key_lock_secret", secret)
-			end
-
-			return secret, S("a locked trapdoor"), owner
-		end
-		def.node_dig_prediction = ""
-	else
-		def.on_blast = function(pos, intensity)
-			minetest.remove_node(pos)
-			return {name}
-		end
-	end
+        def.on_blast = function(pos, intensity)
+           minetest.remove_node(pos)
+           return {name}
+        end
 
 	if not def.sounds then
 		def.sounds = default.node_sound_wood_defaults()
@@ -804,17 +717,20 @@ function doors.register_fencegate(name, def)
 		sounds = def.sounds,
 	        node_dig_prediction = "solid_air",
 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			if has_citadella and has_playermanager then
-			   local can_open = has_locked_door_privilege(pos, clicker)
-			   if not can_open then
-			      return itemstack
-			   end
-			end
-			local node_def = minetest.registered_nodes[node.name]
-			minetest.swap_node(pos, {name = node_def.gate, param2 = node.param2})
-			minetest.sound_play(node_def.sound, {pos = pos, gain = 0.3,
-				max_hear_distance = 8}, true)
-			return itemstack
+                   if not clicker then
+                      return
+                   end
+                   local clicker_name = clicker:get_player_name()
+
+                   if minetest.is_protected(pos, clicker_name) then
+                      return itemstack
+                   end
+
+                   local node_def = minetest.registered_nodes[node.name]
+                   minetest.swap_node(pos, {name = node_def.gate, param2 = node.param2})
+                   minetest.sound_play(node_def.sound, {pos = pos, gain = 0.3,
+                                                        max_hear_distance = 8}, true)
+                   return itemstack
 		end,
 		selection_box = {
 			type = "fixed",
