@@ -18,20 +18,13 @@ function farming.get_biome_data(pos)
 	return biome
 end
 
-function farming.dirt_on_dig(pos, node, digger)
-	local digger_name = (digger and digger:get_player_name()) or ""
-	-- check protection
-	if minetest.is_protected(pos, digger_name) then
-		minetest.record_protection_violation(pt.under, digger_name)
-		return false
-	end
-
+function farming.dirt_after_dig(pos, node, oldmetadata, digger)
 	local regN = minetest.registered_nodes
 	local regT = minetest.registered_tools
 
 	-- check if digger is non-nil
 	if digger == nil then
-		return minetest.node_dig(pos, node, digger)
+		return
 	end
 
 	-- check if using a hoe
@@ -41,7 +34,7 @@ function farming.dirt_on_dig(pos, node, digger)
 	   or regT[wielded_item:get_name()] == nil               -- This is ugly
 	   or regT[wielded_item:get_name()].groups["hoe"] == nil -- But life is ugly, man
 	   then
-		return minetest.node_dig(pos, node, digger)
+		return
 	end
 
 	-- check if (wet) soil defined
@@ -51,27 +44,7 @@ function farming.dirt_on_dig(pos, node, digger)
 	end
 
 	-- replace
-	minetest.set_node(pos, {name = regN[node.name].soil.dry})
-
-	if not (creative and creative.is_enabled_for
-			and creative.is_enabled_for(digger:get_player_name())) then
-		-- wear tool
-		local wdef = wielded_item:get_definition()
-		wielded_item:add_wear(65535/(wdef.max_uses-1))
-		digger:set_wielded_item(wielded_item)
-
-		-- tool break sound
-		if wielded_item:get_count() == 0 and wdef.sound and wdef.sound.breaks then
-			minetest.sound_play(wdef.sound.breaks, {pos = pos, gain = 0.5})
-			digger:set_wielded_item(nil)
-		end
-	end
-
-	-- play sound
-	minetest.sound_play("default_dig_crumbly", {
-		pos = pos,
-		gain = 0.5,
-	})
+	minetest.swap_node(pos, {name = regN[node.name].soil.dry})
 end
 
 function farming.compute_growth_interval(pos, growth, again)
