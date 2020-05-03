@@ -55,6 +55,9 @@ function farming.scythe_on_use(itemstack, user, pointed_thing)
 	local radius = itemstack:get_definition().radius
 	local efficacy = itemstack:get_definition().efficacy
 
+	-- always dig the pointed node
+	minetest.node_dig(pos, minetest.get_node(pos), user)
+
 	-- works in a 2*radius square
 	for i=-radius,radius do
 		for j=-radius,radius do
@@ -63,7 +66,7 @@ function farming.scythe_on_use(itemstack, user, pointed_thing)
 
 			-- dig crops if a grass species
 			if n ~= nil and minetest.get_item_group(n.name, "poaceae") > 0 and math.random() < efficacy then
-				if not minetest.dig_node(p, n, user) then -- could not dig
+				if not minetest.node_dig(p, n, user) then -- could not dig
 					goto continue
 				end
 
@@ -83,6 +86,7 @@ function farming.scythe_on_use(itemstack, user, pointed_thing)
 			::continue::
 		end
 	end
+	return user:get_wielded_item()
 end
 
 function farming.compute_growth_interval(pos, growth, again)
