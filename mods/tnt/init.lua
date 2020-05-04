@@ -570,6 +570,15 @@ if enable_tnt then
 			{"tnt:gunpowder", "", "tnt:gunpowder"},
 		}
 	})
+	
+	minetest.register_craft({
+		output = "tnt:tnt_stick 9",
+		recipe = {
+			{"default:elem_sulphur", "default:paper", "default:elem_sulphur"},
+			{"tnt:gunpowder", "default:paper", "tnt:gunpowder"},
+			{"default:elem_sulphur", "default:paper", "default:elem_sulphur"},
+		}
+	})
 
 	minetest.register_craft({
 		output = "tnt:tnt",
