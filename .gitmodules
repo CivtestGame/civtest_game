@@ -88,6 +88,11 @@
 	branch = .
 	path = mods/display_modpack
 
+[submodule "mods/wield_redo"]
+	url = https://github.com/CivtestGame/wield_redo.git
+	branch = .
+	path = mods/wield_redo
+
 
 [submodule "mods/mod-bedrock2"]
 	path = mods/mod-bedrock2
@@ -100,10 +105,6 @@
 [submodule "mods/vignette_redo"]
 	path = mods/vignette_redo
 	url = https://github.com/kestral246/vignette_redo.git
-
-[submodule "mods/wield_redo"]
-	path = mods/wield_redo
-	url = https://github.com/CivtestGame/wield_redo.git
 
 [submodule "mods/minetest_hudbars"]
 	path = mods/minetest_hudbars
