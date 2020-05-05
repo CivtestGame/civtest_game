@@ -103,7 +103,7 @@
 
 [submodule "mods/wield_redo"]
 	path = mods/wield_redo
-	url = https://notabug.org/Piezo_/wield_redo.git
+	url = https://github.com/CivtestGame/wield_redo.git
 
 [submodule "mods/minetest_hudbars"]
 	path = mods/minetest_hudbars
