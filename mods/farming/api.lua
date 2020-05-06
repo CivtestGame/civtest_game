@@ -66,24 +66,21 @@ function farming.scythe_on_use(itemstack, user, pointed_thing)
 
 			-- dig crops if a grass species
 			if n ~= nil and minetest.get_item_group(n.name, "poaceae") > 0 and math.random() < efficacy then
-				if not minetest.node_dig(p, n, user) then -- could not dig
-					goto continue
+				if minetest.node_dig(p, n, user) then -- could dig
+						-- Will be used one day maybe
+--[[					local p_under = { x = p.x, y = p.y - 1, z = p.z }
+						local n_under = minetest.get_node(p_under)
+						
+						-- turn soil underneath back into dirt or sand
+						if n_under ~= nil and minetest.get_item_group(n_under.name, "soil") > 0 then
+							local n_under_def = minetest.registered_nodes[n_under.name]
+
+							if n_under_def ~= nil then -- it should never be nil, right?
+								minetest.swap_node(p_under, {name = n_under_def.soil.base})
+							end
+						end ]]
 				end
-
-				-- Will be used one day maybe
---[[				local p_under = { x = p.x, y = p.y - 1, z = p.z }
-				local n_under = minetest.get_node(p_under)
-				
-				-- turn soil underneath back into dirt or sand
-				if n_under ~= nil and minetest.get_item_group(n_under.name, "soil") > 0 then
-					local n_under_def = minetest.registered_nodes[n_under.name]
-
-					if n_under_def ~= nil then -- it should never be nil, right?
-						minetest.swap_node(p_under, {name = n_under_def.soil.base})
-					end
-				end ]]
 			end
-			::continue::
 		end
 	end
 	return user:get_wielded_item()
