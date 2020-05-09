@@ -164,7 +164,7 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 		if minetest.get_node(chestpos).name == "air" then
 			-- make it face inwards to the room
 			local facedir = minetest.dir_to_facedir(vector.multiply(wall.facing, -1))
-			minetest.add_node(chestpos, {name = "default:chest", param2 = facedir})
+			minetest.add_node(chestpos, {name = "citadella:chest", param2 = facedir})
 			populate_chest(chestpos, PcgRandom(noise3d_integer(noise, chestpos)), room.type)
 		end
 	end
