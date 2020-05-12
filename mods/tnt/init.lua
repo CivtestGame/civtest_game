@@ -161,7 +161,7 @@ local function entity_physics(pos, radius, drops)
 		local obj_pos = obj:get_pos()
 		local dist = math.max(1, vector.distance(pos, obj_pos))
 
-		local damage = (4 / dist) * radius
+		local damage = (10 / dist) * radius *default.DAMAGE_MULTIPLIER
 		if obj:is_player() then
 			local obj_vel = obj:get_player_velocity()
 			local new_vel = calc_velocity(pos, obj_pos, obj_vel, radius * 5)
