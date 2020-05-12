@@ -131,3 +131,9 @@
 [submodule "mods/player_monoids"]
 	path = mods/player_monoids
 	url = https://github.com/minetest-mods/player_monoids.git
+[submodule "mods/rcbows"]
+	path = mods/rcbows
+	url = https://github.com/CivtestGame/rcbows.git
+[submodule "mods/CivArsenal"]
+	path = mods/CivArsenal
+	url = https://github.com/CivtestGame/CivArsenal.git
