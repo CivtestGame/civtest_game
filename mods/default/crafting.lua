@@ -739,11 +739,11 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:large_cactus_seedling",
+	output = "default:large_cactus_seedling 2",
 	recipe = {
-		{"", "default:cactus", ""},
-		{"default:cactus", "default:cactus", "default:cactus"},
-		{"", "default:cactus", ""},
+		{"default:cactus"},
+		{"default:cactus"},
+		{"default:cactus"},
 	}
 })
 
