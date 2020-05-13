@@ -155,13 +155,13 @@ local function calc_velocity(pos1, pos2, old_vel, power)
 	return vel
 end
 
-local function entity_physics(pos, radius, drops)
+local function entity_physics(pos, radius, drops, entity_damage)
 	local objs = minetest.get_objects_inside_radius(pos, radius)
 	for _, obj in pairs(objs) do
 		local obj_pos = obj:get_pos()
 		local dist = math.max(1, vector.distance(pos, obj_pos))
 
-		local damage = (15 / dist) * radius * default.DAMAGE_MULTIPLIER
+		local damage = (entity_damage / dist) * radius * default.DAMAGE_MULTIPLIER
 		if obj:is_player() then
 			local obj_vel = obj:get_player_velocity()
 			local new_vel = calc_velocity(pos, obj_pos, obj_vel, radius * 5)
@@ -396,6 +396,7 @@ function tnt.boom(pos, def)
 	def = def or {}
 	def.radius = def.radius or 1
 	def.damage_radius = def.damage_radius or def.radius * 2
+	def.entity_damage = def.entity_damage or 15
 	local meta = minetest.get_meta(pos)
 	local owner = meta:get_string("owner")
 	if not def.explode_center then
@@ -408,7 +409,7 @@ function tnt.boom(pos, def)
 			def.ignore_on_blast, owner, def.explode_center)
 	-- append entity drops
 	local damage_radius = (radius / math.max(1, def.radius)) * def.damage_radius
-	entity_physics(pos, damage_radius, drops)
+	entity_physics(pos, damage_radius, drops, def.entity_damage)
 	if not def.disable_drops then
 		eject_drops(drops, pos, radius)
 	end
