@@ -129,6 +129,26 @@ function farming.grow_sapling(pos)
 		minetest.log("verbose", "An emergent jungle sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_emergent_jungle_tree(pos)
+	elseif node.name == "default:large_cactus_seedling" then
+		minetest.log("verbose", "A cactus seedling grows into a cactus at "..
+			minetest.pos_to_string(pos))
+
+		-- Cactus logic
+		minetest.set_node(pos, {name = "default:cactus"})
+
+		local pos1 = vector.new(pos.x, pos.y + 1, pos.z)
+		local n1 = minetest.get_node(pos1)
+		if n1.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos1, {name = "default:cactus"})
+
+		local pos2 = vector.new(pos.x, pos.y + 2, pos.z)
+		local n2 = minetest.get_node(pos2)
+		if n2.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos2, {name = "default:cactus"})
 	end
 end
 
