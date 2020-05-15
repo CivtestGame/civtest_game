@@ -173,6 +173,13 @@ function farming.grow_sapling(pos)
 			return
 		end
 		minetest.set_node(pos2, {name = "default:papyrus"})
+		
+		local pos3 = vector.new(pos.x, pos.y + 3, pos.z)
+		local n3 = minetest.get_node(pos3)
+		if n3.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos3, {name = "default:papyrus"})
 	end
 end
 
