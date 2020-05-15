@@ -622,7 +622,7 @@ farming.register_sapling("default:large_cactus_seedling", {
 	},
         tree_min_pos = {x = 0, y = 0, z = 0},
         tree_max_pos = {x = 0, y = 3, z = 0},
-        custom_growth = {optimum_heat = 80, heat_scaling = "exponential", heat_a = 1, heat_b = 1, heat_base_speed = 10, variance = 10},
+        custom_growth = {optimum_heat = 75, heat_scaling = "exponential", heat_a = 2, heat_b = 1.5, heat_base_speed = 100000, variance = 10000},
 })
 
 farming.register_sapling("farming:papyrus_seedling", {
@@ -634,7 +634,7 @@ farming.register_sapling("farming:papyrus_seedling", {
 	},
         tree_min_pos = {x = 0, y = 0, z = 0},
         tree_max_pos = {x = 0, y = 4, z = 0},
-        custom_growth = {optimum_heat = 75, heat_scaling = "exponential", heat_a = 1, heat_b = 1, heat_base_speed = 10, variance = 10},
+        custom_growth = {optimum_heat = 60, heat_scaling = "exponential", heat_a = 2, heat_b = 1.5, heat_base_speed = 100000, variance = 10000},
 })
 
 minetest.register_craft({
