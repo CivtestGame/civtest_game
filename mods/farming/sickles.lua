@@ -49,4 +49,5 @@ farming.override_leaves("default:aspen_leaves", "default:aspen_sapling")
 farming.override_leaves("default:bush_leaves", "default:bush_sapling")
 farming.override_leaves("default:blueberry_bush_leaves", "default:blueberry_bush_sapling")
 farming.override_leaves("default:acacia_bush_leaves", "default:acacia_bush_sapling")
+farming.override_leaves("default:pine_needles", "default:pine_sapling")
 
