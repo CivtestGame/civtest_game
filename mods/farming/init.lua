@@ -624,3 +624,15 @@ farming.register_sapling("default:large_cactus_seedling", {
         tree_max_pos = {x = 0, y = 3, z = 0},
         custom_growth = {optimum_heat = 75, heat_scaling = "exponential", heat_a = 1, heat_b = 1, heat_base_speed = 10, variance = 10},
 })
+
+farming.register_sapling("farming:papyrus_seedling", {
+	description = "Papyrus Shoot",
+	image = "farming_papyrus_seedling.png",
+	selection_box = {
+		type = "fixed",
+		fixed = { -5 / 16, -0.5, -5 / 16, 5 / 16, 0.5, 5 / 16 }
+	},
+        tree_min_pos = {x = 0, y = 0, z = 0},
+        tree_max_pos = {x = 0, y = 3, z = 0},
+        custom_growth = {optimum_heat = 75, heat_scaling = "exponential", heat_a = 1, heat_b = 1, heat_base_speed = 10, variance = 10},
+})

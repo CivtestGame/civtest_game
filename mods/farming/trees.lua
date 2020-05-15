@@ -62,6 +62,10 @@ local function is_snow_nearby(pos)
 	return minetest.find_node_near(pos, 1, {"group:snowy"})
 end
 
+local function is_water_nearby(pos)
+	return minetest.find_node_near(pos, 2, {"group:water"})
+end
+
 
 -- Grow sapling
 
@@ -149,6 +153,26 @@ function farming.grow_sapling(pos)
 			return
 		end
 		minetest.set_node(pos2, {name = "default:cactus"})
+	elseif node.name == "farming:papyrus_seedling" and is_water_nearby(pos) == true then
+		minetest.log("verbose", "A papyrus grows at "..
+			minetest.pos_to_string(pos))
+
+		-- Papyrus logic
+		minetest.set_node(pos, {name = "default:papyrus"})
+
+		local pos1 = vector.new(pos.x, pos.y + 1, pos.z)
+		local n1 = minetest.get_node(pos1)
+		if n1.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos1, {name = "default:papyrus"})
+
+		local pos2 = vector.new(pos.x, pos.y + 2, pos.z)
+		local n2 = minetest.get_node(pos2)
+		if n2.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos2, {name = "default:papyrus"})
 	end
 end
 
