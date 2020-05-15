@@ -21,8 +21,9 @@ function farming.sapling_can_grow(pos, name)
 	local def = minetest.registered_nodes[name]
 	local name_under = node_under.name
 	local is_soil = minetest.get_item_group(name_under, "soil")
+	local is_sand = minetest.get_item_group(name_under, "sand")
 
-	if is_soil == 0 then
+	if is_soil == 0 and is_sand == 0 then
 
 		return false
 	end
@@ -153,7 +154,7 @@ function farming.grow_sapling(pos)
 			return
 		end
 		minetest.set_node(pos2, {name = "default:cactus"})
-	elseif node.name == "farming:papyrus_seedling" and is_water_nearby(pos) == true then
+	elseif node.name == "farming:papyrus_seedling" and is_water_nearby(vector.new(pos.x, pos.y - 1, pos.z)) then
 		minetest.log("verbose", "A papyrus grows at "..
 			minetest.pos_to_string(pos))
 
