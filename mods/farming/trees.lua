@@ -67,7 +67,7 @@ local function is_water_nearby(pos)
 end
 
 local function vibe_check(pos)
-	return minetest.get_item_group(minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z}).name, "soil")
+	return minetest.get_item_group(minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z}).name, "soil") -- RETURNS 0 IF NOT SOIL. RETURNS 1 OR GREATER IF SOIL
 end
 
 -- Grow sapling
