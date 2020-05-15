@@ -24,7 +24,6 @@ function farming.sapling_can_grow(pos, name)
 	local is_sand = minetest.get_item_group(name_under, "sand")
 
 	if is_soil == 0 and is_sand == 0 then
-
 		return false
 	end
 
@@ -67,6 +66,9 @@ local function is_water_nearby(pos)
 	return minetest.find_node_near(pos, 2, {"group:water"})
 end
 
+local function vibe_check(pos)
+	return minetest.get_item_group(minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z}).name, "soil")
+end
 
 -- Grow sapling
 
@@ -79,7 +81,7 @@ function farming.grow_sapling(pos)
 
 	local mg_name = minetest.get_mapgen_setting("mg_name")
 
-	if node.name == "default:sapling" then
+	if node.name == "default:sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "A sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		if mg_name == "v6" then
@@ -87,7 +89,7 @@ function farming.grow_sapling(pos)
 		else
 			default.grow_new_apple_tree(pos)
 		end
-	elseif node.name == "default:junglesapling" then
+	elseif node.name == "default:junglesapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "A jungle sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		if mg_name == "v6" then
@@ -95,7 +97,7 @@ function farming.grow_sapling(pos)
 		else
 			default.grow_new_jungle_tree(pos)
 		end
-	elseif node.name == "default:pine_sapling" then
+	elseif node.name == "default:pine_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "A pine sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		local snow = is_snow_nearby(pos)
@@ -106,35 +108,35 @@ function farming.grow_sapling(pos)
 		else
 			default.grow_new_pine_tree(pos)
 		end
-	elseif node.name == "default:acacia_sapling" then
+	elseif node.name == "default:acacia_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "An acacia sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_acacia_tree(pos)
-	elseif node.name == "default:aspen_sapling" then
+	elseif node.name == "default:aspen_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "An aspen sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_aspen_tree(pos)
-	elseif node.name == "default:bush_sapling" then
+	elseif node.name == "default:bush_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "A bush sapling grows into a bush at "..
 			minetest.pos_to_string(pos))
 		default.grow_bush(pos)
-	elseif node.name == "default:blueberry_bush_sapling" then
+	elseif node.name == "default:blueberry_bush_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "A blueberry bush sapling grows into a bush at "..
 			minetest.pos_to_string(pos))
 		default.grow_blueberry_bush(pos)
-	elseif node.name == "default:acacia_bush_sapling" then
+	elseif node.name == "default:acacia_bush_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "An acacia bush sapling grows into a bush at "..
 			minetest.pos_to_string(pos))
 		default.grow_acacia_bush(pos)
-	elseif node.name == "default:pine_bush_sapling" then
+	elseif node.name == "default:pine_bush_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "A pine bush sapling grows into a bush at "..
 			minetest.pos_to_string(pos))
 		default.grow_pine_bush(pos)
-	elseif node.name == "default:emergent_jungle_sapling" then
+	elseif node.name == "default:emergent_jungle_sapling" and vibe_check(pos) ~= 0 then
 		minetest.log("verbose", "An emergent jungle sapling grows into a tree at "..
 			minetest.pos_to_string(pos))
 		default.grow_new_emergent_jungle_tree(pos)
-	elseif node.name == "default:large_cactus_seedling" then
+	elseif node.name == "default:large_cactus_seedling" and vibe_check(pos) == 0 then
 		minetest.log("verbose", "A cactus seedling grows into a cactus at "..
 			minetest.pos_to_string(pos))
 
