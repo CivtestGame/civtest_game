@@ -1570,7 +1570,7 @@ minetest.register_node("default:pine_bush_needles", {
 		max_items = 1,
 		items = {
 			{items = {"default:pine_bush_sapling"}, rarity = 5},
-			{items = {"default:pine_bush_needles"}}
+			{items = {"default:pine_needles"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
