@@ -183,6 +183,33 @@ function farming.grow_sapling(pos)
 			return
 		end
 		minetest.set_node(pos3, {name = "default:papyrus"})
+	elseif node.name == "farming: cattail_seedling" and is_water_nearby(vector.new(pos.x, pos.y - 1, pos.z)) then
+		minetest.log("verbose", "A cattail grows at "..
+			minetest.pos_to_string(pos))
+
+		-- Cattail logic
+		minetest.set_node(pos, {name = "default:cattail"})
+
+		local pos1 = vector.new(pos.x, pos.y + 1, pos.z)
+		local n1 = minetest.get_node(pos1)
+		if n1.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos1, {name = "default:cattail"})
+
+		local pos2 = vector.new(pos.x, pos.y + 2, pos.z)
+		local n2 = minetest.get_node(pos2)
+		if n2.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos2, {name = "default:cattail"})
+		
+		local pos3 = vector.new(pos.x, pos.y + 3, pos.z)
+		local n3 = minetest.get_node(pos3)
+		if n3.name ~= "air" or math.random(2) == 1 then
+			return
+		end
+		minetest.set_node(pos3, {name = "default:cattail_head"})
 	end
 end
 

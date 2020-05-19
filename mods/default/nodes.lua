@@ -139,6 +139,8 @@ default:cactus
 default:large_cactus_seedling
 
 default:papyrus
+default:cattail
+default:cattail_head
 default:dry_shrub
 default:junglegrass
 
@@ -1148,6 +1150,49 @@ minetest.register_node("default:cactus", {
 	groups = {choppy = 2},
 	sounds = default.node_sound_wood_defaults(),
 	on_place = minetest.rotate_node,
+})
+
+minetest.register_node("default:cattail", {
+	description = "Cattail Stem",
+	drawtype = "plantlike",
+	tiles = {"default_cattail.png"},
+	inventory_image = "default_cattail.png",
+	wield_image = "default_cattail.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	drop = "farming:cattail_seedling",
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
+	},
+	groups = {snappy = 3, flammable = 2},
+	sounds = default.node_sound_leaves_defaults(),
+
+	after_dig_node = function(pos, node, metadata, digger)
+		default.dig_up(pos, node, digger)
+	end,
+})
+
+minetest.register_node("default:cattail_head", {
+	description = "Cattail Head",
+	drawtype = "plantlike",
+	tiles = {"default_cattail_head.png"},
+	inventory_image = "default_cattail_head_inv.png",
+	wield_image = "default_cattail_head_inv.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.5, 6 / 16},
+	},
+	groups = {snappy = 3, flammable = 3},
+	sounds = default.node_sound_leaves_defaults(),
+
+	after_dig_node = function(pos, node, metadata, digger)
+		default.dig_up(pos, node, digger)
+	end,
 })
 
 minetest.register_node("default:papyrus", {

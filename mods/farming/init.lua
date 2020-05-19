@@ -637,6 +637,18 @@ farming.register_sapling("farming:papyrus_seedling", {
         custom_growth = {optimum_heat = 60, heat_scaling = "exponential", heat_a = 2, heat_b = 1.5, heat_base_speed = 100000, variance = 10000},
 })
 
+farming.register_sapling("farming:cattail_seedling", {
+	description = "Cattail Rhizome",
+	image = "farming_cattail_seedling.png",
+	selection_box = {
+		type = "fixed",
+		fixed = { -5 / 16, -0.5, -5 / 16, 5 / 16, 0.5, 5 / 16 }
+	},
+        tree_min_pos = {x = 0, y = 0, z = 0},
+        tree_max_pos = {x = 0, y = 4, z = 0},
+        custom_growth = {optimum_heat = 70, heat_scaling = "exponential", heat_a = 2, heat_b = 1.4, heat_base_speed = 100000, variance = 10000},
+})
+
 minetest.register_craft({
 	output = "farming:papyrus_seedling 2",
 	recipe = {

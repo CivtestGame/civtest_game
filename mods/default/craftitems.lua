@@ -12,6 +12,14 @@ minetest.register_craftitem("default:paper", {
 	groups = {flammable = 3},
 })
 
+minetest.register_craftitem("default:cattail_rhizome", {
+	description = "Cattail Rhizome",
+	inventory_image = "default_rhizome.png",
+	groups = {flammable = 2},
+})
+
+
+
 
 local lpp = 14 -- Lines per book's page
 local function book_on_use(itemstack, user)
