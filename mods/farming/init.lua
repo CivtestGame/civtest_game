@@ -641,8 +641,8 @@ farming.register_sapling("farming:cattail_seedling", {
 	description = "Cattail Rhizome",
 	image = "farming_cattail_seedling.png",
 	selection_box = {
-		type = "fixed",
-		fixed = { -5 / 16, -0.5, -5 / 16, 5 / 16, 0.5, 5 / 16 }
+			type = "fixed",
+			fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
 	},
         tree_min_pos = {x = 0, y = 0, z = 0},
         tree_max_pos = {x = 0, y = 4, z = 0},
