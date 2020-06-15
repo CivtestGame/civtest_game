@@ -159,6 +159,11 @@ local function may_replace(pos, player)
 end
 
 local drop = function(pos, itemstack)
+	local def = itemstack:get_definition()
+	if def and def.groups and def.groups.undroppable then
+		return
+	end
+
 	local obj = minetest.add_item(pos, itemstack:take_item(itemstack:get_count()))
 	if obj then
 		obj:set_velocity({
