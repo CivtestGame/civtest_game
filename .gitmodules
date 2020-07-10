@@ -131,3 +131,6 @@
 [submodule "mods/player_monoids"]
 	path = mods/player_monoids
 	url = https://github.com/minetest-mods/player_monoids.git
+[submodule "mods/headanim"]
+	path = mods/headanim
+	url = https://github.com/LoneWolfHT/headanim.git
