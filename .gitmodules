@@ -134,3 +134,6 @@
 [submodule "mods/headanim"]
 	path = mods/headanim
 	url = https://github.com/LoneWolfHT/headanim.git
+[submodule "mods/banners"]
+	path = mods/banners
+	url = https://github.com/CivtestGame/banners.git
