@@ -47,6 +47,45 @@ function farming.dirt_after_dig(pos, node, oldmetadata, digger)
 	minetest.swap_node(pos, {name = regN[node.name].soil.dry})
 end
 
+function farming.scythe_on_use(itemstack, user, pointed_thing)
+	if user == nil or not user:is_player() or pointed_thing.type ~= "node" then
+		return 
+	end
+	local pos = pointed_thing.under
+	local radius = itemstack:get_definition().radius
+	local efficacy = itemstack:get_definition().efficacy
+
+	-- always dig the pointed node
+	minetest.node_dig(pos, minetest.get_node(pos), user)
+
+	-- works in a 2*radius square
+	for i=-radius,radius do
+		for j=-radius,radius do
+			local p = {x = pos.x + i, y = pos.y, z = pos.z + j}
+			local n = minetest.get_node(p)
+
+			-- dig crops if a grass species
+			if n ~= nil and minetest.get_item_group(n.name, "poaceae") > 0 and math.random() < efficacy then
+				if minetest.node_dig(p, n, user) then -- could dig
+						-- Will be used one day maybe
+--[[					local p_under = { x = p.x, y = p.y - 1, z = p.z }
+						local n_under = minetest.get_node(p_under)
+						
+						-- turn soil underneath back into dirt or sand
+						if n_under ~= nil and minetest.get_item_group(n_under.name, "soil") > 0 then
+							local n_under_def = minetest.registered_nodes[n_under.name]
+
+							if n_under_def ~= nil then -- it should never be nil, right?
+								minetest.swap_node(p_under, {name = n_under_def.soil.base})
+							end
+						end ]]
+				end
+			end
+		end
+	end
+	return user:get_wielded_item()
+end
+
 function farming.compute_growth_interval(pos, growth, again)
    --default values
    local lower_bound = 166
@@ -297,7 +336,52 @@ farming.register_hoe = function(name, def)
 	end
 end
 
--- Register new sickles
+-- Register new scythes
+farming.register_scythe = function (name, def)
+	-- Check def table
+	if def.description == nil then
+		def.description = "Scythe"
+	end
+
+	if def.inventory_image == nil then
+		def.inventory_image = "unknown_item.png"
+	end
+
+	-- Register the tool
+	minetest.register_tool(name, {
+		description = def.description,
+		inventory_image = def.inventory_image,
+
+		tool_capabilities = {
+			full_punch_interval = default.PUNCH_INTERVAL,
+			max_drop_level = 0,
+			groupcaps = def.groupcaps
+		},
+		groups = def.groups,
+		sound = {breaks = "default_tool_breaks"},
+		on_use = farming.scythe_on_use,
+		efficacy = def.efficacy,
+		radius = def.radius
+	})
+	-- Register its recipe
+	if def.recipe then
+		minetest.register_craft({
+			output = name,
+			recipe = def.recipe
+		})
+
+	elseif def.material then
+		minetest.register_craft({
+			output = name,
+			recipe = {
+				{def.material, def.material, def.material},
+				{"", "group:stick", ""},
+				{"group:stick", "", ""}
+			}
+		})
+	end
+end
+
 farming.register_sickle = function(name, def)
 
 	-- Check def table
@@ -623,6 +707,11 @@ farming.register_plant = function(name, def)
 		end
 		local nodegroups = {snappy = 3, flammable = 2, plant = 1, not_in_creative_inventory = 1, attached_node = 1}
 		nodegroups[pname] = i
+		if def.family then
+			nodegroups[def.family] = 1
+		end
+		minetest.log("---------------------------------- Groups for "..def.name)
+		minetest.log(minetest.serialize(nodegroups))
 
 		local next_plant = nil
 
