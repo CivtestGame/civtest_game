@@ -18,8 +18,8 @@ farming.register_scythe("farming:scythe_steel", {
 		poaceae = { times = {[1] = 0.01}, uses = 1000, maxlevel = 1}
 	},
     material = "default:steel_ingot",
-	radius = 2,
-	efficacy = .7
+	radius = 1,
+	efficacy = .9
 })
 
 farming.register_scythe("farming:scythe_bronze", {
@@ -33,4 +33,3 @@ farming.register_scythe("farming:scythe_bronze", {
 	radius = 1,
 	efficacy = .7
 })
-

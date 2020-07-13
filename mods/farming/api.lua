@@ -55,8 +55,14 @@ function farming.scythe_on_use(itemstack, user, pointed_thing)
 	local radius = itemstack:get_definition().radius
 	local efficacy = itemstack:get_definition().efficacy
 
-	-- always dig the pointed node
-	minetest.node_dig(pos, minetest.get_node(pos), user)
+	-- always dig the pointed node, if it's a crop
+        local node = minetest.get_node(pos)
+
+        if minetest.get_item_group(node.name, "poaceae") > 0 then
+           minetest.node_dig(pos, node, user)
+        else
+           return
+        end
 
 	-- works in a 2*radius square
 	for i=-radius,radius do
