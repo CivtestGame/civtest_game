@@ -49,7 +49,7 @@ end
 
 function farming.scythe_on_use(itemstack, user, pointed_thing)
 	if user == nil or not user:is_player() or pointed_thing.type ~= "node" then
-		return 
+		return
 	end
 	local pos = pointed_thing.under
 	local radius = itemstack:get_definition().radius
@@ -70,7 +70,7 @@ function farming.scythe_on_use(itemstack, user, pointed_thing)
 						-- Will be used one day maybe
 --[[					local p_under = { x = p.x, y = p.y - 1, z = p.z }
 						local n_under = minetest.get_node(p_under)
-						
+
 						-- turn soil underneath back into dirt or sand
 						if n_under ~= nil and minetest.get_item_group(n_under.name, "soil") > 0 then
 							local n_under_def = minetest.registered_nodes[n_under.name]
@@ -360,7 +360,8 @@ farming.register_scythe = function (name, def)
 		groups = def.groups,
 		sound = {breaks = "default_tool_breaks"},
 		on_use = farming.scythe_on_use,
-		efficacy = def.efficacy,
+		efficacy = def.efficacy
+                   or error("Tool " .. name .. " registered without efficacy."),
 		radius = def.radius
 	})
 	-- Register its recipe
@@ -452,7 +453,7 @@ farming.override_leaves = function(leaves_name, sapling_name)
 		max_items = 1,
 		items = drop_table
 	}
-	minetest.log("drop_table for '"..leaves_name.."': "..minetest.serialize(drop))
+	-- minetest.log("drop_table for '"..leaves_name.."': "..minetest.serialize(drop))
 
 
 	minetest.override_item(leaves_name, {
@@ -710,8 +711,8 @@ farming.register_plant = function(name, def)
 		if def.family then
 			nodegroups[def.family] = 1
 		end
-		minetest.log("---------------------------------- Groups for "..def.name)
-		minetest.log(minetest.serialize(nodegroups))
+		-- minetest.log("---------------------------------- Groups for "..def.name)
+		-- minetest.log(minetest.serialize(nodegroups))
 
 		local next_plant = nil
 
