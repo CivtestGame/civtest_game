@@ -3,23 +3,23 @@ farming.register_scythe("farming:scythe_stone", {
 	inventory_image = "farming_tool_stonescythe.png",
 	groups = { scythe = 1 },
 	groupcaps = {
-		poaceae = { times = {[1] = 0.01}, uses = 50, maxlevel = 1}
+		poaceae = { times = {[1] = 0.01}, uses = 40, maxlevel = 1}
 	},
-    material = "group:stone",
+        material = "group:stone",
 	radius = 1,
-	efficacy = .5
+	efficacy = .4
 })
 
-farming.register_scythe("farming:scythe_steel", {
-	description = "Steel Scythe",
-	inventory_image = "farming_tool_steelscythe.png",
+farming.register_scythe("farming:scythe_copper", {
+	description = "Copper Scythe",
+	inventory_image = "farming_tool_copperscythe.png",
 	groups = { scythe = 1 },
 	groupcaps = {
-		poaceae = { times = {[1] = 0.01}, uses = 1000, maxlevel = 1}
+		poaceae = { times = {[1] = 0.01}, uses = 400, maxlevel = 1}
 	},
-    material = "default:steel_ingot",
+        material = "default:copper_ingot",
 	radius = 1,
-	efficacy = .9
+	efficacy = .5
 })
 
 farming.register_scythe("farming:scythe_bronze", {
@@ -27,9 +27,21 @@ farming.register_scythe("farming:scythe_bronze", {
 	inventory_image = "farming_tool_bronzescythe.png",
 	groups = { scythe = 1 },
 	groupcaps = {
-		poaceae = { times = {[1] = 0.01}, uses = 500, maxlevel = 1}
+		poaceae = { times = {[1] = 0.01}, uses = 1000, maxlevel = 1}
 	},
-    material = "default:bronze_ingot",
+        material = "default:bronze_ingot",
+	radius = 1,
+	efficacy = .6
+})
+
+farming.register_scythe("farming:scythe_iron", {
+	description = "Iron Scythe",
+	inventory_image = "farming_tool_ironscythe.png",
+	groups = { scythe = 1 },
+	groupcaps = {
+		poaceae = { times = {[1] = 0.01}, uses = 750, maxlevel = 1}
+	},
+        material = "default:iron_ingot",
 	radius = 1,
 	efficacy = .7
 })
