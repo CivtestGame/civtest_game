@@ -239,6 +239,11 @@ minetest.register_node("default:stone", {
 	drop = 'default:cobble',
 	legacy_mineral = true,
 	sounds = default.node_sound_stone_defaults(),
+
+	-- stone with a param2 == 1 is unnatural.
+	-- We track this so that players can't cheat any dynamic ore system.
+	paramtype2 = "none",
+	place_param2 = 1
 })
 
 minetest.register_node("default:cobble", {
