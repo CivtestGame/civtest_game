@@ -162,6 +162,52 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_tool("fire:firestarter", {
+	description = "Primitive Firestarter",
+	inventory_image = "fire_firestarter.png",
+	sound = {breaks = "default_tool_breaks"},
+	maxstack = 1,
+	on_use = function(itemstack, user, pointed_thing)
+		local sound_pos = pointed_thing.above or user:get_pos()
+		minetest.sound_play(
+			"fire_flint_and_steel",
+			{pos = sound_pos, gain = 0.5, max_hear_distance = 8}
+		)
+		local player_name = user:get_player_name()
+		if pointed_thing.type == "node" then
+			local node_under = minetest.get_node(pointed_thing.under).name
+			local nodedef = minetest.registered_nodes[node_under]
+			if not nodedef then
+				return
+			end
+			if minetest.is_protected(pointed_thing.under, player_name) then
+				minetest.chat_send_player(player_name, "This area is protected")
+				return
+			end
+			if nodedef.on_ignite then
+				nodedef.on_ignite(pointed_thing.under, user)
+			elseif minetest.get_item_group(node_under, "flammable") >= 1
+					and minetest.get_node(pointed_thing.above).name == "air" then
+				minetest.set_node(pointed_thing.above, {name = "fire:basic_flame"})
+			end
+		end
+		if not (creative.is_enabled_for(player_name)) then
+			-- Wear tool
+			itemstack:take_item(1)
+			return itemstack
+		end
+	end
+})
+
+minetest.register_craft({
+	output = "fire:firestarter",
+	recipe = {
+		{"", "group:stick", ""},
+		{"group:stick", "default:charcoal", "group:stick"},
+		{"", "default:flint", ""},
+	}
+})
+
 
 -- Override coalblock to enable permanent flame above
 -- Coalblock is non-flammable to avoid unwanted basic_flame nodes
