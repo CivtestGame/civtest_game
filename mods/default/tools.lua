@@ -911,6 +911,39 @@ minetest.register_tool("default:war_hammer", {
 	sound = {breaks = "default_tool_breaks"},
 })
 
+-- Obsidian tools
+
+minetest.register_tool("default:pick_obsidian", {
+	description = "Obsidian Shard Pickaxe",
+	inventory_image = "default_tool_obsidianpick.png",
+	groups = { pick = 1 },
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL,
+		max_drop_level=3,
+		groupcaps={
+			cracky = {times={[1]=12.00, [2]=2.7, [3]=0.90}, uses=20, maxlevel=4},
+		},
+		damage_groups = {fleshy=4 * default.DAMAGE_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
+minetest.register_tool("default:sword_obsidian", {
+	description = "Obsidian Shard Dagger",
+	inventory_image = "default_tool_obsidiansword.png",
+	groups = { sword = 1 },
+	range = 3.2,
+	tool_capabilities = {
+		full_punch_interval = default.PUNCH_INTERVAL*0.8,
+		max_drop_level=3,
+		groupcaps={
+			snappy={times={[1]=2.5, [2]=1.20, [3]=0.35}, uses=20, maxlevel=4},
+		},
+		damage_groups = {fleshy=3 * default.DAMAGE_MULTIPLIER, pierce=2 * default.DAMAGE_MULTIPLIER, slash=3 * default.DAMAGE_MULTIPLIER},
+	},
+	sound = {breaks = "default_tool_breaks"},
+})
+
 --
 
 --

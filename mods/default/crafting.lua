@@ -1297,6 +1297,41 @@ for k, v in pairs(armor_materials_advanced) do
 	})
 end
 
+-- Tribal tech (Obsidian tools)
+
+minetest.register_craft({
+	output = 'farming:kitchen_knife',
+	recipe = {
+		{'', 'default:obsidian_shard', 'default:obsidian_shard'},
+		{'group:stick', '', ''},
+	}
+})
+
+minetest.register_craft({
+	output = 'farming:cooking_pot',
+	recipe = {
+		{'default:clay_brick', '', 'default:clay_brick'},
+		{'default:clay_brick', 'default:clay_brick', 'default:clay_brick'},
+	}
+})
+
+minetest.register_craft({
+	output = 'default:pick_obsidian',
+	recipe = {
+		{'default:obsidian_shard','default:obsidian_shard','default:obsidian_shard'},
+		{'','group:stick',''},
+		{'','group:stick',''}
+	}
+})
+
+minetest.register_craft({
+	output = 'default:sword_obsidian',
+	recipe = {
+		{'default:obsidian_shard'},
+		{'group:stick'},
+	}
+})
+
 --
 -- Fuels
 --
