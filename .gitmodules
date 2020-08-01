@@ -137,3 +137,9 @@
 [submodule "mods/banners"]
 	path = mods/banners
 	url = https://github.com/CivtestGame/banners.git
+[submodule "mods/CivArsenal"]
+	path = mods/CivArsenal
+	url = https://github.com/CivtestGame/CivArsenal.git
+[submodule "mods/rcbows"]
+	path = mods/rcbows
+	url = https://github.com/CivtestGame/rcbows.git
