@@ -302,6 +302,11 @@ farming.register_hoe = function(name, def)
 	if def.max_uses == nil then
 		def.max_uses = 30
 	end
+
+        if def.groups and not def.groups.hoe then
+           def.groups.hoe = 1
+        end
+
 	-- Register the tool
 	minetest.register_tool(name, {
 		max_uses = def.max_uses,

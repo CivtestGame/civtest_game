@@ -1,56 +1,69 @@
-minetest.override_item("default:dirt", {
+
+local function override_dirt(name, def, drop)
+   def.drop = {
+      max_items = 1,
+      items = {
+         {
+            tools = { "~farming:hoe_" },
+            items = {}
+         },
+         {
+            items = { drop or name }
+         }
+      }
+   }
+   def.after_dig_node = farming.dirt_after_dig
+
+   minetest.override_item(name, def)
+end
+
+override_dirt("default:dirt", {
 	soil = {
 		base = "default:dirt",
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
+	}
 })
 
-minetest.override_item("default:dirt_with_grass", {
+override_dirt("default:dirt_with_grass", {
 	soil = {
 		base = "default:dirt_with_grass",
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
-})
+	}
+}, "default:dirt")
 
-minetest.override_item("default:dirt_with_dry_grass", {
+override_dirt("default:dirt_with_dry_grass", {
 	soil = {
 		base = "default:dirt_with_dry_grass",
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
-})
+	}
+}, "default:dirt")
 
 minetest.override_item("default:dirt_with_rainforest_litter", {
 	soil = {
 		base = "default:dirt_with_rainforest_litter",
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
-})
+	}
+}, "default:dirt")
 
 minetest.override_item("default:dirt_with_coniferous_litter", {
 	soil = {
 		base = "default:dirt_with_coniferous_litter",
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
-})
+	}
+}, "default:dirt")
 
 minetest.override_item("default:dirt_with_snow", {
 	soil = {
 		base = "default:dirt_with_coniferous_snow",
 		dry = "farming:soil",
 		wet = "farming:soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
-})
+	}
+}, "default:dirt")
 
 minetest.register_node("farming:soil", {
 	description = "Soil",
@@ -84,9 +97,9 @@ minetest.override_item("default:desert_sand", {
 		base = "default:desert_sand",
 		dry = "farming:desert_sand_soil",
 		wet = "farming:desert_sand_soil_wet"
-	},
-	after_dig_node = farming.dirt_after_dig
-})
+	}
+}, "default:desert_sand")
+
 minetest.register_node("farming:desert_sand_soil", {
 	description = "Desert Sand Soil",
 	drop = "default:desert_sand",
