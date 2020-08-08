@@ -353,6 +353,10 @@ farming.register_scythe = function (name, def)
 		def.inventory_image = "unknown_item.png"
 	end
 
+        if def.groups then
+           def.groups.scythe = 1
+        end
+
 	-- Register the tool
 	minetest.register_tool(name, {
 		description = def.description,
@@ -399,6 +403,10 @@ farming.register_sickle = function(name, def)
 	if def.inventory_image == nil then
 		def.inventory_image = "unknown_item.png"
 	end
+
+        if def.groups then
+           def.groups.sickle = 1
+        end
 
 	-- Register the tool
 	minetest.register_tool(name, {
