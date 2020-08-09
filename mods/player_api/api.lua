@@ -48,6 +48,7 @@ function player_api.set_model(player, model_name)
 			collisionbox = model.collisionbox or {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 			stepheight = model.stepheight or 0.6,
 			eye_height = model.eye_height or 1.47,
+                        damage_texture_modifier = "^[colorize:#ff1d1d:100"
 		})
 		player_api.set_animation(player, "stand")
 	else
