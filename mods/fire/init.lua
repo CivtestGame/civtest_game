@@ -355,6 +355,13 @@ end
 -- ABMs
 --
 
+local function should_fire_tick(pos)
+   local bd = minetest.get_biome_data(pos)
+   local heat, humidity = bd.heat, bd.humidity
+
+   return math.random(90) > humidity
+end
+
 if fire_enabled then
 
 	-- Ignite neighboring nodes, add basic flames
@@ -363,12 +370,12 @@ if fire_enabled then
 		label = "Ignite flame",
 		nodenames = {"group:flammable"},
 		neighbors = {"group:igniter"},
-		interval = 30,
-		chance = 15,
+		interval = 15,
+		chance = 10,
 		catch_up = false,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"air"})
-			if p then
+			if p and should_fire_tick(pos) then
 				minetest.set_node(p, {name = "fire:basic_flame"})
 			end
 		end,
@@ -380,8 +387,8 @@ if fire_enabled then
 		label = "Remove flammable nodes",
 		nodenames = {"fire:basic_flame"},
 		neighbors = "group:flammable",
-		interval = 30,
-		chance = 15,
+		interval = 15,
+		chance = 10,
 		catch_up = false,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"group:flammable"})
@@ -390,10 +397,11 @@ if fire_enabled then
 				local def = minetest.registered_nodes[flammable_node.name]
 				if def.on_burn then
 					def.on_burn(p)
-				elseif not minetest.is_protected(p, "", minetest.DIG_ACTION) then
+				elseif should_fire_tick(pos) and not minetest.is_protected(p, "", minetest.DIG_ACTION) then
 					minetest.remove_node(p)
 					minetest.check_for_falling(p)
-					if math.random(4) == 1 then
+
+					if not should_fire_tick(pos) then
 						minetest.remove_node(pos)
 					end
 				end
