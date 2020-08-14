@@ -363,8 +363,8 @@ if fire_enabled then
 		label = "Ignite flame",
 		nodenames = {"group:flammable"},
 		neighbors = {"group:igniter"},
-		interval = 45,
-		chance = 12,
+		interval = 30,
+		chance = 15,
 		catch_up = false,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"air"})
@@ -380,8 +380,8 @@ if fire_enabled then
 		label = "Remove flammable nodes",
 		nodenames = {"fire:basic_flame"},
 		neighbors = "group:flammable",
-		interval = 5,
-		chance = 18,
+		interval = 30,
+		chance = 15,
 		catch_up = false,
 		action = function(pos, node, active_object_count, active_object_count_wider)
 			local p = minetest.find_node_near(pos, 1, {"group:flammable"})
@@ -393,6 +393,9 @@ if fire_enabled then
 				elseif not minetest.is_protected(p, "", minetest.DIG_ACTION) then
 					minetest.remove_node(p)
 					minetest.check_for_falling(p)
+					if math.random(4) == 1 then
+						minetest.remove_node(pos)
+					end
 				end
 			end
 		end,
