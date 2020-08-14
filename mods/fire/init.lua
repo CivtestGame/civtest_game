@@ -400,10 +400,10 @@ if fire_enabled then
 				elseif should_fire_tick(pos) and not minetest.is_protected(p, "", minetest.DIG_ACTION) then
 					minetest.remove_node(p)
 					minetest.check_for_falling(p)
+				end
 
-					if not should_fire_tick(pos) then
-						minetest.remove_node(pos)
-					end
+				if not should_fire_tick(pos) then
+					minetest.remove_node(pos)
 				end
 			end
 		end,
