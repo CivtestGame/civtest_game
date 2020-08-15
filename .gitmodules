@@ -143,3 +143,6 @@
 [submodule "mods/rcbows"]
 	path = mods/rcbows
 	url = https://github.com/CivtestGame/rcbows.git
+[submodule "mods/CivFoundations"]
+	path = mods/CivFoundations
+	url = https://github.com/CivtestGame/CivFoundations.git
