@@ -36,13 +36,30 @@ function sfinv.get_nav_fs(player, context, nav, current_idx)
 	end
 end
 
-function sfinv.get_inventory_area_formspec(offset, offset_x)
+function sfinv.get_inventory_area_formspec(offset, offset_x, player)
+   local mode
+   if player and player:is_player() then
+      local meta = player:get_meta()
+      mode = meta:get_string("sfinv:inventory_type")
+   end
+
    local soffset_x = tostring(offset_x or 0)
-   local theme_inv = "list[current_player;main2;"..soffset_x
+   local theme_inv
+
+   if mode == "minetest" then
+      theme_inv = "list[current_player;main;"..soffset_x
+         ..","..tostring(offset)..";8,1;]"
+      -- .."list[current_player;router;0,0;0,0;]"
+         .."list[current_player;main2;"..soffset_x
+         ..","..tostring(offset+1.15)..";8,3;]"
+   else
+      theme_inv = "list[current_player;main2;"..soffset_x
          ..","..tostring(offset)..";8,3;]"
       -- .."list[current_player;router;0,0;0,0;]"
-      .."list[current_player;main;"..soffset_x
+         .."list[current_player;main;"..soffset_x
          ..","..tostring(offset+3.15)..";8,1;]"
+   end
+
    return theme_inv
 end
 
@@ -53,7 +70,7 @@ function sfinv.make_formspec(player, context, content, show_inv, size)
 		content
 	}
 	if show_inv then
-		tmp[#tmp + 1] = sfinv.get_inventory_area_formspec(4.7)
+           tmp[#tmp + 1] = sfinv.get_inventory_area_formspec(4.7, 0, player)
 	end
 	return table.concat(tmp, "")
 end
