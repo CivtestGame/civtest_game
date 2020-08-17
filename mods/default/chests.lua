@@ -321,30 +321,6 @@ default.chest.register_chest("chest_locked", {
 })
 
 minetest.register_craft({
-	output = "default:chest",
-	recipe = {
-		{"group:wood", "group:wood", "group:wood"},
-		{"group:wood", "", "group:wood"},
-		{"group:wood", "group:wood", "group:wood"},
-	}
-})
-
-minetest.register_craft({
-	output = "default:chest_locked",
-	recipe = {
-		{"group:wood", "group:wood", "group:wood"},
-		{"group:wood", "default:steel_ingot", "group:wood"},
-		{"group:wood", "group:wood", "group:wood"},
-	}
-})
-
-minetest.register_craft( {
-	type = "shapeless",
-	output = "default:chest_locked",
-	recipe = {"default:chest", "default:steel_ingot"},
-})
-
-minetest.register_craft({
 	type = "fuel",
 	recipe = "default:chest",
 	burntime = 30,
