@@ -55,6 +55,11 @@ minetest.register_craft({
 	recipe = "farming:flour"
 })
 
+minetest.register_craft({
+	type = "shapeless",
+	output = 'bucket:bucket_sticky_water',
+	recipe = {'group:food_flour', 'bucket:bucket_water'},
+})
 
 -- Cotton
 
