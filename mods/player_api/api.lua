@@ -276,3 +276,68 @@ function player_api.give_item(player, _itemstack, should_call_action)
    return itemstack
 end
 
+
+minetest.register_allow_player_inventory_action(
+   function(player, action, inventory, inv_info)
+      if not (action == "put" or action == "move") then
+         return
+      end
+      if not (inv_info.listname == "router"
+                 or inv_info.to_list == "router")
+      then
+         return
+      end
+
+      -- We're trying to allow a "put" to the "router".
+
+      local stack = inv_info.stack
+         or inventory:get_stack(inv_info.from_list, inv_info.from_index)
+
+      local leftover = player_api.give_item(player, stack, true)
+
+      local leftover_count = (leftover and leftover:get_count()) or 0
+
+      local take_amount = stack:get_count() - leftover_count
+
+      return take_amount
+   end
+)
+
+minetest.register_on_player_inventory_action(
+   function(player, action, inv, inv_info)
+      if not (action == "put" or action == "move") then
+         return
+      end
+      if not (inv_info.listname == "router"
+                 or inv_info.to_list == "router")
+      then
+         return
+      end
+
+      -- When a "put"/"move" to the router is allowed:
+      --
+      --   * The player will now have as much as they can take.
+      --   * The chest will retain what the player didn't take.
+      --   * The difference in the above items remain in the router inventory
+      --     (as they've been essentially duplicated by the handler above).
+      --
+      -- So, we need to nuke what has been duplicated. Hence:
+
+      inv:set_list("router", {})
+   end
+)
+
+minetest.register_on_joinplayer(function(player)
+      local inv = player:get_inventory()
+
+      -- Shouldn't ever get to this point, yet paranoia prevails...
+      local stack = inv:get_stack("router", 1)
+      if stack and not stack:is_empty() then
+         local pname = player:get_player_name()
+         minetest.log(
+            "warning", pname.." had a lingering item in their \"router\"!"
+         )
+      end
+
+      inv:set_list("router", {})
+end)

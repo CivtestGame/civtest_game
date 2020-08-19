@@ -173,6 +173,8 @@ end
 minetest.register_on_joinplayer(function(player)
 	player:get_inventory():set_size("main", 8)
         player:get_inventory():set_size("main2", 24)
+        player:get_inventory():set_size("router", 1)
+
 	if sfinv.enabled then
 		sfinv.set_player_inventory_formspec(player)
 	end
