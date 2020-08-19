@@ -191,6 +191,15 @@ bucket.register_liquid(
 	{water_bucket = 1}
 )
 
+bucket.register_liquid(
+	"default:sticky_water_source",
+	"default:sticky_water_flowing",
+	"bucket:bucket_sticky_water",
+	"bucket_sticky_water.png",
+	"Sticky Water Bucket",
+	{sticky_water_bucket = 1}
+)
+
 -- River water source is 'liquid_renewable = false' to avoid horizontal spread
 -- of water sources in sloping rivers that can cause water to overflow
 -- riverbanks and cause floods.
@@ -212,7 +221,8 @@ bucket.register_liquid(
 	"default:lava_flowing",
 	"bucket:bucket_lava",
 	"bucket_lava.png",
-	"Lava Bucket"
+	"Lava Bucket",
+        {lava_bucket = 1}
 )
 
 minetest.register_craft({
