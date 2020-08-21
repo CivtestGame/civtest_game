@@ -275,7 +275,6 @@ function player_api.give_item(player, _itemstack, should_call_action, dry_run)
 
       -- Successful merges should call relevant callbacks
       if should_call_action then
-         minetest.log("aqui")
          call_inv_action(player, inv, listname, itemstack, merged_leftover)
       end
    end
