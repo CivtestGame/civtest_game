@@ -343,7 +343,7 @@ minetest.register_allow_player_inventory_action(
 )
 
 minetest.register_on_player_inventory_action(
-   function(player, action, inv, inv_info)
+   function(player, action, inventory, inv_info)
       if not (action == "put" or action == "move") then
          return
       end
