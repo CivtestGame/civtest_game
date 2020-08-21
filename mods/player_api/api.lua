@@ -367,7 +367,7 @@ minetest.register_on_player_inventory_action(
       --
       -- So, we need to nuke what has been duplicated. Hence:
 
-      inv:set_list("router", {})
+      inventory:set_list("router", {})
    end
 )
 
