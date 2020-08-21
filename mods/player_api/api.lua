@@ -353,8 +353,7 @@ minetest.register_on_player_inventory_action(
          return
       end
 
-      local stack = inv_info.stack
-         or inventory:get_stack(inv_info.from_list, inv_info.from_index)
+      local stack = inventory:get_stack("router", 1)
 
       local leftover = player_api.give_item(player, stack, true)
 
