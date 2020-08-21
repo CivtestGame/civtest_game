@@ -220,7 +220,23 @@ local function find_merge_candidate(inv, stack)
    end
 end
 
-function player_api.give_item(player, _itemstack, should_call_action)
+local function get_fake_inventory(pname)
+   local fake_inv_name = "player_api:fakeinv_"..pname
+
+   local fake_inv = minetest.create_detached_inventory(
+      fake_inv_name,
+      {
+         allow_move = function() return 0 end,
+         allow_put = function() return 0 end,
+         allow_take = function() return 0 end
+      },
+      "_")
+
+   return fake_inv
+end
+
+function player_api.give_item(player, _itemstack, should_call_action, dry_run)
+
    local itemstack = ItemStack(_itemstack)
 
    if not itemstack or itemstack:is_empty() then
@@ -228,6 +244,22 @@ function player_api.give_item(player, _itemstack, should_call_action)
    end
 
    local inv = player:get_inventory()
+
+   local fake_inv
+   if dry_run then
+      -- A hack, but dry-runs can be quite useful. Clone the player's inventory
+      -- into an inaccessible and uninteractable detached inventory, and operate
+      -- on that instead.
+      local pname = player:get_player_name()
+      fake_inv = get_fake_inventory(pname)
+
+      fake_inv:set_list("main", inv:get_list("main"))
+      fake_inv:set_list("main2", inv:get_list("main2"))
+
+      inv = fake_inv
+      -- Never ever ever ever call handlers for this fake inventory.
+      should_call_action = false
+   end
 
    -- Repeatedly try to merge input itemstack with existing one of the same
    -- type. Bail when there are no more candidates.
@@ -243,6 +275,7 @@ function player_api.give_item(player, _itemstack, should_call_action)
 
       -- Successful merges should call relevant callbacks
       if should_call_action then
+         minetest.log("aqui")
          call_inv_action(player, inv, listname, itemstack, merged_leftover)
       end
    end
@@ -273,6 +306,12 @@ function player_api.give_item(player, _itemstack, should_call_action)
       itemstack:take_item(itemstack:get_count() - left2:get_count())
    end
 
+   if dry_run then
+      -- Reset the fake inventory's contents.
+      fake_inv:set_list("main", {})
+      fake_inv:set_list("main2", {})
+   end
+
    return itemstack
 end
 
@@ -293,7 +332,8 @@ minetest.register_allow_player_inventory_action(
       local stack = inv_info.stack
          or inventory:get_stack(inv_info.from_list, inv_info.from_index)
 
-      local leftover = player_api.give_item(player, stack, true)
+      -- Dry-run the inventory action (fourth param).
+      local leftover = player_api.give_item(player, stack, false, true)
 
       local leftover_count = (leftover and leftover:get_count()) or 0
 
@@ -313,6 +353,11 @@ minetest.register_on_player_inventory_action(
       then
          return
       end
+
+      local stack = inv_info.stack
+         or inventory:get_stack(inv_info.from_list, inv_info.from_index)
+
+      local leftover = player_api.give_item(player, stack, true)
 
       -- When a "put"/"move" to the router is allowed:
       --
