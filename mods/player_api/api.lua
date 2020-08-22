@@ -353,7 +353,15 @@ minetest.register_on_player_inventory_action(
          return
       end
 
+      -- Pull out the stack from the router.
       local stack = inventory:get_stack("router", 1)
+      -- XXX: this could also, more verbosely, be written as:
+      --
+      -- local stack = inv_info.stack
+      --    or inventory:get_stack(inv_info.to_list, inv_info.to_index)
+      --
+      -- ...but in this case, we always know the target is "router", and the
+      -- stack is the (only) item in the router.
 
       local leftover = player_api.give_item(player, stack, true)
 
