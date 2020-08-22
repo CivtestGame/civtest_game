@@ -94,7 +94,11 @@ minetest.register_craft({
 	type = "shapeless",
 	output = "farming:salt 5",
 	recipe = {"bucket:bucket_water", "bucket:bucket_water", "farming:cooking_pot"},
-    replacements = {{"bucket:bucket_water", "bucket:bucket_empty"},{"farming:cooking_pot", "farming:cooking_pot"}},
+    replacements = {
+       {"bucket:bucket_water", "bucket:bucket_empty"},
+       {"bucket:bucket_water", "bucket:bucket_empty"},
+       {"farming:cooking_pot", "farming:cooking_pot"}
+    },
 })
 
 minetest.register_craftitem("farming:tofu", {
