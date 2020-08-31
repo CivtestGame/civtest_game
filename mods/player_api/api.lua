@@ -314,6 +314,9 @@ function player_api.give_item(player, _itemstack, should_call_action, dry_run)
    return itemstack
 end
 
+--------------------------------------------------------------------------------
+-- Handlers for managing taking/putting to the router
+--------------------------------------------------------------------------------
 
 minetest.register_allow_player_inventory_action(
    function(player, action, inventory, inv_info)
@@ -392,3 +395,40 @@ minetest.register_on_joinplayer(function(player)
 
       inv:set_list("router", {})
 end)
+
+--------------------------------------------------------------------------------
+-- Prevent tampering with player inventories exploit
+--------------------------------------------------------------------------------
+
+minetest.register_allow_player_inventory_action(
+   function(player, action, inventory, inv_info)
+
+      local user_name = player:get_player_name()
+      local user_has_privs = minetest.check_player_privs(
+         user_name, { server = true }
+      )
+
+      -- If accessor is not an admin, perform an "user == owner?" check on the
+      -- inventory access.
+      --
+      -- This defends against an exploit that allows a player to arbitrarily
+      -- access and tamper with another player's inventory.
+      --
+      -- Fixed as of 5.4 anyway, so this can be removed after then:
+      --     https://github.com/minetest/minetest/pull/10341
+      --
+      if not user_has_privs then
+         local inv_location = inventory:get_location()
+         if inv_location.type == "player"
+            and inv_location.name ~= user_name
+         then
+            return 0
+         end
+      end
+
+      local stack = inv_info.stack
+         or inventory:get_stack(inv_info.from_list, inv_info.from_index)
+
+      return stack:get_count()
+   end
+)
