@@ -164,8 +164,8 @@ local function entity_physics(pos, radius, drops, entity_damage)
 		local damage = (entity_damage / dist) * radius * default.DAMAGE_MULTIPLIER
 		if obj:is_player() then
 			local obj_vel = obj:get_player_velocity()
-			local new_vel = calc_velocity(pos, obj_pos, obj_vel, radius * 5)
-			new_vel.y = 10
+			local new_vel = calc_velocity(pos, obj_pos, obj_vel, radius * 2)
+			new_vel.y = 5
 			obj:add_player_velocity(new_vel)
 
 			obj:set_hp(obj:get_hp() - damage)
@@ -571,7 +571,7 @@ if enable_tnt then
 			{"tnt:gunpowder", "", "tnt:gunpowder"},
 		}
 	})
-	
+
 	minetest.register_craft({
 		output = "tnt:tnt_stick 9",
 		recipe = {
